@@ -27,6 +27,6 @@ public interface SpickerrrApi {
 
     @GET("{apikey}/package/{packagekey}")
     Call<Package> getPackage(@Path("apikey") String apikey, @Path("packagekey") String packagekey);
-    
+
 }
 
