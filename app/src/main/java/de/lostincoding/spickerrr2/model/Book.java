@@ -3,7 +3,7 @@ package de.lostincoding.spickerrr2.model;
 /**
  * Created by lostincoding on 26.05.16.
  */
-public class Antragsbuch {
+public class Book {
     private String apikey;
     private String key;
     private String name;
