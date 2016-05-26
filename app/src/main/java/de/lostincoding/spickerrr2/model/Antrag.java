@@ -13,5 +13,5 @@ public class Antrag {
     private String abstract_short; //abstract is forbidden
     private String description;
     private String motivation;
-    
+
 }
