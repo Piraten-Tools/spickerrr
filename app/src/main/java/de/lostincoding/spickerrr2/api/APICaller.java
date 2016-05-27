@@ -1,10 +1,13 @@
 package de.lostincoding.spickerrr2.api;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.lostincoding.spickerrr2.model.Book;
 import de.lostincoding.spickerrr2.model.Package;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -34,8 +37,28 @@ public class APICaller {
     }
 
 
-    public ArrayList<Book> listBooks() {
-      Call response=  service.listBooks(apikey);
+    public List<Book> listBooks() {
+        Call<BookResponse> call = service.listBooks(apikey);
+
+        call.enqueue(new Callback<BookResponse>() {
+            @Override
+            public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
+                if (response.isSuccessful()) {
+                    BookResponse bookResponse = response.body();
+                    List<Book> books = bookResponse.getData();
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BookResponse> call, Throwable t) {
+
+            }
+        });
+
+
+
         return null;
     }
 
