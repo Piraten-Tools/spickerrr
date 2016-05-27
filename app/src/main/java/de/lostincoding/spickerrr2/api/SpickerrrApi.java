@@ -2,7 +2,6 @@ package de.lostincoding.spickerrr2.api;
 
 import java.util.List;
 
-import de.lostincoding.spickerrr2.model.Book;
 import de.lostincoding.spickerrr2.model.Package;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -14,19 +13,19 @@ import retrofit2.http.Path;
 public interface SpickerrrApi {
 
     @GET("{apikey}/books")
-    Call<List<Book>> listBooks(@Path("apikey") String apikey);
+    Call<BookResponse> listBooks(@Path("apikey") String apikey);
 
     @GET("{apikey}/currentbooks")
-    Call<List<Book>> listCurrentBooks(@Path("apikey") String apikey);
+    Call<BookResponse> listCurrentBooks(@Path("apikey") String apikey);
 
     @GET("{apikey}/book/{bookkey}/packages")
-    Call<List<Package>> listPackagesFromBook(@Path("apikey") String apikey, @Path("bookkey") String bookkey);
+    Call<PackageResponse> listPackagesFromBook(@Path("apikey") String apikey, @Path("bookkey") String bookkey);
 
     @GET("{apikey}/activepackages")
-    Call<List<Package>> listActivePackages(@Path("apikey") String apikey);
+    Call<PackageResponse> listActivePackages(@Path("apikey") String apikey);
 
     @GET("{apikey}/package/{packagekey}")
-    Call<Package> getPackage(@Path("apikey") String apikey, @Path("packagekey") String packagekey);
+    Call<PackageResponse> getPackage(@Path("apikey") String apikey, @Path("packagekey") String packagekey);
 
 }
 

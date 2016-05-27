@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import de.lostincoding.spickerrr2.model.Book;
 import de.lostincoding.spickerrr2.model.Package;
+import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by lostincoding on 26.05.16.
@@ -18,6 +20,7 @@ public class APICaller {
         this.apikey = apikey;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://pirat.ly/spicker/api/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         service = retrofit.create(SpickerrrApi.class);
@@ -32,7 +35,7 @@ public class APICaller {
 
 
     public ArrayList<Book> listBooks() {
-        service.listBooks(apikey);
+      Call response=  service.listBooks(apikey);
         return null;
     }
 
