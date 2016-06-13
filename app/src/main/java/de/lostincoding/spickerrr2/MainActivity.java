@@ -1,7 +1,9 @@
 package de.lostincoding.spickerrr2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initaliseCallbacks();
+        initalizeCallbacks();
         caller = APICaller.getInstance(apikey);
         caller.listCurrentBooks(bookcallback);
     }
+
 
     private void fillPackageSpinner(final List<Package> packagelist) {
         ArrayList<String> packagenames = new ArrayList<>();
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initaliseCallbacks() {
+    private void initalizeCallbacks() {
         bookcallback = new Callback<BookResponse>() {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
@@ -124,4 +127,8 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    public void openNextActivity(View view) {
+        Intent intent = new Intent(this, AntragsChooserActivity.class);
+        startActivity(intent);
+    }
 }

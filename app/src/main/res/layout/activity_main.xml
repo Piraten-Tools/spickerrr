@@ -35,7 +35,7 @@
         android:id="@+id/packagespinner"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,7 +62,8 @@
         app:fabSize="normal"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:src="@drawable/ic_check_circle_24dp"/>
+        android:src="@drawable/ic_check_circle_24dp"
+        android:onClick="openNextActivity"/>
 
 
 </RelativeLayout>
