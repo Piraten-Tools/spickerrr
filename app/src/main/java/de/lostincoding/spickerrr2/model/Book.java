@@ -67,10 +67,10 @@ public class Book {
     private Boolean isMyOwn;
     @SerializedName("Timestamp")
     @Expose
-    private Integer timestamp;
+    private Long timestamp;
     @SerializedName("UnixTimestamp")
     @Expose
-    private Integer unixTimestamp;
+    private Long unixTimestamp;
     @SerializedName("IdNumber")
     @Expose
     private Integer idNumber;
@@ -358,28 +358,28 @@ public class Book {
     /**
      * @return The timestamp
      */
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
     /**
      * @param timestamp The Timestamp
      */
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
     /**
      * @return The unixTimestamp
      */
-    public Integer getUnixTimestamp() {
+    public Long getUnixTimestamp() {
         return unixTimestamp;
     }
 
     /**
      * @param unixTimestamp The UnixTimestamp
      */
-    public void setUnixTimestamp(Integer unixTimestamp) {
+    public void setUnixTimestamp(Long unixTimestamp) {
         this.unixTimestamp = unixTimestamp;
     }
 
@@ -397,4 +397,12 @@ public class Book {
         this.idNumber = idNumber;
     }
 
+
+    public String toString() {
+        StringBuilder sb= new StringBuilder();
+        sb.append("Key: ").append(key).append("\n");
+        sb.append("Name: ").append(name).append(key).append("\n");
+        sb.append("Description: ").append(description).append(key).append("\n");
+        return sb.toString();
+    }
 }

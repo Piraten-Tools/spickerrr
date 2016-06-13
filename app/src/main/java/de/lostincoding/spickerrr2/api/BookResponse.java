@@ -45,5 +45,13 @@ public class BookResponse {
         this.data = data;
     }
 
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Successfull: ").append(success).append("\n");
+        sb.append("Books: ").append(data.toString());
+
+        return sb.toString();
+    }
 }
 

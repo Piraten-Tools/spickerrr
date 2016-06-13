@@ -1,5 +1,7 @@
 package de.lostincoding.spickerrr2.api;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,35 +38,16 @@ public class APICaller {
         return APICaller.instance;
     }
 
-
-    public List<Book> listBooks() {
-        Call<BookResponse> call = service.listBooks(apikey);
-
-        call.enqueue(new Callback<BookResponse>() {
-            @Override
-            public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
-                if (response.isSuccessful()) {
-                    BookResponse bookResponse = response.body();
-                    List<Book> books = bookResponse.getData();
-                } else {
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BookResponse> call, Throwable t) {
-
-            }
-        });
-
-
-
-        return null;
+    public void listBooks(Callback<BookResponse> callback) {
+        Call<BookResponse> call=service.listBooks(apikey);
+        //asynchronous call
+        call.enqueue(callback);
     }
 
-    public ArrayList<Book> listCurrentBooks() {
-        service.listCurrentBooks(apikey);
-        return null;
+    public void listCurrentBooks(Callback<BookResponse> callback) {
+        Call<BookResponse> call=service.listCurrentBooks(apikey);
+        //asynchronous call
+        call.enqueue(callback);
     }
 
     public ArrayList<Package> listPackagesFromBook(String bookkey) {
