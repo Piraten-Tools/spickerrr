@@ -8,9 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-import de.lostincoding.spickerrr2.model.Package;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import de.lostincoding.spickerrr2.api.APICaller;
 import de.lostincoding.spickerrr2.api.BookResponse;
 import de.lostincoding.spickerrr2.api.PackageResponse;
