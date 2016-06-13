@@ -2,6 +2,7 @@ package de.lostincoding.spickerrr2.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import de.lostincoding.spickerrr2.model.Package;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

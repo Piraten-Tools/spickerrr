@@ -127,10 +127,10 @@ public class Package {
     private Boolean isMyOwn;
     @SerializedName("Timestamp")
     @Expose
-    private Integer timestamp;
+    private Long timestamp;
     @SerializedName("UnixTimestamp")
     @Expose
-    private Integer unixTimestamp;
+    private Long unixTimestamp;
     @SerializedName("IdNumber")
     @Expose
     private Integer idNumber;
@@ -860,7 +860,7 @@ public class Package {
      * @return
      * The timestamp
      */
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
@@ -869,7 +869,7 @@ public class Package {
      * @param timestamp
      * The Timestamp
      */
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -878,7 +878,7 @@ public class Package {
      * @return
      * The unixTimestamp
      */
-    public Integer getUnixTimestamp() {
+    public Long getUnixTimestamp() {
         return unixTimestamp;
     }
 
@@ -887,7 +887,7 @@ public class Package {
      * @param unixTimestamp
      * The UnixTimestamp
      */
-    public void setUnixTimestamp(Integer unixTimestamp) {
+    public void setUnixTimestamp(Long unixTimestamp) {
         this.unixTimestamp = unixTimestamp;
     }
 

@@ -39,20 +39,20 @@ public class APICaller {
     }
 
     public void listBooks(Callback<BookResponse> callback) {
-        Call<BookResponse> call=service.listBooks(apikey);
+        Call<BookResponse> call = service.listBooks(apikey);
         //asynchronous call
         call.enqueue(callback);
     }
 
     public void listCurrentBooks(Callback<BookResponse> callback) {
-        Call<BookResponse> call=service.listCurrentBooks(apikey);
+        Call<BookResponse> call = service.listCurrentBooks(apikey);
         //asynchronous call
         call.enqueue(callback);
     }
 
-    public ArrayList<Package> listPackagesFromBook(String bookkey) {
-        service.listPackagesFromBook(apikey, bookkey);
-        return null;
+    public void listPackagesFromBook(Callback<PackageResponse> callback, String bookkey) {
+        Call<PackageResponse> call = service.listPackagesFromBook(apikey, bookkey);
+        call.enqueue(callback);
     }
 
     public ArrayList<Package> listActivePackages() {
