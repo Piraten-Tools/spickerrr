@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AntragsChooserActivity"></activity>
+        <activity android:name=".AntragsChooserActivity" />
+        <activity android:name=".model.AntragsViewActivity"></activity>
     </application>
 
 </manifest>

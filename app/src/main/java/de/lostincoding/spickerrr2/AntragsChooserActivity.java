@@ -9,5 +9,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_chooser);
+
+    }
+
+
+    private void fillListView() {
+
     }
 }
