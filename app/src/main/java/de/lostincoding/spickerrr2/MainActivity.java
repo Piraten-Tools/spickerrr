@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private final String apikey = "853f688d3842";
+
     private APICaller caller;
     private Callback<BookResponse> bookcallback;
     private Callback<PackageResponse> packagecallback;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initalizeCallbacks();
-        caller = APICaller.getInstance(apikey);
+        caller = APICaller.getInstance();
         caller.listCurrentBooks(bookcallback);
     }
 

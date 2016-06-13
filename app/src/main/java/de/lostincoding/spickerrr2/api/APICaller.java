@@ -17,12 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by lostincoding on 26.05.16.
  */
 public class APICaller {
-    private String apikey;
+    private final String apikey = "853f688d3842";
     private SpickerrrApi service;
     private static APICaller instance;
 
-    private APICaller(String apikey) {
-        this.apikey = apikey;
+    private APICaller() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://pirat.ly/spicker/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -31,9 +30,9 @@ public class APICaller {
         service = retrofit.create(SpickerrrApi.class);
     }
 
-    public static APICaller getInstance(String apikey) {
+    public static APICaller getInstance() {
         if (APICaller.instance == null) {
-            APICaller.instance = new APICaller(apikey);
+            APICaller.instance = new APICaller();
         }
         return APICaller.instance;
     }
