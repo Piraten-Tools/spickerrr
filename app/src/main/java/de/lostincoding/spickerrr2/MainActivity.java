@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private APICaller caller;
     private Callback<BookResponse> bookcallback;
     private Callback<PackageResponse> packagecallback;
+    private List<Book> bookList;
+    private List<Package> packageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +43,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillPackageSpinner(final List<Package> packagelist) {
         ArrayList<String> packagenames = new ArrayList<>();
-        Spinner spinner = (Spinner) findViewById(R.id.packagespinner);
+        Spinner packageSpinner = (Spinner) findViewById(R.id.packagespinner);
         for (Package pack : packagelist) {
             packagenames.add(pack.getName());
         }
         ArrayAdapter<String> packageadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, packagenames);
         packageadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(packageadapter);
+        packageSpinner.setAdapter(packageadapter);
     }
 
     private void fillBookSpinner(final List<Book> booklist) {
         ArrayList<String> booknames = new ArrayList<>();
-        Spinner spinner = (Spinner) findViewById(R.id.bookspinner);
+        Spinner bookSpinner = (Spinner) findViewById(R.id.bookspinner);
         for (Book book : booklist) {
             booknames.add(book.getName());
         }
         ArrayAdapter<String> bookadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, booknames);
         bookadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(bookadapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        bookSpinner.setAdapter(bookadapter);
+        bookSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 caller.listPackagesFromBook(packagecallback, booklist.get(position).getKey());
@@ -77,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
                 if (response.body().getSuccess()) {
-                    List<Book> booklist = response.body().getData();
-                    fillBookSpinner(booklist);
+                   bookList = response.body().getData();
+                    fillBookSpinner(bookList);
                 } else {
                     //Not Successful
                     Context context = getApplicationContext();
@@ -103,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<PackageResponse> call, Response<PackageResponse> response) {
                 if (response.body().getSuccess()) {
-                    List<de.lostincoding.spickerrr2.model.Package> packagelist = response.body().getData();
-                    fillPackageSpinner(packagelist);
+                    packageList = response.body().getData();
+                    fillPackageSpinner(packageList);
                 } else {
                     //Not Successful
                     Context context = getApplicationContext();
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openNextActivity(View view) {
         Intent intent = new Intent(this, AntragsChooserActivity.class);
+  //      intent.putExtra("", ));
         startActivity(intent);
     }
 }

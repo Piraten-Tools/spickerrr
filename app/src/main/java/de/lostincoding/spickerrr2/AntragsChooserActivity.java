@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import de.lostincoding.spickerrr2.api.APICaller;
+import de.lostincoding.spickerrr2.api.AntragsAPI;
 
 public class AntragsChooserActivity extends AppCompatActivity {
     private APICaller caller;
@@ -17,6 +18,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
 
     private void fillListView() {
+        AntragsAPI api=new AntragsAPI();
 
     }
 }

@@ -8,8 +8,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 
+import au.com.bytecode.opencsv.CSVParser;
+import au.com.bytecode.opencsv.CSVReader;
 import de.lostincoding.spickerrr2.model.Antrag;
 import de.lostincoding.spickerrr2.model.Package;
 import okhttp3.OkHttpClient;
@@ -31,40 +34,44 @@ public class AntragsAPI {
         return response.body().string();
     }
 
-    private ArrayList<Antrag> parseJSON(String data, Package insertpackage) {
+    private ArrayList<Antrag> parseJSON(String data, Package insertpackage) throws JSONException {
         ArrayList<Antrag> antragsliste = new ArrayList<>();
         JSONArray antragsArray = null;
-        try {
-            antragsArray = new JSONArray(data);
-            for (int i = 0; i < 10; i++) {
-                JSONObject aktobject = antragsArray.getJSONObject(i);
-                String id = (String) aktobject.get(insertpackage.getColId());
-                String title = (String) aktobject.get(insertpackage.getColTitle());
-                String topic = (String) aktobject.get(insertpackage.getColTopic());
-                String kind = (String) aktobject.get(insertpackage.getColKind());
-                String owner = (String) aktobject.get(insertpackage.getColOwner());
-                String infourl = (String) aktobject.get(insertpackage.getColInfoUrl());
-                String abstract_short = (String) aktobject.get(insertpackage.getColAbstract());
-                String description = (String) aktobject.get(insertpackage.getColDescription());
-                String motivation = (String) aktobject.get(insertpackage.getColMotivation());
-                antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
-            }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+        antragsArray = new JSONArray(data);
+        for (int i = 0; i < 10; i++) {
+            JSONObject aktobject = antragsArray.getJSONObject(i);
+            String id = (String) aktobject.get(insertpackage.getColId());
+            String title = (String) aktobject.get(insertpackage.getColTitle());
+            String topic = (String) aktobject.get(insertpackage.getColTopic());
+            String kind = (String) aktobject.get(insertpackage.getColKind());
+            String owner = (String) aktobject.get(insertpackage.getColOwner());
+            String infourl = (String) aktobject.get(insertpackage.getColInfoUrl());
+            String abstract_short = (String) aktobject.get(insertpackage.getColAbstract());
+            String description = (String) aktobject.get(insertpackage.getColDescription());
+            String motivation = (String) aktobject.get(insertpackage.getColMotivation());
+            antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
         }
+
         return antragsliste;
 
     }
 
-    private ArrayList<Antrag> parseCSV(String data,Package insertPackage) {
+    public ArrayList<Antrag> parseCSV(String data, Package insertPackage) throws IOException {
         ArrayList<Antrag> antragsliste = new ArrayList<>();
+        CSVReader reader = new CSVReader(new StringReader(data), insertPackage.getCsvSeperator().charAt(0), insertPackage.getCsvSeperator().charAt(0));
+        ArrayList<String[]> columnlist = new ArrayList<>();
+        String[] nextLine;
+        while ((nextLine = reader.readNext()) != null) {
+            // nextLine[] is an array of values from the line
+            columnlist.add(nextLine);
+        }
 
 
-        return  antragsliste;
+        return antragsliste;
     }
 
-    public ArrayList<Antrag> getAntraege(Package insertpackage) {
+    public ArrayList<Antrag> getAntraege(Package insertpackage) throws JSONException, IOException {
         String data = null;
         ArrayList<Antrag> antragslist = new ArrayList<>();
         try {
@@ -79,7 +86,7 @@ public class AntragsAPI {
                 antragslist = parseJSON(data, insertpackage);
                 break;
             case "CSV":
-                antragslist = parseCSV(data);
+                antragslist = parseCSV(data, insertpackage);
                 break;
         }
 
