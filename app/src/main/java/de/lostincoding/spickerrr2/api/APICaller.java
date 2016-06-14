@@ -65,23 +65,5 @@ public class APICaller {
         return null;
     }
 
-    public ArrayList<Antrag> getAntraege(Package insertpackage) {
-        switch (insertpackage.getSourceType()) {
-            case "JSON":
-                break;
-            case "CSV":
-                break;
-        }
-
-        return null;
-    }
-
-    private String loadAntraege() {
-        return null;
-    }
-
-    private ArrayList<Antrag> parseAnträge(String data) {
-        return null;
-    }
 
 }
