@@ -5,6 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.lostincoding.spickerrr2.model.Antrag;
 import de.lostincoding.spickerrr2.model.Book;
 import de.lostincoding.spickerrr2.model.Package;
 import retrofit2.Call;
@@ -61,6 +62,25 @@ public class APICaller {
 
     public Package getPackage(String packagekey) {
         service.getPackage(apikey, packagekey);
+        return null;
+    }
+
+    public ArrayList<Antrag> getAntraege(Package insertpackage) {
+        switch (insertpackage.getSourceType()) {
+            case "JSON":
+                break;
+            case "CSV":
+                break;
+        }
+
+        return null;
+    }
+
+    private String loadAntraege() {
+        return null;
+    }
+
+    private ArrayList<Antrag> parseAnträge(String data) {
         return null;
     }
 
