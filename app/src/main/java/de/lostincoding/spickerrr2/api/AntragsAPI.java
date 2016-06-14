@@ -57,8 +57,11 @@ public class AntragsAPI {
 
     }
 
-    private ArrayList<Antrag> parseCSV(String data) {
-        return null;
+    private ArrayList<Antrag> parseCSV(String data,Package insertPackage) {
+        ArrayList<Antrag> antragsliste = new ArrayList<>();
+
+
+        return  antragsliste;
     }
 
     public ArrayList<Antrag> getAntraege(Package insertpackage) {

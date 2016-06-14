@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.1.1'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
 }
