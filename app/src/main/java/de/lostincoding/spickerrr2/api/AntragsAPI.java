@@ -55,6 +55,15 @@ public class AntragsAPI {
             String description = aktobject.isNull(insertpackage.getColDescription()) ? "null" : (String) aktobject.get(insertpackage.getColDescription());
             String motivation = aktobject.isNull(insertpackage.getColMotivation()) ? "null" : (String) aktobject.get(insertpackage.getColMotivation());
 
+            id = fixUrlEncoding(id);
+            title = fixUrlEncoding(title);
+            topic = fixUrlEncoding(topic);
+            kind = fixUrlEncoding(kind);
+            owner = fixUrlEncoding(owner);
+            infourl = fixUrlEncoding(infourl);
+            abstract_short = fixUrlEncoding(abstract_short);
+            description = fixUrlEncoding(description);
+            motivation = fixUrlEncoding(motivation);
 
             antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
         }
@@ -97,6 +106,10 @@ public class AntragsAPI {
     }
 
     private static String fixUrlEncoding(String input) {
+        input = StringEscapeUtils.unescapeHtml4(input);
+        input = input.replaceAll("<p>", "\n");
+        input = input.replaceAll("</p>", "\n");
+        input = input.replaceAll("<br>", "\n");
         input = input.replaceAll("%C3%84", "Ä");
         input = input.replaceAll("%C3%96", "Ö");
         input = input.replaceAll("%C3%9C", "Ü");
