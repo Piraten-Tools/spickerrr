@@ -26,14 +26,16 @@ import okhttp3.Response;
 public class AntragsChooserActivity extends AppCompatActivity {
     private Package aPackage;
     private ArrayList<Antrag> antragslist;
-private ListView listView;
+    private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_chooser);
 
-        Intent intent = getIntent();
-        aPackage = intent.getParcelableExtra("package");
+
+        aPackage = getIntent().getParcelableExtra("package");
+        initalizeUI();
         loadData();
     }
 
@@ -74,13 +76,14 @@ private ListView listView;
     }
 
     private void initalizeUI() {
-         listView = (ListView) findViewById(R.id.antragsListView);
-       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               openNextActivity(position);
-           }
-       });
+        setTitle(aPackage.getName());
+        listView = (ListView) findViewById(R.id.antragsListView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                openNextActivity(position);
+            }
+        });
     }
 
     private void openNextActivity(int position) {
@@ -98,7 +101,6 @@ private ListView listView;
         }
 
 
-
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -108,7 +110,6 @@ private ListView listView;
 
 
     }
-
 
 
 }
