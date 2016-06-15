@@ -844,6 +844,17 @@ public class Package implements Parcelable {
 
     }
 
+    public static final Parcelable.Creator CREATOR =
+            new Parcelable.Creator() {
+                public Package createFromParcel(Parcel in) {
+                    return new Package(in);
+                }
+
+                public Package[] newArray(int size) {
+                    return new Package[size];
+                }
+            };
+
 }
 
 

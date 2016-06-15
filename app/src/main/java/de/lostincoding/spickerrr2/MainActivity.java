@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private Callback<PackageResponse> packagecallback;
     private List<Book> bookList;
     private List<Package> packageList;
+    private Spinner packageSpinner;
+    private Spinner bookSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillPackageSpinner(final List<Package> packagelist) {
         ArrayList<String> packagenames = new ArrayList<>();
-        Spinner packageSpinner = (Spinner) findViewById(R.id.packagespinner);
+        packageSpinner = (Spinner) findViewById(R.id.packagespinner);
         for (Package pack : packagelist) {
             packagenames.add(pack.getName());
         }
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillBookSpinner(final List<Book> booklist) {
         ArrayList<String> booknames = new ArrayList<>();
-        Spinner bookSpinner = (Spinner) findViewById(R.id.bookspinner);
+        bookSpinner = (Spinner) findViewById(R.id.bookspinner);
         for (Book book : booklist) {
             booknames.add(book.getName());
         }
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
                 if (response.body().getSuccess()) {
-                   bookList = response.body().getData();
+                    bookList = response.body().getData();
                     fillBookSpinner(bookList);
                 } else {
                     //Not Successful
@@ -131,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openNextActivity(View view) {
         Intent intent = new Intent(this, AntragsChooserActivity.class);
-  //      intent.putExtra("", ));
+        intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
         startActivity(intent);
     }
 }

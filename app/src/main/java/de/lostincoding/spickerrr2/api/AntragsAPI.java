@@ -57,7 +57,7 @@ public class AntragsAPI {
 
     }
 
-    public ArrayList<Antrag> parseCSV(String data, Package insertPackage) throws IOException {
+    private ArrayList<Antrag> parseCSV(String data, Package insertPackage) throws IOException {
         ArrayList<Antrag> antragsliste = new ArrayList<>();
         CSVReader reader = new CSVReader(new StringReader(data), insertPackage.getCsvSeperator().charAt(0), insertPackage.getCsvSeperator().charAt(0));
         ArrayList<String[]> columnlist = new ArrayList<>();
