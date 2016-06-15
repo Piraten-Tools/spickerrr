@@ -1,10 +1,12 @@
 package de.lostincoding.spickerrr2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 
@@ -15,6 +17,9 @@ import de.lostincoding.spickerrr2.api.APICaller;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.model.Antrag;
 import de.lostincoding.spickerrr2.model.Package;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class AntragsChooserActivity extends AppCompatActivity {
     private Package aPackage;
@@ -26,20 +31,43 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         aPackage = intent.getParcelableExtra("package");
-        fillListView();
+        loadData();
     }
 
+    private void loadData() {
+        Callback dataCallback = new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Context context = getApplicationContext();
+                CharSequence text = "Beim Laden der Anträge ist ein Fehler aufgetreten!";
+                int duration = Toast.LENGTH_SHORT;
 
-    private void fillListView() {
-        AntragsAPI api = new AntragsAPI();
+                Toast.makeText(context, text, duration).show();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                ArrayList<Antrag> antragsliste = null;
+                try {
+                    antragsliste = AntragsAPI.parseData(response.body().string(), aPackage);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                fillListView(antragsliste);
+            }
+        };
+
+
         ArrayList<Antrag> antragsliste = null;
-        try {
-            antragsliste = api.getAntraege(aPackage);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        AntragsAPI.loadData(aPackage, dataCallback);
+
+
+    }
+
+    private void fillListView(ArrayList<Antrag> antragsliste) {
+
 
         ArrayList<String> antragstitellist = new ArrayList<>();
         for (Antrag antrag : antragsliste) {
@@ -54,6 +82,10 @@ public class AntragsChooserActivity extends AppCompatActivity {
                 antragstitellist);
 
         listView.setAdapter(arrayAdapter);
+
+
     }
+
+
 }
 

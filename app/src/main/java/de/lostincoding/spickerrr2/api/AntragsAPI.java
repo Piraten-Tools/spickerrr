@@ -15,6 +15,7 @@ import au.com.bytecode.opencsv.CSVParser;
 import au.com.bytecode.opencsv.CSVReader;
 import de.lostincoding.spickerrr2.model.Antrag;
 import de.lostincoding.spickerrr2.model.Package;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -24,17 +25,17 @@ import okhttp3.Response;
  */
 public class AntragsAPI {
 
-    private String loadData(String dataUrl) throws IOException {
+    public static void loadData(Package data, Callback callback) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(dataUrl)
+                .url(data.getDataUrl())
                 .build();
 
-        Response response = client.newCall(request).execute();
-        return response.body().string();
+        client.newCall(request).enqueue(callback);
+
     }
 
-    private ArrayList<Antrag> parseJSON(String data, Package insertpackage) throws JSONException {
+    private static ArrayList<Antrag> parseJSON(String data, Package insertpackage) throws JSONException {
         ArrayList<Antrag> antragsliste = new ArrayList<>();
         JSONArray antragsArray = null;
 
@@ -57,7 +58,7 @@ public class AntragsAPI {
 
     }
 
-    private ArrayList<Antrag> parseCSV(String data, Package insertPackage) throws IOException {
+    private static ArrayList<Antrag> parseCSV(String data, Package insertPackage) throws IOException {
         ArrayList<Antrag> antragsliste = new ArrayList<>();
         CSVReader reader = new CSVReader(new StringReader(data), insertPackage.getCsvSeperator().charAt(0), insertPackage.getCsvSeperator().charAt(0));
         ArrayList<String[]> columnlist = new ArrayList<>();
@@ -71,16 +72,10 @@ public class AntragsAPI {
         return antragsliste;
     }
 
-    public ArrayList<Antrag> getAntraege(Package insertpackage) throws JSONException, IOException {
-        String data = null;
+    public static ArrayList<Antrag> parseData(String data, Package insertpackage) throws JSONException, IOException {
+
         ArrayList<Antrag> antragslist = new ArrayList<>();
-        try {
 
-
-            data = loadData(insertpackage.getDataUrl());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         switch (insertpackage.getSourceType()) {
             case "JSON":
                 antragslist = parseJSON(data, insertpackage);
