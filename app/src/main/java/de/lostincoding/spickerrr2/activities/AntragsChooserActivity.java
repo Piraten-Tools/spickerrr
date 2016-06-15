@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2;
+package de.lostincoding.spickerrr2.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.APICaller;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.model.Antrag;

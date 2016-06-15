@@ -1,9 +1,8 @@
-package de.lostincoding.spickerrr2;
+package de.lostincoding.spickerrr2.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.APICaller;
 import de.lostincoding.spickerrr2.api.BookResponse;
 import de.lostincoding.spickerrr2.api.PackageResponse;
