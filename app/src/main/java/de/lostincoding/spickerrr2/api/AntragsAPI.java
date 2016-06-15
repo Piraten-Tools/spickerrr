@@ -44,11 +44,11 @@ public class AntragsAPI {
             JSONObject aktobject = antragsArray.getJSONObject(i);
             String id = (String) aktobject.get(insertpackage.getColId());
             String title = (String) aktobject.get(insertpackage.getColTitle());
-            String topic = (String) aktobject.get(insertpackage.getColTopic());
+            String topic = "";//(String) aktobject.get(insertpackage.getColTopic());
             String kind = (String) aktobject.get(insertpackage.getColKind());
             String owner = (String) aktobject.get(insertpackage.getColOwner());
             String infourl = (String) aktobject.get(insertpackage.getColInfoUrl());
-            String abstract_short = (String) aktobject.get(insertpackage.getColAbstract());
+            String abstract_short = "";//(String) aktobject.get(insertpackage.getColAbstract());
             String description = (String) aktobject.get(insertpackage.getColDescription());
             String motivation = (String) aktobject.get(insertpackage.getColMotivation());
             antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));

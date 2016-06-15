@@ -23,6 +23,7 @@ import okhttp3.Response;
 
 public class AntragsChooserActivity extends AppCompatActivity {
     private Package aPackage;
+    private ArrayList<Antrag> antragslist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +48,18 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                ArrayList<Antrag> antragsliste = null;
-                try {
-                    antragsliste = AntragsAPI.parseData(response.body().string(), aPackage);
+                  try {
+                    antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        fillListView(antragslist);
+                    }
+                });
 
-                fillListView(antragsliste);
             }
         };
 
