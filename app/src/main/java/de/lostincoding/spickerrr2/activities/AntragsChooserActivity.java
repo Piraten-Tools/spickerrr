@@ -2,14 +2,16 @@ package de.lostincoding.spickerrr2.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -55,20 +57,17 @@ public class AntragsChooserActivity extends AppCompatActivity {
                 try {
                     antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e("JSON",e.toString());
                 }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        fillListView(antragslist);
+                        fillListView();
                     }
                 });
 
             }
         };
-
-
-        ArrayList<Antrag> antragsliste = null;
 
         AntragsAPI.loadData(aPackage, dataCallback);
 
@@ -92,11 +91,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void fillListView(ArrayList<Antrag> antragsliste) {
+    private void fillListView() {
 
 
         ArrayList<String> antragstitellist = new ArrayList<>();
-        for (Antrag antrag : antragsliste) {
+        for (Antrag antrag : antragslist) {
             antragstitellist.add(antrag.getId() + " " + antrag.getTitle());
         }
 

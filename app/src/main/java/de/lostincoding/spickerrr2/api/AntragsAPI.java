@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,18 +42,20 @@ public class AntragsAPI {
         JSONArray antragsArray = null;
 
         antragsArray = new JSONArray(data);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < antragsArray.length(); i++) {
             JSONObject aktobject = antragsArray.getJSONObject(i);
-            String id = (String) aktobject.get(insertpackage.getColId());
-            Log.i("log",id);
-            String title = (String) aktobject.get(insertpackage.getColTitle());
-            String topic = "";//(String) aktobject.get(insertpackage.getColTopic());
-            String kind = (String) aktobject.get(insertpackage.getColKind());
-            String owner = (String) aktobject.get(insertpackage.getColOwner());
-            String infourl = (String) aktobject.get(insertpackage.getColInfoUrl());
-            String abstract_short = "";//(String) aktobject.get(insertpackage.getColAbstract());
-            String description = (String) aktobject.get(insertpackage.getColDescription());
-            String motivation = (String) aktobject.get(insertpackage.getColMotivation());
+            //i have to now if the object is null if i want to cast to string so i use proxyobjects to check this
+            String id = aktobject.isNull(insertpackage.getColId()) ? "null" : (String) aktobject.get(insertpackage.getColId());
+            String title = aktobject.isNull(insertpackage.getColTitle()) ? "null" : (String) aktobject.get(insertpackage.getColTitle());
+            String topic = aktobject.isNull(insertpackage.getColTopic()) ? "null" : (String) aktobject.get(insertpackage.getColTopic());
+            String kind = aktobject.isNull(insertpackage.getColKind()) ? "null" : (String) aktobject.get(insertpackage.getColKind());
+            String owner = aktobject.isNull(insertpackage.getColOwner()) ? "null" : (String) aktobject.get(insertpackage.getColOwner());
+            String infourl = aktobject.isNull(insertpackage.getColInfoUrl()) ? "null" : (String) aktobject.get(insertpackage.getColInfoUrl());
+            String abstract_short = aktobject.isNull(insertpackage.getColAbstract()) ? "null" : (String) aktobject.get(insertpackage.getColAbstract());
+            String description = aktobject.isNull(insertpackage.getColDescription()) ? "null" : (String) aktobject.get(insertpackage.getColDescription());
+            String motivation = aktobject.isNull(insertpackage.getColMotivation()) ? "null" : (String) aktobject.get(insertpackage.getColMotivation());
+
+
             antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
         }
 
@@ -75,7 +78,9 @@ public class AntragsAPI {
     }
 
     public static ArrayList<Antrag> parseData(String data, Package insertpackage) throws JSONException, IOException {
-
+        //Fix buggy html shit
+        // String unescapeddata = StringEscapeUtils.unescapeHtml4(data);
+        // unescapeddata=fixUrlEncoding(unescapeddata);
         ArrayList<Antrag> antragslist = new ArrayList<>();
 
         switch (insertpackage.getSourceType()) {
@@ -89,5 +94,16 @@ public class AntragsAPI {
 
 
         return antragslist;
+    }
+
+    private static String fixUrlEncoding(String input) {
+        input = input.replaceAll("%C3%84", "Ä");
+        input = input.replaceAll("%C3%96", "Ö");
+        input = input.replaceAll("%C3%9C", "Ü");
+        input = input.replaceAll("%C3%9F", "ß");
+        input = input.replaceAll("%C3%A4", "ä");
+        input = input.replaceAll("%C3%B6", "ö");
+        input = input.replaceAll("%C3%BC", "ü");
+        return input;
     }
 }
