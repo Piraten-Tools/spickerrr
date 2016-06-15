@@ -18,8 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.AntragsChooserActivity" />
-        <activity android:name=".model.AntragsViewActivity" />
-        <activity android:name=".activities.AntragsView"></activity>
+        <activity android:name=".activities.AntragsViewActivity"></activity>
     </application>
 
 </manifest>

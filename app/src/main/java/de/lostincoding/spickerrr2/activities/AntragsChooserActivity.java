@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -14,7 +16,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.api.APICaller;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.model.Antrag;
 import de.lostincoding.spickerrr2.model.Package;
@@ -25,7 +26,7 @@ import okhttp3.Response;
 public class AntragsChooserActivity extends AppCompatActivity {
     private Package aPackage;
     private ArrayList<Antrag> antragslist;
-
+private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                  try {
+                try {
                     antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -72,16 +73,32 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
     }
 
+    private void initalizeUI() {
+         listView = (ListView) findViewById(R.id.antragsListView);
+       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               openNextActivity(position);
+           }
+       });
+    }
+
+    private void openNextActivity(int position) {
+        Intent intent = new Intent(this, AntragsViewActivity.class);
+        intent.putExtra("antrag", antragslist.get(position));
+        startActivity(intent);
+    }
+
     private void fillListView(ArrayList<Antrag> antragsliste) {
 
 
         ArrayList<String> antragstitellist = new ArrayList<>();
         for (Antrag antrag : antragsliste) {
-            antragstitellist.add(antrag.getId()+" "+antrag.getTitle());
+            antragstitellist.add(antrag.getId() + " " + antrag.getTitle());
         }
 
 
-        ListView listView = (ListView) findViewById(R.id.antragsListView);
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -91,6 +108,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
 
     }
+
 
 
 }

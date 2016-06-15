@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import de.lostincoding.spickerrr2.R;
 
-public class AntragsView extends AppCompatActivity {
+public class AntragsViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
