@@ -76,7 +76,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
         ArrayList<String> antragstitellist = new ArrayList<>();
         for (Antrag antrag : antragsliste) {
-            antragstitellist.add(antrag.getId());
+            antragstitellist.add(antrag.getId()+" "+antrag.getTitle());
         }
 
 

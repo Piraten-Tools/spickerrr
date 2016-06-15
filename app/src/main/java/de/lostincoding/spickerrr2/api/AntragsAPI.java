@@ -1,6 +1,7 @@
 package de.lostincoding.spickerrr2.api;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -43,6 +44,7 @@ public class AntragsAPI {
         for (int i = 0; i < 10; i++) {
             JSONObject aktobject = antragsArray.getJSONObject(i);
             String id = (String) aktobject.get(insertpackage.getColId());
+            Log.i("log",id);
             String title = (String) aktobject.get(insertpackage.getColTitle());
             String topic = "";//(String) aktobject.get(insertpackage.getColTopic());
             String kind = (String) aktobject.get(insertpackage.getColKind());
