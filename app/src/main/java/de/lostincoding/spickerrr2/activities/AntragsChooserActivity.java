@@ -94,13 +94,13 @@ public class AntragsChooserActivity extends AppCompatActivity {
         HashMap<String, ArrayList<String>> mapoflists = new HashMap<>();
 
         for (Antrag antrag : antragslist) {
-            String kind = antrag.getKind();
-            if (mapoflists.containsKey(kind)) {
-                mapoflists.get(kind).add(antrag.getId() + " " + antrag.getTitle());
+            String criterion = antrag.getKind();
+            if (mapoflists.containsKey(criterion)) {
+                mapoflists.get(criterion).add(antrag.getId() + " " + antrag.getTitle());
             } else {
                 ArrayList<String> list= new ArrayList<>();
                 list.add(antrag.getId() + " " + antrag.getTitle());
-                mapoflists.put(kind, list);
+                mapoflists.put(criterion, list);
             }
 
         }
