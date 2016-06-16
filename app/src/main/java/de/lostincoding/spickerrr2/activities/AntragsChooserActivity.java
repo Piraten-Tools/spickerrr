@@ -85,21 +85,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private void initalizeUI() {
         setTitle(aPackage.getName());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-     /*   listView = (ListView) findViewById(R.id.antragsListView);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                openNextActivity(position);
-            }
-        }); */
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
 
         HashMap<String, ArrayList<String>> mapoflists = new HashMap<>();
 
@@ -133,6 +123,6 @@ public class AntragsChooserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    
+
 }
 

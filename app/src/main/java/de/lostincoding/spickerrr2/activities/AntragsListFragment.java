@@ -51,7 +51,7 @@ public class AntragsListFragment extends Fragment {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 getContext().getApplicationContext(),
-                android.R.layout.simple_list_item_1,
+                R.layout.antragslist_item_layout,
                 list);
 
         listView.setAdapter(arrayAdapter);
