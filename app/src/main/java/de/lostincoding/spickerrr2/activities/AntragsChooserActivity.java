@@ -1,21 +1,24 @@
 package de.lostincoding.spickerrr2.activities;
 
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
@@ -28,7 +31,8 @@ import okhttp3.Response;
 public class AntragsChooserActivity extends AppCompatActivity {
     private Package aPackage;
     private ArrayList<Antrag> antragslist;
-    private ListView listView;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_antrags_chooser);
         aPackage = getIntent().getParcelableExtra("package");
         initalizeUI();
-        loadData();
+         loadData();
     }
 
     private void loadData() {
@@ -52,15 +56,19 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                antragslist=new ArrayList<>();
                 try {
                     antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
                 } catch (JSONException e) {
-                    Log.e("JSON",e.toString());
+                    Log.e("JSON", e.toString());
                 }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        fillListView();
+                        setupViewPager(viewPager);
+                        tabLayout.setupWithViewPager(viewPager);
+
+
                     }
                 });
 
@@ -74,13 +82,37 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
     private void initalizeUI() {
         setTitle(aPackage.getName());
-        listView = (ListView) findViewById(R.id.antragsListView);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+     /*   listView = (ListView) findViewById(R.id.antragsListView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 openNextActivity(position);
             }
-        });
+        }); */
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        AntragsListFragment frag = new AntragsListFragment();
+
+        ArrayList<ArrayList<String>> listoflists = new ArrayList<>();
+
+        ArrayList<String> antragstitellist = new ArrayList<>();
+        for (Antrag antrag : antragslist) {
+            antragstitellist.add(antrag.getId() + " " + antrag.getTitle());
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("antragslist", antragstitellist);
+        frag.setArguments(bundle);
+        adapter.addFragment(frag,"Anträge");
+
+
+        viewPager.setAdapter(adapter);
     }
 
     private void openNextActivity(int position) {
@@ -89,25 +121,35 @@ public class AntragsChooserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void fillListView() {
 
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        ArrayList<String> antragstitellist = new ArrayList<>();
-        for (Antrag antrag : antragslist) {
-            antragstitellist.add(antrag.getId() + " " + antrag.getTitle());
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                antragstitellist);
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
 
-        listView.setAdapter(arrayAdapter);
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
 
-
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
-
 
 }
 
