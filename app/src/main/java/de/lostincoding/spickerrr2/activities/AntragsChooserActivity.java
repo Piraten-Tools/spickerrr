@@ -98,7 +98,9 @@ public class AntragsChooserActivity extends AppCompatActivity {
             if (mapoflists.containsKey(kind)) {
                 mapoflists.get(kind).add(antrag.getId() + " " + antrag.getTitle());
             } else {
-                mapoflists.put(kind, new ArrayList<String>());
+                ArrayList<String> list= new ArrayList<>();
+                list.add(antrag.getId() + " " + antrag.getTitle());
+                mapoflists.put(kind, list);
             }
 
         }
