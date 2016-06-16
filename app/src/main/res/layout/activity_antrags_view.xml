@@ -10,10 +10,36 @@
     tools:context="de.lostincoding.spickerrr2.activities.AntragsViewActivity">
 
     <TextView
+        android:id="@+id/headingDescription"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text=""
-        android:id="@+id/antragsview"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Antragstext"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headingDescription"
+        android:layout_centerHorizontal="true"
+         />
+
+    <TextView
+        android:id="@+id/headingMotivation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Begründung"
+        android:layout_below="@id/description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/motivation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headingMotivation"
+        android:layout_centerHorizontal="true"
+        />
+
+
 </RelativeLayout>

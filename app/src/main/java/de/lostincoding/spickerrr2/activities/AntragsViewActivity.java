@@ -9,7 +9,8 @@ import de.lostincoding.spickerrr2.model.Antrag;
 
 public class AntragsViewActivity extends AppCompatActivity {
     private Antrag antrag;
-    private TextView textView;
+    private TextView description;
+    private TextView motivation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,10 @@ public class AntragsViewActivity extends AppCompatActivity {
 
 
     private void initalizeUI() {
-        textView = (TextView) findViewById(R.id.antragsview);
+        description = (TextView) findViewById(R.id.description);
+        motivation = (TextView) findViewById(R.id.motivation);
         setTitle(antrag.getId() + " " + antrag.getTitle());
-        textView.setText(antrag.getDescription());
+        description.setText(antrag.getDescription());
+        motivation.setText(antrag.getMotivation());
     }
 }

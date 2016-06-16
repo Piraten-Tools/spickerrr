@@ -92,14 +92,14 @@ public class AntragsChooserActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         HashMap<String, ArrayList<Antrag>> mapoflists = new HashMap<>();
-//for each criterion create an arrraylist and add it to the map
+        //for each criterion create an arrraylist and add it to the map
         //if there isnt a list for the criterion, create one
         for (Antrag antrag : antragslist) {
             String criterion = antrag.getKind();
             if (mapoflists.containsKey(criterion)) {
                 mapoflists.get(criterion).add(antrag);
             } else {
-                ArrayList<Antrag> list= new ArrayList<>();
+                ArrayList<Antrag> list = new ArrayList<>();
                 list.add(antrag);
                 mapoflists.put(criterion, list);
             }
@@ -111,7 +111,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
             String key = entry.getKey();
             ArrayList<Antrag> value = entry.getValue();
             Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("antragslist",value);
+            bundle.putParcelableArrayList("antragslist", value);
             frag.setArguments(bundle);
             adapter.addFragment(frag, key);
         }
@@ -119,8 +119,6 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
         viewPager.setAdapter(adapter);
     }
-
-
 
 
 }
