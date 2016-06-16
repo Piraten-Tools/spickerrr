@@ -18,7 +18,9 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
@@ -40,7 +42,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_antrags_chooser);
         aPackage = getIntent().getParcelableExtra("package");
         initalizeUI();
-         loadData();
+        loadData();
     }
 
     private void loadData() {
@@ -56,7 +58,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                antragslist=new ArrayList<>();
+                antragslist = new ArrayList<>();
                 try {
                     antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
                 } catch (JSONException e) {
@@ -97,19 +99,29 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        AntragsListFragment frag = new AntragsListFragment();
 
-        ArrayList<ArrayList<String>> listoflists = new ArrayList<>();
 
-        ArrayList<String> antragstitellist = new ArrayList<>();
+        HashMap<String, ArrayList<String>> mapoflists = new HashMap<>();
+
         for (Antrag antrag : antragslist) {
-            antragstitellist.add(antrag.getId() + " " + antrag.getTitle());
-        }
+            String kind = antrag.getKind();
+            if (mapoflists.containsKey(kind)) {
+                mapoflists.get(kind).add(antrag.getId() + " " + antrag.getTitle());
+            } else {
+                mapoflists.put(kind, new ArrayList<String>());
+            }
 
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("antragslist", antragstitellist);
-        frag.setArguments(bundle);
-        adapter.addFragment(frag,"Anträge");
+        }
+        for (Map.Entry<String, ArrayList<String>> entry : mapoflists.entrySet()) {
+            AntragsListFragment frag = new AntragsListFragment();
+            String key = entry.getKey();
+            ArrayList<String> value = entry.getValue();
+
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("antragslist", value);
+            frag.setArguments(bundle);
+            adapter.addFragment(frag, key);
+        }
 
 
         viewPager.setAdapter(adapter);
