@@ -91,26 +91,27 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        HashMap<String, ArrayList<String>> mapoflists = new HashMap<>();
-
+        HashMap<String, ArrayList<Antrag>> mapoflists = new HashMap<>();
+//for each criterion create an arrraylist and add it to the map
+        //if there isnt a list for the criterion, create one
         for (Antrag antrag : antragslist) {
             String criterion = antrag.getKind();
             if (mapoflists.containsKey(criterion)) {
-                mapoflists.get(criterion).add(antrag.getId() + " " + antrag.getTitle());
+                mapoflists.get(criterion).add(antrag);
             } else {
-                ArrayList<String> list= new ArrayList<>();
-                list.add(antrag.getId() + " " + antrag.getTitle());
+                ArrayList<Antrag> list= new ArrayList<>();
+                list.add(antrag);
                 mapoflists.put(criterion, list);
             }
 
         }
-        for (Map.Entry<String, ArrayList<String>> entry : mapoflists.entrySet()) {
+        //create a fragment for each list in the map
+        for (Map.Entry<String, ArrayList<Antrag>> entry : mapoflists.entrySet()) {
             AntragsListFragment frag = new AntragsListFragment();
             String key = entry.getKey();
-            ArrayList<String> value = entry.getValue();
-
+            ArrayList<Antrag> value = entry.getValue();
             Bundle bundle = new Bundle();
-            bundle.putStringArrayList("antragslist", value);
+            bundle.putParcelableArrayList("antragslist",value);
             frag.setArguments(bundle);
             adapter.addFragment(frag, key);
         }
@@ -119,11 +120,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    private void openNextActivity(int position) {
-        Intent intent = new Intent(this, AntragsViewActivity.class);
-        intent.putExtra("antrag", antragslist.get(position));
-        startActivity(intent);
-    }
+
 
 
 }
