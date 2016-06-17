@@ -57,9 +57,9 @@ public class AntragsAPI {
 
             id = fixUrlEncoding(id);
             title = fixUrlEncoding(title);
-          /*  topic = fixUrlEncoding(topic);
+            //topic = fixUrlEncoding(topic);
             kind = fixUrlEncoding(kind);
-            owner = fixUrlEncoding(owner);
+            /*owner = fixUrlEncoding(owner);
             infourl = fixUrlEncoding(infourl);
             abstract_short = fixUrlEncoding(abstract_short);
             description = fixUrlEncoding(description);
