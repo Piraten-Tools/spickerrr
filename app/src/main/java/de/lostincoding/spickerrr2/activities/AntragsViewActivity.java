@@ -1,8 +1,10 @@
 package de.lostincoding.spickerrr2.activities;
 
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -11,7 +13,7 @@ import de.lostincoding.spickerrr2.model.Antrag;
 
 public class AntragsViewActivity extends AppCompatActivity {
     private Antrag antrag;
-private WebView description;
+    private WebView description;
     private WebView motivation;
 
     @Override
@@ -23,8 +25,16 @@ private WebView description;
         initalizeUI();
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return true;
+
+    }
 
     private void initalizeUI() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         description = (WebView) findViewById(R.id.description);
         motivation = (WebView) findViewById(R.id.motivation);
         setTitle(antrag.getId() + " " + antrag.getTitle());
@@ -36,8 +46,8 @@ private WebView description;
         motivation.getSettings();
         motivation.setBackgroundColor(Color.TRANSPARENT);
 
-        description. loadData(antrag.getDescription(), "text/html; charset=UTF-8", null);
-        motivation. loadData(antrag.getMotivation(), "text/html; charset=UTF-8", null);
+        description.loadData(antrag.getDescription(), "text/html; charset=UTF-8", null);
+        motivation.loadData(antrag.getMotivation(), "text/html; charset=UTF-8", null);
 
 
     }
