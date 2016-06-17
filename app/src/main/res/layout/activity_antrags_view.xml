@@ -62,5 +62,23 @@
              android:layout_centerHorizontal="true"
              android:textAppearance="?android:attr/textAppearanceMedium" /> -->
 
+    <!--    <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/motivation"
+            android:text="Autor:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/authorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/motivation"
+            android:layout_toRightOf="@id/author"
+            android:text="Felix"
+            android:textAppearance="?android:attr/textAppearanceMedium" /> -->
+
+
     </RelativeLayout>
 </ScrollView>
