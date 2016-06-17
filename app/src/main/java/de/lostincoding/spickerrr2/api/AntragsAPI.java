@@ -55,15 +55,15 @@ public class AntragsAPI {
             String description = aktobject.isNull(insertpackage.getColDescription()) ? "null" : (String) aktobject.get(insertpackage.getColDescription());
             String motivation = aktobject.isNull(insertpackage.getColMotivation()) ? "null" : (String) aktobject.get(insertpackage.getColMotivation());
 
-            id = fixUrlEncoding(id);
+           id = fixUrlEncoding(id);
             title = fixUrlEncoding(title);
-            topic = fixUrlEncoding(topic);
+          /*  topic = fixUrlEncoding(topic);
             kind = fixUrlEncoding(kind);
             owner = fixUrlEncoding(owner);
             infourl = fixUrlEncoding(infourl);
             abstract_short = fixUrlEncoding(abstract_short);
             description = fixUrlEncoding(description);
-            motivation = fixUrlEncoding(motivation);
+            motivation = fixUrlEncoding(motivation); */
 
             antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
         }

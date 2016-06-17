@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
             initalizeCallbacks();
             caller = APICaller.getInstance();
             caller.listCurrentBooks(bookcallback);
+        }else {
+            Context context = getApplicationContext();
+            CharSequence text = "Internetverbindung notwendig";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast.makeText(context, text, duration).show();
         }
 
     }

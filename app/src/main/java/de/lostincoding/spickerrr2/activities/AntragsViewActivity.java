@@ -1,7 +1,9 @@
 package de.lostincoding.spickerrr2.activities;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import de.lostincoding.spickerrr2.R;
@@ -9,8 +11,8 @@ import de.lostincoding.spickerrr2.model.Antrag;
 
 public class AntragsViewActivity extends AppCompatActivity {
     private Antrag antrag;
-    private TextView description;
-    private TextView motivation;
+private WebView description;
+    private WebView motivation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +25,20 @@ public class AntragsViewActivity extends AppCompatActivity {
 
 
     private void initalizeUI() {
-        description = (TextView) findViewById(R.id.description);
-        motivation = (TextView) findViewById(R.id.motivation);
+        description = (WebView) findViewById(R.id.description);
+        motivation = (WebView) findViewById(R.id.motivation);
         setTitle(antrag.getId() + " " + antrag.getTitle());
-        description.setText(antrag.getDescription());
-        motivation.setText(antrag.getMotivation());
+
+        description.getSettings();
+        description.setBackgroundColor(Color.TRANSPARENT);
+
+
+        motivation.getSettings();
+        motivation.setBackgroundColor(Color.TRANSPARENT);
+
+        description. loadData(antrag.getDescription(), "text/html; charset=UTF-8", null);
+        motivation. loadData(antrag.getMotivation(), "text/html; charset=UTF-8", null);
+
+
     }
 }
