@@ -19,7 +19,7 @@ public class ListAntragsAdapter extends ArrayAdapter<Antrag> {
 
     static class ViewHolder {
         public TextView id;
-       public TextView title;
+        public TextView title;
     }
 
     public ListAntragsAdapter(Activity context, Antrag[] antraege) {
@@ -30,25 +30,30 @@ public class ListAntragsAdapter extends ArrayAdapter<Antrag> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View rowView = convertView;
+        View myView = convertView;
         // reuse views
-        if (rowView == null) {
+        if (myView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
-            rowView = inflater.inflate(R.layout.advanced_antrags_list_item, null);
+            myView = inflater.inflate(R.layout.advanced_antrags_list_item, null);
             // configure view holder
             ViewHolder viewHolder = new ViewHolder();
-            viewHolder.id = (TextView) rowView.findViewById(R.id.idview);
-            viewHolder.title =(TextView) rowView.findViewById(R.id.titleview);
+            viewHolder.id = (TextView) myView.findViewById(R.id.idview);
+            viewHolder.title = (TextView) myView.findViewById(R.id.titleview);
+            myView.setTag(viewHolder);
         }
 
         // fill data
-        ViewHolder holder = (ViewHolder) rowView.getTag();
-        Antrag currentAntrag=antraege[position];
+        ViewHolder holder = (ViewHolder) myView.getTag();
+
+
+        Antrag currentAntrag = antraege[position];
+
         holder.id.setText(currentAntrag.getId());
+
         holder.title.setText(currentAntrag.getTitle());
 
 
-        return rowView;
+        return myView;
     }
 }
 

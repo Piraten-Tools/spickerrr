@@ -66,7 +66,11 @@ public class AntragsListFragment extends Fragment {
 
 
         //create a  with the stuff which should be displayed
-        Antrag[] antragsArray = (Antrag[]) list.toArray();
+        Antrag[] antragsArray = new Antrag[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            antragsArray[i] = list.get(i);
+        }
+
         ListAntragsAdapter antragsAdapter = new ListAntragsAdapter(getActivity(), antragsArray);
 
         listView.setAdapter(antragsAdapter);
