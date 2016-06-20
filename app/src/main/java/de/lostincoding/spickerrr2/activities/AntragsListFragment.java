@@ -13,13 +13,14 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import de.lostincoding.spickerrr2.ListAntragsAdapter;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.model.Antrag;
 
 
 public class AntragsListFragment extends Fragment {
     private ListView listView;
-    ArrayList<Antrag> list;
+    private ArrayList<Antrag> list;
 
     public AntragsListFragment() {
         // Required empty public constructor
@@ -63,17 +64,13 @@ public class AntragsListFragment extends Fragment {
             list = new ArrayList<>();
         }
 
-        //create a StringArrayList with the stuff which should be displayed
-        ArrayList<String> displayedList = new ArrayList<>();
-        for (Antrag antrag : list) {
-            displayedList.add(antrag.getId() + " " + antrag.getTitle());
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                getContext().getApplicationContext(),
-                R.layout.antragslist_item_layout,
-                displayedList);
 
-        listView.setAdapter(arrayAdapter);
+        //create a  with the stuff which should be displayed
+        Antrag[] antragsArray = (Antrag[]) list.toArray();
+        ListAntragsAdapter antragsAdapter = new ListAntragsAdapter(getActivity(), antragsArray);
+
+        listView.setAdapter(antragsAdapter);
     }
+
 
 }
