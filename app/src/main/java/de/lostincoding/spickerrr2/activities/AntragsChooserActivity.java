@@ -104,6 +104,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         //if there isnt a list for the criterion, create one
         for (Antrag antrag : antragslist) {
             String criterion = antrag.getKind();
+
             if (mapoflists.containsKey(criterion)) {
                 mapoflists.get(criterion).add(antrag);
             } else {
@@ -118,8 +119,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
             AntragsListFragment frag = new AntragsListFragment();
             String key = entry.getKey();
             ArrayList<Antrag> value = entry.getValue();
+
+            //give the fragment the data over the bundle
             Bundle bundle = new Bundle();
             bundle.putParcelableArrayList("antragslist", value);
+
             frag.setArguments(bundle);
             adapter.addFragment(frag, key);
         }

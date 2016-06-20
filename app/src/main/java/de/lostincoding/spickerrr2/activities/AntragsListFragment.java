@@ -35,6 +35,7 @@ public class AntragsListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_antragslist, container, false);
         listView = (ListView) rootView.findViewById(R.id.listView);
 
@@ -44,6 +45,7 @@ public class AntragsListFragment extends Fragment {
                 openNextActivity(position);
             }
         });
+
         // Inflate the layout for this fragment
         fillListView();
         return rootView;
@@ -56,6 +58,7 @@ public class AntragsListFragment extends Fragment {
     }
 
     private void fillListView() {
+        //get Data from Bundle
         list = null;
         Bundle bundle = getArguments();
         if (bundle != null) {
