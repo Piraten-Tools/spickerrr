@@ -23,14 +23,6 @@
             android:text="Antragstext"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <!--<TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/headingDescription"
-            android:layout_centerHorizontal="true"
-            android:textAppearance="?android:attr/textAppearanceMedium" /> -->
-
 
         <WebView
             android:id="@+id/description"
@@ -54,30 +46,36 @@
             android:layout_below="@id/headingMotivation" />
 
 
-        <!-- <TextView
-             android:id="@+id/motivation"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_below="@id/headingMotivation"
-             android:layout_centerHorizontal="true"
-             android:textAppearance="?android:attr/textAppearanceMedium" /> -->
-
-    <!--    <TextView
-            android:id="@+id/author"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/headingAuthor"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/motivation"
-            android:text="Autor:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="Antragssteller"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/authorText"
-            android:layout_width="wrap_content"
+            android:id="@+id/author"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/motivation"
-            android:layout_toRightOf="@id/author"
-            android:text="Felix"
-            android:textAppearance="?android:attr/textAppearanceMedium" /> -->
+            android:layout_below="@id/headingAuthor"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <TextView
+            android:id="@+id/headingTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/author"
+            android:text="Themengebiet:"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headingTopic"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
     </RelativeLayout>
