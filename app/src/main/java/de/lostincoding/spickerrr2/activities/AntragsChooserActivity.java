@@ -1,5 +1,6 @@
 package de.lostincoding.spickerrr2.activities;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +37,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private ArrayList<Antrag> antragslist;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,14 @@ public class AntragsChooserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_antrags_chooser);
         aPackage = getIntent().getParcelableExtra("package");
         initalizeUI();
+        showProgressDialog();
         loadData();
+    }
+
+    private void showProgressDialog() {
+        dialog = new ProgressDialog(AntragsChooserActivity.this);
+        dialog.setMessage("Lade Anträge...");
+        dialog.show();
     }
 
     private void loadData() {
@@ -65,6 +74,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     Log.e("JSON", e.toString());
                 }
+                dialog.dismiss();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
