@@ -112,6 +112,8 @@
             android:id="@+id/editVotePreference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            fab:icon="@drawable/ic_thumbs_up_down_white_24dp"
+            android:onClick="editVotePreference"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_colorPressed="@color/colorAccent"
             fab:fab_title="Bearbeite Abstimmungsverhalten" />
@@ -121,9 +123,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/colorAccent"
-            fab:icon="@drawable/ic_notice_24dp"
             fab:fab_colorPressed="@color/colorAccent"
-            fab:fab_title="Bearbeite Notiz" />
+            fab:fab_title="Bearbeite Notiz"
+            fab:icon="@drawable/ic_assignment_white_24dp" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

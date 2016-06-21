@@ -4,8 +4,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.model.Antrag;
@@ -32,6 +35,10 @@ public class AntragsViewActivity extends AppCompatActivity {
 
     }
 
+    public void editVotePreference(View v) {
+        finish();
+    }
+
     private void initalizeUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.getId() + " " + antrag.getTitle());
@@ -44,12 +51,18 @@ public class AntragsViewActivity extends AppCompatActivity {
         description.getSettings();
         description.setBackgroundColor(Color.TRANSPARENT);
 
+        FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
+        voteButton.setIcon(R.drawable.ic_thumbs_up_down_white_24dp);
+
+        FloatingActionButton noticeButton = (FloatingActionButton) findViewById(R.id.editNotice);
+        noticeButton.setIcon(R.drawable.ic_assignment_white_24dp);
 
         motivation.getSettings();
         motivation.setBackgroundColor(Color.TRANSPARENT);
 
         author.getSettings();
         author.setBackgroundColor(Color.TRANSPARENT);
+
 
         description.loadData(antrag.getDescription(), "text/html; charset=UTF-8", null);
         motivation.loadData(antrag.getMotivation(), "text/html; charset=UTF-8", null);
