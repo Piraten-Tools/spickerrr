@@ -55,7 +55,5 @@ public class AntragsViewActivity extends AppCompatActivity {
         motivation.loadData(antrag.getMotivation(), "text/html; charset=UTF-8", null);
         author.setText(antrag.getOwner());
         topic.setText(antrag.getTopic());
-
-
     }
 }

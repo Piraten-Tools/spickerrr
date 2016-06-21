@@ -3,6 +3,8 @@ package de.lostincoding.spickerrr2.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import de.lostincoding.spickerrr2.VotePreferences;
+
 /**
  * Created by lostincoding on 26.05.16.
  */
