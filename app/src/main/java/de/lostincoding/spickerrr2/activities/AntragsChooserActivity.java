@@ -1,19 +1,13 @@
 package de.lostincoding.spickerrr2.activities;
 
 import android.app.ProgressDialog;
-import android.support.v4.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -21,9 +15,9 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import de.lostincoding.spickerrr2.AntragsSortOptions;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.model.Antrag;
@@ -38,6 +32,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ProgressDialog dialog;
+    private AntragsSortOptions antragsSortOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +94,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
     }
 
+
     private void initalizeUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(aPackage.getName());
@@ -113,7 +109,18 @@ public class AntragsChooserActivity extends AppCompatActivity {
         //for each criterion create an arrraylist and add it to the map
         //if there isnt a list for the criterion, create one
         for (Antrag antrag : antragslist) {
-            String criterion = antrag.getKind();
+            String criterion;
+            switch (antragsSortOptions) {
+                case KIND:
+                    criterion = antrag.getKind();
+                    break;
+                case TOPIC:
+                    criterion = antrag.getTopic();
+                    break;
+                default:
+                    criterion = antrag.getKind();
+                    break;
+            }
 
             if (mapoflists.containsKey(criterion)) {
                 mapoflists.get(criterion).add(antrag);
