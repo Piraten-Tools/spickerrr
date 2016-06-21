@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_check_circle_24dp"
+        android:src="@drawable/ic_edit_24dp"
         app:elevation="15dp"
         app:fabSize="normal" />
 </android.support.design.widget.CoordinatorLayout>
