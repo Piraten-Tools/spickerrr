@@ -9,6 +9,7 @@ import de.lostincoding.spickerrr2.VotePreferences;
  * Created by lostincoding on 26.05.16.
  */
 public class Antrag implements Parcelable {
+    //fields from api
     private String id;
     private String title;
     private String topic;
@@ -18,6 +19,9 @@ public class Antrag implements Parcelable {
     private String abstract_short; //abstract is forbidden
     private String description;
     private String motivation;
+    //custom fields
+    private VotePreferences votePreferences;
+    private String notice;
 
     public Antrag(String id, String title, String topic, String kind, String owner, String infourl, String abstract_short, String description, String motivation) {
         this.id = id;
@@ -29,6 +33,7 @@ public class Antrag implements Parcelable {
         this.abstract_short = abstract_short;
         this.description = description;
         this.motivation = motivation;
+        votePreferences = VotePreferences.NOT_SET;
     }
 
     public String getId() {
@@ -65,6 +70,22 @@ public class Antrag implements Parcelable {
 
     public String getMotivation() {
         return motivation;
+    }
+
+    public String getNotice() {
+        return notice;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
+    }
+
+    public VotePreferences getVotePreferences() {
+        return votePreferences;
+    }
+
+    public void setVotePreferences(VotePreferences votePreferences) {
+        this.votePreferences = votePreferences;
     }
 
     @Override
