@@ -39,15 +39,15 @@ public class AntragsAPI {
         for (int i = 0; i < antragsArray.length(); i++) {
             JSONObject aktobject = antragsArray.getJSONObject(i);
             //i have to now if the object is null if i want to cast to string so i use proxyobjects to check this
-            String id = aktobject.isNull(insertpackage.getColId()) ? "null" : (String) aktobject.get(insertpackage.getColId());
-            String title = aktobject.isNull(insertpackage.getColTitle()) ? "null" : (String) aktobject.get(insertpackage.getColTitle());
-            String topic = aktobject.isNull(insertpackage.getColTopic()) ? "null" : (String) aktobject.get(insertpackage.getColTopic());
-            String kind = aktobject.isNull(insertpackage.getColKind()) ? "null" : (String) aktobject.get(insertpackage.getColKind());
-            String owner = aktobject.isNull(insertpackage.getColOwner()) ? "null" : (String) aktobject.get(insertpackage.getColOwner());
-            String infourl = aktobject.isNull(insertpackage.getColInfoUrl()) ? "null" : (String) aktobject.get(insertpackage.getColInfoUrl());
-            String abstract_short = aktobject.isNull(insertpackage.getColAbstract()) ? "null" : (String) aktobject.get(insertpackage.getColAbstract());
-            String description = aktobject.isNull(insertpackage.getColDescription()) ? "null" : (String) aktobject.get(insertpackage.getColDescription());
-            String motivation = aktobject.isNull(insertpackage.getColMotivation()) ? "null" : (String) aktobject.get(insertpackage.getColMotivation());
+            String id = aktobject.isNull(insertpackage.getColId()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColId());
+            String title = aktobject.isNull(insertpackage.getColTitle()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColTitle());
+            String kind = aktobject.isNull(insertpackage.getColKind()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColKind());
+            String topic = aktobject.isNull(insertpackage.getColTopic()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColTopic());
+            String owner = aktobject.isNull(insertpackage.getColOwner()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColOwner());
+            String infourl = aktobject.isNull(insertpackage.getColInfoUrl()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColInfoUrl());
+            String abstract_short = aktobject.isNull(insertpackage.getColAbstract()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColAbstract());
+            String description = aktobject.isNull(insertpackage.getColDescription()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColDescription());
+            String motivation = aktobject.isNull(insertpackage.getColMotivation()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColMotivation());
 
             id = fixUrlEncoding(id);
             title = fixUrlEncoding(title);
@@ -60,8 +60,9 @@ public class AntragsAPI {
             motivation = fixUrlEncoding(motivation); */
 
             //fix relative owner URL
-            if (infourl.startsWith("http://wiki.piratenpartei.de")) {
-                String baseurl = "http://wiki.piratenpartei.de/";
+            String baseurl = "http://wiki.piratenpartei.de/";
+            if (infourl.startsWith(baseurl) && !owner.contains(baseurl)) {
+
                 StringBuilder sb = new StringBuilder();
                 sb.append("<a href=\"").append(baseurl).append(owner.substring(owner.indexOf('/') + 1));
                 owner = sb.toString();
