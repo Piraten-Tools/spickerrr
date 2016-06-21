@@ -1,9 +1,5 @@
 package de.lostincoding.spickerrr2.api;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
-
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,14 +9,12 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 
-import au.com.bytecode.opencsv.CSVParser;
 import au.com.bytecode.opencsv.CSVReader;
 import de.lostincoding.spickerrr2.model.Antrag;
 import de.lostincoding.spickerrr2.model.Package;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * Created by lostincoding on 14.06.16.
@@ -57,13 +51,21 @@ public class AntragsAPI {
 
             id = fixUrlEncoding(id);
             title = fixUrlEncoding(title);
-            //topic = fixUrlEncoding(topic);
             kind = fixUrlEncoding(kind);
+            //topic = fixUrlEncoding(topic);
             /*owner = fixUrlEncoding(owner);
             infourl = fixUrlEncoding(infourl);
             abstract_short = fixUrlEncoding(abstract_short);
             description = fixUrlEncoding(description);
             motivation = fixUrlEncoding(motivation); */
+
+            //fix relative owner URL
+            if (infourl.startsWith("http://wiki.piratenpartei.de")) {
+                String baseurl = "http://wiki.piratenpartei.de/";
+                StringBuilder sb = new StringBuilder();
+                sb.append("<a href=\"").append(baseurl).append(owner.substring(owner.indexOf('/') + 1));
+                owner = sb.toString();
+            }
 
             antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
         }
@@ -81,15 +83,12 @@ public class AntragsAPI {
             // nextLine[] is an array of values from the line
             columnlist.add(nextLine);
         }
-
+//TODO
 
         return antragsliste;
     }
 
     public static ArrayList<Antrag> parseData(String data, Package insertpackage) throws JSONException, IOException {
-        //Fix buggy html shit
-        // String unescapeddata = StringEscapeUtils.unescapeHtml4(data);
-        // unescapeddata=fixUrlEncoding(unescapeddata);
         ArrayList<Antrag> antragslist = new ArrayList<>();
 
         switch (insertpackage.getSourceType()) {

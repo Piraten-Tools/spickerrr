@@ -32,7 +32,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ProgressDialog dialog;
-    private AntragsSortOptions antragsSortOptions;
+    private AntragsSortOptions antragsSortOptions = AntragsSortOptions.KIND;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
