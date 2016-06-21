@@ -75,8 +75,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setupViewPager(viewPager);
-                        tabLayout.setupWithViewPager(viewPager);
+                        setUpView();
 
 
                     }
@@ -90,11 +89,28 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
     }
 
+    public void setUpView() {
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sort:
-
+//nothing
                 break;
+
+            case R.id.menuSortKind:
+                antragsSortOptions = AntragsSortOptions.KIND;
+                setUpView();
+                break;
+
+            case R.id.menuSortTopic:
+                antragsSortOptions = AntragsSortOptions.TOPIC;
+                setUpView();
+                break;
+
             default:
                 finish();
                 break;

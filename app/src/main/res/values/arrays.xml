@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="order">
+
+        <item>KIND</item>
+        <item>TOPIC</item>
+    </string-array>
+
+    <string-array name="media_uris">
+        <item>http://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4</item>
+        <item>http://archive.org/download/ElephantsDream_277/elephant_dreams_640_512kb.mp4</item>
+        <item>http://archive.org/download/Sintel/sintel-2048-stereo_512kb.mp4</item>
+        <item>http://archive.org/download/Tears-of-Steel/tears_of_steel_720p.mp4</item>
+    </string-array>
+</resources>

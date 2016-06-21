@@ -4,9 +4,20 @@
 
     <item
         android:id="@+id/action_sort"
-        android:orderInCategory="100"
-        app:showAsAction="always"
         android:icon="@drawable/ic_sort_24dp"
-        android:title="Soriere" />
+        android:orderInCategory="100"
+        android:title="Soriere"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/menuSortKind"
+                android:title="Sortiere nach Antragstyp" />
+            <item
+                android:id="@+id/menuSortTopic"
+                android:title="Sortiere nach Themen" />
+        </menu>
+
+    </item>
 
 </menu>
