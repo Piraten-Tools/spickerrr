@@ -15,7 +15,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.model.Antrag;
 
-public class AntragsViewActivity extends AppCompatActivity {
+public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener {
     private Antrag antrag;
     private WebView description;
     private WebView motivation;
@@ -28,6 +28,8 @@ public class AntragsViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_antrags_view);
 
         antrag = getIntent().getParcelableExtra("antrag");
+
+
         initalizeUI();
     }
 
@@ -69,8 +71,18 @@ public class AntragsViewActivity extends AppCompatActivity {
         topic.setText(antrag.getTopic());
     }
 
+    // for changing the vote preference and the notice
     public void editVotePreference(View v) {
+        FragmentManager manager = getFragmentManager();
+        Fragment frag = manager.findFragmentByTag("fragment_edit_name");
 
+        if (frag != null) {
+            manager.beginTransaction().remove(frag).commit();
+        }
+
+
+        ChooseVotePreferencesDialog chooseVotePreferencesDialog = new ChooseVotePreferencesDialog();
+        chooseVotePreferencesDialog.show(manager, "fragment_edit_name");
     }
 
     public void editNotice(View v) {
@@ -79,8 +91,30 @@ public class AntragsViewActivity extends AppCompatActivity {
         if (frag != null) {
             manager.beginTransaction().remove(frag).commit();
         }
-        NoticeEditDialog editNameDialog = new NoticeEditDialog();
-        editNameDialog.show(manager, "fragment_edit_name");
+
+        Bundle bundle = null;
+        if (antrag.getNotice() != null) {
+            bundle = new Bundle();
+            bundle.putString("notice", antrag.getNotice());
+        }
+
+        NoticeEditDialog noticeEditDialog = new NoticeEditDialog();
+
+    /*    //adjust size of dialog
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        Dialog noticeDialog = noticeEditDialog.getDialog();
+        noticeDialog.getWindow().setLayout((6 * width)/7, (4 * height)/5); */
+
+
+        noticeEditDialog.setArguments(bundle);
+        noticeEditDialog.show(manager, "fragment_edit_name");
     }
 
+
+    @Override
+    public void onFinishUserDialog(String notice) {
+        antrag.setNotice(notice);
+    }
 }
