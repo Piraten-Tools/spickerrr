@@ -1,5 +1,7 @@
 package de.lostincoding.spickerrr2.activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,9 +37,6 @@ public class AntragsViewActivity extends AppCompatActivity {
 
     }
 
-    public void editVotePreference(View v) {
-        finish();
-    }
 
     private void initalizeUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,4 +68,19 @@ public class AntragsViewActivity extends AppCompatActivity {
         author.loadData(antrag.getOwner(), "text/html; charset=UTF-8", null);
         topic.setText(antrag.getTopic());
     }
+
+    public void editVotePreference(View v) {
+
+    }
+
+    public void editNotice(View v) {
+        FragmentManager manager = getFragmentManager();
+        Fragment frag = manager.findFragmentByTag("fragment_edit_name");
+        if (frag != null) {
+            manager.beginTransaction().remove(frag).commit();
+        }
+        NoticeEditDialog editNameDialog = new NoticeEditDialog();
+        editNameDialog.show(manager, "fragment_edit_name");
+    }
+
 }

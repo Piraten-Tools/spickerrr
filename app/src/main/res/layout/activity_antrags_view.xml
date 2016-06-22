@@ -123,6 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/colorAccent"
+            android:onClick="editNotice"
             fab:fab_colorPressed="@color/colorAccent"
             fab:fab_title="Bearbeite Notiz"
             fab:icon="@drawable/ic_assignment_white_24dp" />
