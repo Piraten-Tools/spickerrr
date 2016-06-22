@@ -13,9 +13,10 @@ import android.widget.TextView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.VotePreferences;
 import de.lostincoding.spickerrr2.model.Antrag;
 
-public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener {
+public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;
     private WebView description;
     private WebView motivation;
@@ -100,14 +101,6 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
         NoticeEditDialog noticeEditDialog = new NoticeEditDialog();
 
-    /*    //adjust size of dialog
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int width = metrics.widthPixels;
-        int height = metrics.heightPixels;
-        Dialog noticeDialog = noticeEditDialog.getDialog();
-        noticeDialog.getWindow().setLayout((6 * width)/7, (4 * height)/5); */
-
-
         noticeEditDialog.setArguments(bundle);
         noticeEditDialog.show(manager, "fragment_edit_name");
     }
@@ -116,5 +109,10 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     @Override
     public void onFinishUserDialog(String notice) {
         antrag.setNotice(notice);
+    }
+
+    @Override
+    public void onFinishUserDialog(VotePreferences preferences) {
+        antrag.setVotePreferences(preferences);
     }
 }
