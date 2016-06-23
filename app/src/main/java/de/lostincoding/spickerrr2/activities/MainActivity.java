@@ -149,8 +149,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openNextActivity(View view) {
-        Intent intent = new Intent(this, AntragsChooserActivity.class);
-        intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
-        startActivity(intent);
+        if (packageSpinner.getSelectedItem() != null) {
+            Intent intent = new Intent(this, AntragsChooserActivity.class);
+            intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "Es ist noch kein Antragspaket gewählt!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast.makeText(context, text, duration).show();
+        }
+
     }
 }
