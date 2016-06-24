@@ -27,6 +27,7 @@ public class NoticeEditDialog extends DialogFragment implements TextView.OnEdito
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,7 +46,6 @@ public class NoticeEditDialog extends DialogFragment implements TextView.OnEdito
 
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         getDialog().setTitle("Bearbeite deine Notizen");
-
 
 
         return view;

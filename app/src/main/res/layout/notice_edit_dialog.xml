@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
 
     <EditText
@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:imeOptions="actionDone"
-        android:inputType="text" />
+        android:inputType="textMultiLine"
+        android:lines="10" />
 
 </LinearLayout>
