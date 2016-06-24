@@ -87,6 +87,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     }
 
     public void editNotice(View v) {
+
         FragmentManager manager = getFragmentManager();
         Fragment frag = manager.findFragmentByTag("fragment_edit_name");
         if (frag != null) {
