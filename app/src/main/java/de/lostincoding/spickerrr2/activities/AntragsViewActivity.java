@@ -1,16 +1,11 @@
 package de.lostincoding.spickerrr2.activities;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
-
-import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.VotePreferences;
@@ -53,11 +48,11 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         description.getSettings();
         description.setBackgroundColor(Color.TRANSPARENT);
 
-        FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
+      /*  FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
         voteButton.setIcon(R.drawable.ic_thumbs_up_down_white_24dp);
 
         FloatingActionButton noticeButton = (FloatingActionButton) findViewById(R.id.editNotice);
-        noticeButton.setIcon(R.drawable.ic_assignment_white_24dp);
+        noticeButton.setIcon(R.drawable.ic_assignment_white_24dp); */
 
         motivation.getSettings();
         motivation.setBackgroundColor(Color.TRANSPARENT);
@@ -73,7 +68,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     }
 
     // for changing the vote preference and the notice
-    public void editVotePreference(View v) {
+  /*  public void editVotePreference(View v) {
         FragmentManager manager = getFragmentManager();
         Fragment frag = manager.findFragmentByTag("fragment_edit_name");
 
@@ -104,7 +99,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
         noticeEditDialog.setArguments(bundle);
         noticeEditDialog.show(manager, "fragment_edit_name");
-    }
+    } */
 
 
     @Override
