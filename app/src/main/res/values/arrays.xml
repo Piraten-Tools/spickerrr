@@ -13,18 +13,9 @@
     </string-array>
 
     <string-array name="bookLoadAlias">
-        <item>1</item>
-        <item>2</item>
+        <item>all</item>
+        <item>active</item>
     </string-array>
 
-    <string-array name="antragsSort">
-        <item>Antragstyp</item>
-        <item>Themengebiet</item>
-    </string-array>
-
-    <string-array name="antragsSortAlias">
-        <item>1</item>
-        <item>2</item>
-    </string-array>
 
 </resources>

@@ -2,9 +2,11 @@ package de.lostincoding.spickerrr2.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,15 +39,27 @@ public class MainActivity extends AppCompatActivity {
     private List<Package> packageList;
     private Spinner packageSpinner;
     private Spinner bookSpinner;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         if (checkInternetConnection()) {
             initalizeCallbacks();
             caller = APICaller.getInstance();
-            caller.listCurrentBooks(bookcallback);
+            switch (sharedPreferences.getString("bookLoadPreference", "active")) {
+                case "all":
+                    caller.listBooks(bookcallback);
+                    break;
+                case "active":
+                    caller.listCurrentBooks(bookcallback);
+                    break;
+            }
+
         } else {
             Context context = getApplicationContext();
             CharSequence text = "Internetverbindung notwendig";

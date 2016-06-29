@@ -5,13 +5,9 @@
         android:key="bookLoadPreference"
         android:title="Welche Antragsbücher sollen geladen werden?"
         android:entries="@array/bookLoad"
+        android:defaultValue="active"
         android:entryValues="@array/bookLoadAlias" />
 
-    <ListPreference
-        android:key="antragsSortPreference"
-        android:title="Wie sollen Anträge standardmäßig sortiert werden?"
-        android:entries="@array/antragsSort"
-        android:entryValues="@array/antragsSortAlias" />
 
 
 </PreferenceScreen>

@@ -2,7 +2,9 @@ package de.lostincoding.spickerrr2.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -35,11 +37,13 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ProgressDialog dialog;
     private AntragsSortOptions antragsSortOptions = AntragsSortOptions.KIND;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_chooser);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         aPackage = getIntent().getParcelableExtra("package");
         initalizeUI();
         showProgressDialog();
