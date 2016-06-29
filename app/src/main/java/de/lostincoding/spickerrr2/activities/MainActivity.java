@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         if (checkInternetConnection()) {
             initalizeCallbacks();
             caller = APICaller.getInstance();
-            caller.listBooks(bookcallback);
+            caller.listCurrentBooks(bookcallback);
         } else {
             Context context = getApplicationContext();
             CharSequence text = "Internetverbindung notwendig";
@@ -183,8 +183,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        Toast.makeText(this, "Es ist schonmal klickbar.", Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()) {
+            case R.id.preferences:
+                startActivity(new Intent(this, AppPreferencesActivity.class));
+                break;
+        }
 
 
         return true;
