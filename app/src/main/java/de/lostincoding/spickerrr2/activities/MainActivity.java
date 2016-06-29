@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             initalizeCallbacks();
             caller = APICaller.getInstance();
             caller.listCurrentBooks(bookcallback);
-        }else {
+        } else {
             Context context = getApplicationContext();
             CharSequence text = "Internetverbindung notwendig";
             int duration = Toast.LENGTH_SHORT;
@@ -74,23 +74,34 @@ public class MainActivity extends AppCompatActivity {
     private void fillBookSpinner(final List<Book> booklist) {
         ArrayList<String> booknames = new ArrayList<>();
         bookSpinner = (Spinner) findViewById(R.id.bookspinner);
-        for (Book book : booklist) {
-            booknames.add(book.getName());
-        }
-        ArrayAdapter<String> bookadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, booknames);
-        bookadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        bookSpinner.setAdapter(bookadapter);
-        bookSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                caller.listPackagesFromBook(packagecallback, booklist.get(position).getKey());
-            }
+        if (booklist != null) {
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                //Do nothing
+
+            for (Book book : booklist) {
+                booknames.add(book.getName());
             }
-        });
+            ArrayAdapter<String> bookadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, booknames);
+            bookadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            bookSpinner.setAdapter(bookadapter);
+            bookSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    caller.listPackagesFromBook(packagecallback, booklist.get(position).getKey());
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    //Do nothing
+                }
+            });
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "Es sind im Moment keine aktiven Antragsbücher verfügbar.";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast.makeText(context, text, duration).show();
+        }
+
     }
 
     private void initalizeCallbacks() {
@@ -149,17 +160,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openNextActivity(View view) {
-        if (packageSpinner.getSelectedItem() != null) {
-            Intent intent = new Intent(this, AntragsChooserActivity.class);
-            intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
-            startActivity(intent);
-        } else {
-            Context context = getApplicationContext();
-            CharSequence text = "Es ist noch kein Antragspaket gewählt!";
-            int duration = Toast.LENGTH_SHORT;
+        if (packageSpinner != null) {
+            if (packageSpinner.getSelectedItem() != null) {
+                Intent intent = new Intent(this, AntragsChooserActivity.class);
+                intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
+                startActivity(intent);
+            } else {
+                Context context = getApplicationContext();
+                CharSequence text = "Es ist noch kein Antragspaket gewählt!";
+                int duration = Toast.LENGTH_SHORT;
 
-            Toast.makeText(context, text, duration).show();
+                Toast.makeText(context, text, duration).show();
+            }
         }
+
 
     }
 }
