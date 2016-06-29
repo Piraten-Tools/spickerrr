@@ -6,7 +6,7 @@
         android:id="@+id/action_sort"
         android:icon="@drawable/ic_sort_24dp"
         android:orderInCategory="100"
-        android:title="Soriere"
+        android:title="Sortiere"
         app:showAsAction="ifRoom">
 
         <menu>
