@@ -94,11 +94,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sort:
-//nothing
+                //nothing
                 break;
 
             case R.id.menuSortKind:

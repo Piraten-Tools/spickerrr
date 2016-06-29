@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activities.AntragsChooserActivity" />
         <activity android:name=".activities.AntragsViewActivity"></activity>
+        <activity android:name=".activities.AppPreferencesActivity" />
     </application>
 
 </manifest>

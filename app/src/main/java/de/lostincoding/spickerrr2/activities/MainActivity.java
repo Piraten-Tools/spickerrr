@@ -6,6 +6,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         if (checkInternetConnection()) {
             initalizeCallbacks();
             caller = APICaller.getInstance();
-            caller.listCurrentBooks(bookcallback);
+            caller.listBooks(bookcallback);
         } else {
             Context context = getApplicationContext();
             CharSequence text = "Internetverbindung notwendig";
@@ -64,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> packagenames = new ArrayList<>();
         packageSpinner = (Spinner) findViewById(R.id.packagespinner);
         for (Package pack : packagelist) {
+
             packagenames.add(pack.getName());
+
+
         }
         ArrayAdapter<String> packageadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, packagenames);
         packageadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -135,8 +141,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<PackageResponse> call, Response<PackageResponse> response) {
                 if (response.body().getSuccess()) {
-                    packageList = response.body().getData();
+                    //filter csv , it is not working right now
+                    List<Package> list = response.body().getData();
+                    packageList = new ArrayList<>();
+                    for (Package listitem : list) {
+                        if (listitem.getSourceType().equals("JSON")) {
+                            packageList.add(listitem);
+                        }
+                    }
                     fillPackageSpinner(packageList);
+
                 } else {
                     //Not Successful
                     Context context = getApplicationContext();
@@ -157,6 +171,23 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(context, text, duration).show();
             }
         };
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainactivity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Toast.makeText(this, "Es ist schonmal klickbar.", Toast.LENGTH_SHORT).show();
+
+
+        return true;
     }
 
     public void openNextActivity(View view) {
