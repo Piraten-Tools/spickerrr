@@ -15,7 +15,7 @@
                 android:title="Sortiere nach Antragstyp" />
             <item
                 android:id="@+id/menuSortTopic"
-                android:title="Sortiere nach Themen" />
+                android:title="Sortiere nach Themengebiet" />
         </menu>
 
     </item>

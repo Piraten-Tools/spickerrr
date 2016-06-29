@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 
+import de.lostincoding.spickerrr2.R;
+
 /**
  * Created by lostincoding on 29.06.16.
  */
@@ -14,7 +16,7 @@ public class AppPreferencesActivity extends PreferenceActivity implements Prefer
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        addPreferencesFromResource(R.xml.preferences);
 
     }
 

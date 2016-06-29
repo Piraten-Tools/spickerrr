@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             });
         } else {
             Context context = getApplicationContext();
-            CharSequence text = "Es sind im Moment keine aktiven Antragsbücher verfügbar.";
+            CharSequence text = "Es sind im Moment keine aktiven Antragsbücher verfügbar. Es können auch Antragsbücher vergangener Parteitage geladen werden. Gehe dazu einfach in die Einstellungen..";
             int duration = Toast.LENGTH_SHORT;
 
             Toast.makeText(context, text, duration).show();
