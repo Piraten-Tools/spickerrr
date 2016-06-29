@@ -1,6 +1,7 @@
 package de.lostincoding.spickerrr2.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lostincoding on 23.06.16.
@@ -13,7 +14,7 @@ public class DataHolder {
     private ArrayList<Antrag> antragslist;
 
     private DataHolder() {
-        setInstance(new DataHolder());
+
     }
 
     public static DataHolder getInstance() {
@@ -44,11 +45,11 @@ public class DataHolder {
         this.aPackage = aPackage;
     }
 
-    public ArrayList<Antrag> getAntragslist() {
+    public List<Antrag> getAntragslist() {
         return antragslist;
     }
 
-    public void setAntragslist(ArrayList<Antrag> antragslist) {
-        this.antragslist = antragslist;
+    public void setAntragslist(List<Antrag> antragslist) {
+        this.antragslist = (ArrayList<Antrag>) antragslist;
     }
 }

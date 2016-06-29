@@ -25,6 +25,7 @@ import de.lostincoding.spickerrr2.api.APICaller;
 import de.lostincoding.spickerrr2.api.BookResponse;
 import de.lostincoding.spickerrr2.api.PackageResponse;
 import de.lostincoding.spickerrr2.model.Book;
+import de.lostincoding.spickerrr2.model.DataHolder;
 import de.lostincoding.spickerrr2.model.Package;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner packageSpinner;
     private Spinner bookSpinner;
     private SharedPreferences sharedPreferences;
+    private DataHolder dataHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        dataHolder = DataHolder.getInstance();
+        loadData();
 
+    }
+
+    private void loadData() {
         if (checkInternetConnection()) {
             initalizeCallbacks();
             caller = APICaller.getInstance();
@@ -64,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(context, text, duration).show();
         }
-
     }
 
     private boolean checkInternetConnection() {
