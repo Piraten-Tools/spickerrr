@@ -2,26 +2,22 @@ package de.lostincoding.spickerrr2.activities;
 
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
+import android.support.v7.app.AppCompatActivity;
 
-import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.fragments.AppPreferenceFragment;
 
-/**
- * Created by lostincoding on 29.06.16.
- */
-public class AppPreferencesActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener
-
-{
+public class AppPreferencesActivity extends AppCompatActivity implements Preference.OnPreferenceChangeListener {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.preferences);
-
+        // Display the fragment as the main content.
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new AppPreferenceFragment()).commit();
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object value) {
+    public boolean onPreferenceChange(Preference preference, Object o) {
         return false;
     }
 }

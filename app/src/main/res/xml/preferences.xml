@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListPreference
-        android:key="bookLoadPreference"
-        android:title="Welche Antragsbücher sollen geladen werden?"
-        android:entries="@array/bookLoad"
-        android:defaultValue="active"
-        android:entryValues="@array/bookLoadAlias" />
+    <!-- <ListPreference
+         android:key="bookLoadPreference"
+         android:title="Welche Antragsbücher sollen geladen werden?"
+         android:entries="@array/bookLoad"
+         android:defaultValue="active"
+         android:entryValues="@array/bookLoadAlias" /> -->
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="bookLoadPreference"
+        android:summaryOff="Es werden nur die aktuellen Antragsbücher geladen."
+        android:summaryOn="Es werden alle Antragsbücher geladen."
+        android:title="Sollen alle Antragsbücher geladen werden?" />
 
 
 </PreferenceScreen>

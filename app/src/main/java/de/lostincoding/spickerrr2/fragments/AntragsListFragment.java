@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.activities;
+package de.lostincoding.spickerrr2.fragments;
 
 
 import android.content.Intent;
@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import de.lostincoding.spickerrr2.ListAntragsAdapter;
 import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
 import de.lostincoding.spickerrr2.model.Antrag;
 
 

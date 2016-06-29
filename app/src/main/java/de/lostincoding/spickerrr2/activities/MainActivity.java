@@ -51,13 +51,10 @@ public class MainActivity extends AppCompatActivity {
         if (checkInternetConnection()) {
             initalizeCallbacks();
             caller = APICaller.getInstance();
-            switch (sharedPreferences.getString("bookLoadPreference", "active")) {
-                case "all":
-                    caller.listBooks(bookcallback);
-                    break;
-                case "active":
-                    caller.listCurrentBooks(bookcallback);
-                    break;
+            if (sharedPreferences.getBoolean("bookLoadPreference", false)) {
+                caller.listBooks(bookcallback);
+            } else {
+                caller.listCurrentBooks(bookcallback);
             }
 
         } else {

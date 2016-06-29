@@ -24,6 +24,7 @@ import java.util.Map;
 import de.lostincoding.spickerrr2.AntragsSortOptions;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
+import de.lostincoding.spickerrr2.fragments.AntragsListFragment;
 import de.lostincoding.spickerrr2.model.Antrag;
 import de.lostincoding.spickerrr2.model.Package;
 import okhttp3.Call;
