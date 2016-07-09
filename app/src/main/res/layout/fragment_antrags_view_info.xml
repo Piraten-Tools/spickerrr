@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="de.lostincoding.spickerrr2.fragments.AntragsViewInfoFragment">
+
+
+    <TextView
+        android:id="@+id/authorHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Antragssteller:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <WebView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/topicHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Themengebiet:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <WebView
+        android:id="@+id/topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/noticeHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notizen:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <WebView
+        android:id="@+id/notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <!--Topic
+     Notizen
+     Vote Peference
+     -->
+
+
+</LinearLayout>

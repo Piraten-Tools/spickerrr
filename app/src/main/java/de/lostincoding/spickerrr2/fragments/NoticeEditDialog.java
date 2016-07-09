@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.activities;
+package de.lostincoding.spickerrr2.fragments;
 
 import android.app.DialogFragment;
 import android.os.Bundle;

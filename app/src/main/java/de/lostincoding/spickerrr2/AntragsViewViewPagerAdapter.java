@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.activities;
+package de.lostincoding.spickerrr2;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lostincoding on 16.06.16.
+ * Created by lostincoding on 30.06.16.
  */
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class AntragsViewViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public ViewPagerAdapter(FragmentManager manager) {
+    public AntragsViewViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }
 
@@ -37,5 +37,5 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return mFragmentTitleList.get(position);
     }
-}
 
+}

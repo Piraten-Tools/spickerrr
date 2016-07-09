@@ -1,22 +1,24 @@
 package de.lostincoding.spickerrr2.activities;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.webkit.WebView;
-import android.widget.TextView;
 
+import de.lostincoding.spickerrr2.AntragsViewViewPagerAdapter;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.VotePreferences;
+import de.lostincoding.spickerrr2.fragments.AntragsViewContentFragment;
+import de.lostincoding.spickerrr2.fragments.AntragsViewInfoFragment;
+import de.lostincoding.spickerrr2.fragments.ChooseVotePreferencesDialog;
+import de.lostincoding.spickerrr2.fragments.NoticeEditDialog;
 import de.lostincoding.spickerrr2.model.Antrag;
 
 public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;
-    private WebView description;
-    private WebView motivation;
-    private TextView topic;
-    private WebView author;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +37,44 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
     }
 
+    private void setupViewPager(ViewPager viewPager) {
+        AntragsViewViewPagerAdapter adapter = new AntragsViewViewPagerAdapter(getSupportFragmentManager());
+
+        AntragsViewInfoFragment infoFragment = new AntragsViewInfoFragment();
+        AntragsViewContentFragment descriptionFragment = new AntragsViewContentFragment();
+        AntragsViewContentFragment motivationFragment = new AntragsViewContentFragment();
+
+        //give the fragment the data over the bundle
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("antrag", antrag);
+
+        Bundle descriptionBundle = new Bundle();
+        descriptionBundle.putString("content", antrag.getDescription());
+
+        Bundle motivationBundle = new Bundle();
+        motivationBundle.putString("content", antrag.getMotivation());
+
+        infoFragment.setArguments(bundle);
+        descriptionFragment.setArguments(descriptionBundle);
+        motivationFragment.setArguments(motivationBundle);
+
+        adapter.addFragment(infoFragment, "Allgemein");
+        adapter.addFragment(descriptionFragment, "Antragstext");
+        adapter.addFragment(motivationFragment, "Antragsbegründung");
+
+        viewPager.setAdapter(adapter);
+    }
 
     private void initalizeUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.getId() + " " + antrag.getTitle());
 
-        description = (WebView) findViewById(R.id.description);
-        motivation = (WebView) findViewById(R.id.motivation);
-        author = (WebView) findViewById(R.id.author);
-        topic = (TextView) findViewById(R.id.topic);
+        viewPager = (ViewPager) findViewById(R.id.antragsViewViewpager);
+        tabLayout = (TabLayout) findViewById(R.id.antragsViewTabs);
 
-        description.getSettings();
-        description.setBackgroundColor(Color.TRANSPARENT);
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+
 
       /*  FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
         voteButton.setIcon(R.drawable.ic_thumbs_up_down_white_24dp);
@@ -54,17 +82,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         FloatingActionButton noticeButton = (FloatingActionButton) findViewById(R.id.editNotice);
         noticeButton.setIcon(R.drawable.ic_assignment_white_24dp); */
 
-        motivation.getSettings();
-        motivation.setBackgroundColor(Color.TRANSPARENT);
 
-        author.getSettings();
-        author.setBackgroundColor(Color.TRANSPARENT);
-
-
-        description.loadData(antrag.getDescription(), "text/html; charset=UTF-8", null);
-        motivation.loadData(antrag.getMotivation(), "text/html; charset=UTF-8", null);
-        author.loadData(antrag.getOwner(), "text/html; charset=UTF-8", null);
-        topic.setText(antrag.getTopic());
     }
 
     // for changing the vote preference and the notice
@@ -99,8 +117,8 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
         noticeEditDialog.setArguments(bundle);
         noticeEditDialog.show(manager, "fragment_edit_name");
-    } */
-
+    }
+*/
 
     @Override
     public void onFinishUserDialog(String notice) {

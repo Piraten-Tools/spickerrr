@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Package> packageList;
     private Spinner packageSpinner;
     private Spinner bookSpinner;
+    private FloatingActionButton fab;
     private SharedPreferences sharedPreferences;
     private DataHolder dataHolder;
 
@@ -49,9 +51,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        initalizeUI();
         dataHolder = DataHolder.getInstance();
         loadData();
 
+    }
+
+    private void initalizeUI() {
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.INVISIBLE);
     }
 
     private void loadData() {
@@ -92,6 +100,17 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> packageadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, packagenames);
         packageadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         packageSpinner.setAdapter(packageadapter);
+        packageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fab.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // Do nothing
+            }
+        });
     }
 
     private void fillBookSpinner(final List<Book> booklist) {
