@@ -4,16 +4,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
-import de.lostincoding.spickerrr2.AntragsViewViewPagerAdapter;
 import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.SpickerrrViewPager;
 import de.lostincoding.spickerrr2.VotePreferences;
 import de.lostincoding.spickerrr2.fragments.AntragsViewContentFragment;
 import de.lostincoding.spickerrr2.fragments.AntragsViewInfoFragment;
@@ -24,7 +22,7 @@ import de.lostincoding.spickerrr2.model.Antrag;
 public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private android.support.v4.view.ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +41,8 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        AntragsViewViewPagerAdapter adapter = new AntragsViewViewPagerAdapter(getSupportFragmentManager());
+    private void setupViewPager(android.support.v4.view.ViewPager viewPager) {
+        SpickerrrViewPager adapter = new SpickerrrViewPager(getSupportFragmentManager());
 
         AntragsViewInfoFragment infoFragment = new AntragsViewInfoFragment();
         AntragsViewContentFragment descriptionFragment = new AntragsViewContentFragment();
@@ -75,7 +73,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.getId() + " " + antrag.getTitle());
 
-        viewPager = (ViewPager) findViewById(R.id.antragsViewViewpager);
+        viewPager = (android.support.v4.view.ViewPager) findViewById(R.id.antragsViewViewpager);
         tabLayout = (TabLayout) findViewById(R.id.antragsViewTabs);
 
         setupViewPager(viewPager);

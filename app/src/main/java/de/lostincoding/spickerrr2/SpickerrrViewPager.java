@@ -10,11 +10,11 @@ import java.util.List;
 /**
  * Created by lostincoding on 30.06.16.
  */
-public class AntragsViewViewPagerAdapter extends FragmentPagerAdapter {
+public class SpickerrrViewPager extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public AntragsViewViewPagerAdapter(FragmentManager manager) {
+    public SpickerrrViewPager(FragmentManager manager) {
         super(manager);
     }
 

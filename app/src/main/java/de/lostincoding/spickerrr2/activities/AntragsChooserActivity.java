@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.lostincoding.spickerrr2.AntragsChooserViewPagerAdapter;
 import de.lostincoding.spickerrr2.AntragsSortOptions;
 import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.SpickerrrViewPager;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.fragments.AntragsListFragment;
 import de.lostincoding.spickerrr2.model.Antrag;
@@ -141,7 +141,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        AntragsChooserViewPagerAdapter adapter = new AntragsChooserViewPagerAdapter(getSupportFragmentManager());
+        SpickerrrViewPager adapter = new SpickerrrViewPager(getSupportFragmentManager());
 
         HashMap<String, ArrayList<Antrag>> mapoflists = new HashMap<>();
         //for each criterion create an arrraylist and add it to the map
