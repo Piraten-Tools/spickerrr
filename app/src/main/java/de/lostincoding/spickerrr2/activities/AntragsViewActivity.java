@@ -129,6 +129,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     @Override
     public void onFinishUserDialog(String notice) {
         antrag.setNotice(notice);
+
     }
 
     @Override
