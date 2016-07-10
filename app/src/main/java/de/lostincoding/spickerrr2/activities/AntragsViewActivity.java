@@ -81,18 +81,16 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
-//adjust icons and colors for buttons
-        FloatingActionsMenu multipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
+        //adjust icons  for buttons
+
 
         FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
         voteButton.setIcon(R.drawable.ic_thumbs_up_down_white_24dp);
-        voteButton.setColorPressedResId(R.color.colorAccent);
-        voteButton.setColorNormalResId(R.color.colorAccent);
+
 
         FloatingActionButton noticeButton = (FloatingActionButton) findViewById(R.id.editNotice);
         noticeButton.setIcon(R.drawable.ic_assignment_white_24dp);
-        noticeButton.setColorPressedResId(R.color.colorAccent);
-        noticeButton.setColorNormalResId(R.color.colorAccent);
+
 
     }
 
