@@ -20,7 +20,7 @@ public class ChooseVotePreferencesDialog extends DialogFragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.vote_preference_dialog, container);
-        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         getDialog().setTitle("Lege dein Wahlverhalten fest");
         setUpImageButtons(view);
 
