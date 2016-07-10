@@ -2,16 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-
-    <EditText
-        android:id="@+id/editText"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:imeOptions="actionDone"
-        android:inputType="textMultiLine"
-        android:lines="10" />
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:imeOptions="actionDone"
+            android:layout_height="0dip"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+
+            android:minLines="10" />
+    </ScrollView>
+
 
 </LinearLayout>
