@@ -67,16 +67,16 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
     private void setVotePreferenceImage() {
         switch (antrag.getVotePreferences()) {
             case ACCEPT:
-                votePreference.setImageResource(R.drawable.ic_thumb_up_white_24dp);
+                votePreference.setImageResource(R.drawable.thumb_up);
                 break;
             case ABSTENTION:
-                votePreference.setImageResource(R.drawable.ic_equal_white_24dp);
+                votePreference.setImageResource(R.drawable.equal);
                 break;
             case DECLINE:
-                votePreference.setImageResource(R.drawable.ic_thumb_down_white_24dp);
+                votePreference.setImageResource(R.drawable.thumb_down);
                 break;
             case NOT_SET:
-                votePreference.setImageResource(R.drawable.ic_help_outline_white_24dp);
+                votePreference.setImageResource(R.drawable.help);
                 break;
         }
 
