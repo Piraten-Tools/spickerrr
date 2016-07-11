@@ -60,12 +60,31 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
         topic.loadData(antrag.getTopic(), "text/html; charset=UTF-8", "UTF-8");
         notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
         // Inflate the layout for this fragment
+        setVotePreferenceImage();
         return rootView;
     }
 
+    private void setVotePreferenceImage() {
+        switch (antrag.getVotePreferences()) {
+            case ACCEPT:
+                votePreference.setImageResource(R.drawable.ic_thumb_up_white_24dp);
+                break;
+            case ABSTENTION:
+                votePreference.setImageResource(R.drawable.ic_equal_white_24dp);
+                break;
+            case DECLINE:
+                votePreference.setImageResource(R.drawable.ic_thumb_down_white_24dp);
+                break;
+            case NOT_SET:
+                votePreference.setImageResource(R.drawable.ic_help_outline_white_24dp);
+                break;
+        }
+
+    }
 
     @Override
     public void onFragmentUpdate() {
         notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
+        setVotePreferenceImage();
     }
 }

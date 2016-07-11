@@ -20,7 +20,7 @@ public class Antrag implements Parcelable {
     private String description;
     private String motivation;
     //custom fields
-    private VotePreferences votePreferences;
+    private VotePreferences votePreferences = VotePreferences.NOT_SET;
     private String notice;
 
     public Antrag(String id, String title, String topic, String kind, String owner, String infourl, String abstract_short, String description, String motivation) {
@@ -33,7 +33,6 @@ public class Antrag implements Parcelable {
         this.abstract_short = abstract_short;
         this.description = description;
         this.motivation = motivation;
-        votePreferences = VotePreferences.NOT_SET;
     }
 
     public String getId() {
