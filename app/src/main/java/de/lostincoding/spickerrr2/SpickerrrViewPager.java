@@ -24,6 +24,11 @@ public class SpickerrrViewPager extends FragmentPagerAdapter {
     }
 
     @Override
+    public int getItemPosition(Object object) {
+        return super.getItemPosition(POSITION_NONE);
+    }
+
+    @Override
     public int getCount() {
         return mFragmentList.size();
     }

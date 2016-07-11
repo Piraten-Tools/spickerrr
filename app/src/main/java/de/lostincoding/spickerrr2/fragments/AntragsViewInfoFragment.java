@@ -10,12 +10,13 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
 import de.lostincoding.spickerrr2.model.Antrag;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AntragsViewInfoFragment extends Fragment {
+public class AntragsViewInfoFragment extends Fragment implements AntragsViewActivity.NoticeUpdateListener {
     private Antrag antrag;
     private WebView author;
     private WebView topic;
@@ -34,8 +35,6 @@ public class AntragsViewInfoFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             antrag = bundle.getParcelable("antrag");
-        } else {
-            // antrag = new Antrag();
         }
 
         //fill View
@@ -58,11 +57,13 @@ public class AntragsViewInfoFragment extends Fragment {
         topic.loadData(antrag.getTopic(), "text/html; charset=UTF-8", "UTF-8");
         notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
 
-
         // Inflate the layout for this fragment
-        //  return inflater.inflate(R.layout.fragment_antrags_view_info, container, false);
-
         return rootView;
     }
 
+
+    @Override
+    public void onNoticeUpdate() {
+        notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
+    }
 }

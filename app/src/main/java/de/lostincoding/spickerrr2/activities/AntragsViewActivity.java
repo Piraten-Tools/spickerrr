@@ -23,6 +23,9 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     private Antrag antrag;
     private TabLayout tabLayout;
     private android.support.v4.view.ViewPager viewPager;
+    private AntragsViewInfoFragment infoFragment;
+    private AntragsViewContentFragment descriptionFragment;
+    private AntragsViewContentFragment motivationFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +47,9 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     private void setupViewPager(android.support.v4.view.ViewPager viewPager) {
         SpickerrrViewPager adapter = new SpickerrrViewPager(getSupportFragmentManager());
 
-        AntragsViewInfoFragment infoFragment = new AntragsViewInfoFragment();
-        AntragsViewContentFragment descriptionFragment = new AntragsViewContentFragment();
-        AntragsViewContentFragment motivationFragment = new AntragsViewContentFragment();
+        infoFragment = new AntragsViewInfoFragment();
+        descriptionFragment = new AntragsViewContentFragment();
+        motivationFragment = new AntragsViewContentFragment();
 
         //give the fragment the data over the bundle
         Bundle bundle = new Bundle();
@@ -129,6 +132,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     @Override
     public void onFinishUserDialog(String notice) {
         antrag.setNotice(notice);
+        infoFragment.onNoticeUpdate();
 
     }
 
@@ -136,4 +140,10 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     public void onFinishUserDialog(VotePreferences preferences) {
         antrag.setVotePreferences(preferences);
     }
+
+    //interfaces
+    public interface NoticeUpdateListener {
+        void onNoticeUpdate();
+    }
+
 }
