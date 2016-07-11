@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
@@ -16,11 +17,12 @@ import de.lostincoding.spickerrr2.model.Antrag;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AntragsViewInfoFragment extends Fragment implements AntragsViewActivity.NoticeUpdateListener {
+public class AntragsViewInfoFragment extends Fragment implements AntragsViewActivity.InfoFragmentUpdateListener {
     private Antrag antrag;
     private WebView author;
     private WebView topic;
     private WebView notice;
+    private ImageView votePreference;
 
     public AntragsViewInfoFragment() {
         // Required empty public constructor
@@ -42,6 +44,7 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
         author = (WebView) rootView.findViewById(R.id.author);
         topic = (WebView) rootView.findViewById(R.id.topic);
         notice = (WebView) rootView.findViewById(R.id.notice);
+        votePreference = (ImageView) rootView.findViewById(R.id.votePreference);
 
         author.getSettings();
         author.setBackgroundColor(Color.TRANSPARENT);
@@ -56,14 +59,13 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
         author.loadData(antrag.getOwner(), "text/html; charset=UTF-8", "UTF-8");
         topic.loadData(antrag.getTopic(), "text/html; charset=UTF-8", "UTF-8");
         notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
-
         // Inflate the layout for this fragment
         return rootView;
     }
 
 
     @Override
-    public void onNoticeUpdate() {
+    public void onFragmentUpdate() {
         notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
     }
 }

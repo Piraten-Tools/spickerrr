@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,39 +16,43 @@
     <WebView
         android:id="@+id/author"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/authorHeading" />
 
 
     <TextView
         android:id="@+id/topicHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/author"
         android:text="Themengebiet:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <WebView
         android:id="@+id/topic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topicHeading" />
 
 
     <TextView
         android:id="@+id/noticeHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/topic"
         android:text="Notizen:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <WebView
         android:id="@+id/notice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noticeHeading" />
 
+    <ImageView
+        android:id="@+id/votePreference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notice" />
 
-    <!--Topic
-     Notizen
-     Vote Peference
-     -->
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -132,18 +132,20 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     @Override
     public void onFinishUserDialog(String notice) {
         antrag.setNotice(notice);
-        infoFragment.onNoticeUpdate();
+        infoFragment.onFragmentUpdate();
 
     }
 
     @Override
     public void onFinishUserDialog(VotePreferences preferences) {
         antrag.setVotePreferences(preferences);
+        infoFragment.onFragmentUpdate();
     }
 
     //interfaces
-    public interface NoticeUpdateListener {
-        void onNoticeUpdate();
+    public interface InfoFragmentUpdateListener {
+        void onFragmentUpdate();
     }
+
 
 }

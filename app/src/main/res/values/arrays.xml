@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string-array name="order">
-
-        <item>KIND</item>
-        <item>TOPIC</item>
-    </string-array>
-
-    <string-array name="bookLoad">
-        <item>Alle Antragsbücher</item>
-        <item>Aktuelle Antragsbücher</item>
-    </string-array>
-
-    <string-array name="bookLoadAlias">
-        <item>all</item>
-        <item>active</item>
-    </string-array>
 
 
 </resources>
