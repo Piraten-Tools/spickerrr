@@ -1,38 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
+    <!--    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:id="@+id/accept"
+
+            android:src="@drawable/thumb_up" />
+
+              <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:id="@+id/abstention"
+            android:src="@drawable/equal" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:id="@+id/decline"
+
+            android:src="@drawable/thumb_down" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:id="@+id/notset"
+
+            android:src="@drawable/help" />
+
+            -->
+
+    <com.varunest.sparkbutton.SparkButton
         android:id="@+id/accept"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:sparkbutton_activeImage="@drawable/thumb_up_on"
+        app:sparkbutton_inActiveImage="@drawable/thumb_up_off"
+        app:sparkbutton_iconSize="40dp"
+        app:sparkbutton_primaryColor="@color/spark_secondary_color"
+        app:sparkbutton_secondaryColor="@color/spark_primary_color" />
 
-        android:src="@drawable/thumb_up" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
+    <com.varunest.sparkbutton.SparkButton
         android:id="@+id/abstention"
-        android:src="@drawable/equal" />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:sparkbutton_activeImage="@drawable/equal_on"
+        app:sparkbutton_inActiveImage="@drawable/equal_off"
+        app:sparkbutton_iconSize="40dp"
+        app:sparkbutton_primaryColor="@color/spark_secondary_color"
+        app:sparkbutton_secondaryColor="@color/spark_primary_color" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
+    <com.varunest.sparkbutton.SparkButton
         android:id="@+id/decline"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:sparkbutton_activeImage="@drawable/thumb_down_on"
+        app:sparkbutton_inActiveImage="@drawable/thumb_down_off"
+        app:sparkbutton_iconSize="40dp"
+        app:sparkbutton_primaryColor="@color/spark_secondary_color"
+        app:sparkbutton_secondaryColor="@color/spark_primary_color" />
 
-        android:src="@drawable/thumb_down" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
+    <com.varunest.sparkbutton.SparkButton
         android:id="@+id/notset"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:sparkbutton_activeImage="@drawable/help_on"
+        app:sparkbutton_inActiveImage="@drawable/help_off"
+        app:sparkbutton_iconSize="40dp"
+        app:sparkbutton_primaryColor="@color/spark_secondary_color"
+        app:sparkbutton_secondaryColor="@color/spark_primary_color" />
 
-        android:src="@drawable/help" />
 
 </LinearLayout>

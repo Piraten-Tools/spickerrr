@@ -6,7 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageButton;
+
+import com.varunest.sparkbutton.SparkButton;
 
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.VotePreferences;
@@ -60,10 +61,10 @@ public class ChooseVotePreferencesDialog extends DialogFragment {
             }
         };
 
-        ImageButton accept = (ImageButton) view.findViewById(R.id.accept);
-        ImageButton abstention = (ImageButton) view.findViewById(R.id.abstention);
-        ImageButton decline = (ImageButton) view.findViewById(R.id.decline);
-        ImageButton not_set = (ImageButton) view.findViewById(R.id.notset);
+        SparkButton accept = (SparkButton) view.findViewById(R.id.accept);
+        SparkButton abstention = (SparkButton) view.findViewById(R.id.abstention);
+        SparkButton decline = (SparkButton) view.findViewById(R.id.decline);
+        SparkButton not_set = (SparkButton) view.findViewById(R.id.notset);
 
         accept.setOnClickListener(listener);
         abstention.setOnClickListener(listener);
