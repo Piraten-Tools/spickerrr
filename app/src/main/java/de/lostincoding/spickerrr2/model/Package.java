@@ -1,12 +1,9 @@
 package de.lostincoding.spickerrr2.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Package implements Parcelable {
+public class Package {
 
     @SerializedName("APIKey")
     @Expose
@@ -740,120 +737,6 @@ public class Package implements Parcelable {
         this.idNumber = idNumber;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(aPIKey);
-        dest.writeString(name);
-        dest.writeString(key);
-        dest.writeString(description);
-        //boolean geht nicht WORKAROUND
-        dest.writeByte((byte) (isActive ? 1 : 0));
-        dest.writeString(sourceType);
-        dest.writeString(csvSeperator);
-        dest.writeString(csvQuote);
-        dest.writeByte((byte) (sourceZip ? 1 : 0));
-        dest.writeString(sourceVersion);
-        dest.writeString(sourceUrl);
-        dest.writeString(dataUrl);
-        dest.writeString(internalSourceFile);
-        dest.writeString(internalZipFile);
-        dest.writeString(internalSourceFileLength);
-        dest.writeString(internalZipFileLength);
-        dest.writeByte((byte) (sorted ? 1 : 0));
-        dest.writeString(colId);
-        dest.writeString(colTitle);
-        dest.writeString(colTopic);
-        dest.writeString(colKind);
-        dest.writeString(colOwner);
-        dest.writeString(colInfoUrl);
-        dest.writeString(colAbstract);
-        dest.writeString(colDescription);
-        dest.writeString(colMotivation);
-        dest.writeString(infoUrlGeneric);
-        dest.writeString(regExColId);
-        dest.writeString(regExTrimColId);
-        dest.writeString(regExTrimColTitle);
-        dest.writeByte((byte) (convertToHtml ? 1 : 0));
-        dest.writeString(bookKey);
-        dest.writeString(internalSourceUrl);
-        dest.writeString(internalZipUrl);
-        dest.writeString(url);
-        dest.writeString(urlEdit);
-        dest.writeString(id);
-        dest.writeString(createdAt);
-        dest.writeString(createdBy);
-        dest.writeByte((byte) (isMyOwn ? 1 : 0));
-        dest.writeLong(timestamp);
-        dest.writeLong(unixTimestamp);
-        dest.writeInt(idNumber);
-    }
-
-    public Package(Parcel in) {
-        readFromParcel(in);
-    }
-
-    private void readFromParcel(Parcel in) {
-        aPIKey = in.readString();
-        name = in.readString();
-        key = in.readString();
-        description = in.readString();
-        isActive = in.readByte() != 0;
-        sourceType = in.readString();
-        csvSeperator = in.readString();
-        csvQuote = in.readString();
-        sourceZip = in.readByte() != 0;
-        sourceVersion = in.readString();
-        sourceUrl = in.readString();
-        dataUrl = in.readString();
-        internalSourceFile = in.readString();
-        internalZipFile = in.readString();
-        internalSourceFileLength = in.readString();
-        internalZipFileLength = in.readString();
-        sorted = in.readByte() != 0;
-        colId = in.readString();
-        colTitle = in.readString();
-        colTopic = in.readString();
-        colKind = in.readString();
-        colOwner = in.readString();
-        colInfoUrl = in.readString();
-        colAbstract = in.readString();
-        colDescription = in.readString();
-        colMotivation = in.readString();
-        infoUrlGeneric = in.readString();
-        regExColId = in.readString();
-        regExTrimColId = in.readString();
-        regExTrimColTitle = in.readString();
-        convertToHtml = in.readByte() != 0;
-        bookKey = in.readString();
-        internalSourceUrl = in.readString();
-        internalZipUrl = in.readString();
-        url = in.readString();
-        urlEdit = in.readString();
-        id = in.readString();
-        createdAt = in.readString();
-        createdBy = in.readString();
-        isMyOwn = in.readByte() != 0;
-        timestamp = in.readLong();
-        unixTimestamp = in.readLong();
-        idNumber = in.readInt();
-
-    }
-
-    public static final Parcelable.Creator CREATOR =
-            new Parcelable.Creator() {
-                public Package createFromParcel(Parcel in) {
-                    return new Package(in);
-                }
-
-                public Package[] newArray(int size) {
-                    return new Package[size];
-                }
-            };
 
 }
 
