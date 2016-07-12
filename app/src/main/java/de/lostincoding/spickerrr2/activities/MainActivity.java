@@ -44,16 +44,28 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private SharedPreferences sharedPreferences;
     private DataHolder dataHolder;
+    private SharedPreferences.OnSharedPreferenceChangeListener onSharedPreferenceChangeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        setUpPreferences();
         initalizeUI();
         dataHolder = DataHolder.getInstance();
         loadData();
+    }
+
+    private void setUpPreferences() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        onSharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                loadData();
+            }
+        };
+        sharedPreferences.registerOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener);
     }
 
     private void initalizeUI() {
