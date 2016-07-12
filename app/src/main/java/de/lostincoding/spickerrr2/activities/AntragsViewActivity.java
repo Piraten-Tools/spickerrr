@@ -18,6 +18,7 @@ import de.lostincoding.spickerrr2.fragments.AntragsViewInfoFragment;
 import de.lostincoding.spickerrr2.fragments.ChooseVotePreferencesDialog;
 import de.lostincoding.spickerrr2.fragments.NoticeEditDialog;
 import de.lostincoding.spickerrr2.model.Antrag;
+import de.lostincoding.spickerrr2.model.DataHolder;
 
 public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;
@@ -26,14 +27,14 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     private AntragsViewInfoFragment infoFragment;
     private AntragsViewContentFragment descriptionFragment;
     private AntragsViewContentFragment motivationFragment;
+    private DataHolder dataHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_view);
-
-        antrag = getIntent().getParcelableExtra("antrag");
-
+        dataHolder = DataHolder.getInstance();
+        antrag = dataHolder.getAntragslist().get(getIntent().getIntExtra("antragposition", 0));
 
         initalizeUI();
     }

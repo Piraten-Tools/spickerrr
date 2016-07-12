@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         initalizeUI();
         dataHolder = DataHolder.getInstance();
         loadData();
-
     }
 
     private void initalizeUI() {
@@ -232,8 +231,9 @@ public class MainActivity extends AppCompatActivity {
     public void openNextActivity(View view) {
         if (packageSpinner != null) {
             if (packageSpinner.getSelectedItem() != null) {
+                dataHolder.setBook(bookList.get(bookSpinner.getSelectedItemPosition()));
+                dataHolder.setaPackage(packageList.get(packageSpinner.getSelectedItemPosition()));
                 Intent intent = new Intent(this, AntragsChooserActivity.class);
-                intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
                 startActivity(intent);
             } else {
                 Context context = getApplicationContext();

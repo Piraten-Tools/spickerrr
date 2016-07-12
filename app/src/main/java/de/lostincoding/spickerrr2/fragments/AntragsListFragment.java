@@ -16,12 +16,14 @@ import de.lostincoding.spickerrr2.ListAntragsAdapter;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
 import de.lostincoding.spickerrr2.model.Antrag;
+import de.lostincoding.spickerrr2.model.DataHolder;
+import de.lostincoding.spickerrr2.model.ParcableIntegerArrayList;
 
 
 public class AntragsListFragment extends Fragment {
     private ListView listView;
-    private ArrayList<Antrag> list;
-
+    private ArrayList<Integer> list;
+    private DataHolder dataHolder;
     public AntragsListFragment() {
         // Required empty public constructor
     }
@@ -29,7 +31,7 @@ public class AntragsListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        dataHolder = DataHolder.getInstance();
     }
 
     @Override
@@ -53,7 +55,8 @@ public class AntragsListFragment extends Fragment {
 
     private void openNextActivity(int position) {
         Intent intent = new Intent(getContext(), AntragsViewActivity.class);
-        intent.putExtra("antrag", list.get(position));
+        intent.putExtra("antragposition", list.get(position));
+
         startActivity(intent);
     }
 
@@ -62,7 +65,8 @@ public class AntragsListFragment extends Fragment {
         list = null;
         Bundle bundle = getArguments();
         if (bundle != null) {
-            list = bundle.getParcelableArrayList("antragslist");
+            ParcableIntegerArrayList container = bundle.getParcelable("antragslist");
+            list = container.getList();
         } else {
             list = new ArrayList<>();
         }
@@ -71,7 +75,7 @@ public class AntragsListFragment extends Fragment {
         //create a  with the stuff which should be displayed
         Antrag[] antragsArray = new Antrag[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            antragsArray[i] = list.get(i);
+            antragsArray[i] = dataHolder.getAntragslist().get(list.get(i));
         }
 
         ListAntragsAdapter antragsAdapter = new ListAntragsAdapter(getActivity(), antragsArray);

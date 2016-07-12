@@ -2,9 +2,7 @@ package de.lostincoding.spickerrr2.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -27,29 +25,33 @@ import de.lostincoding.spickerrr2.SpickerrrViewPager;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.fragments.AntragsListFragment;
 import de.lostincoding.spickerrr2.model.Antrag;
-import de.lostincoding.spickerrr2.model.Package;
+import de.lostincoding.spickerrr2.model.DataHolder;
+import de.lostincoding.spickerrr2.model.ParcableIntegerArrayList;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class AntragsChooserActivity extends AppCompatActivity {
-    private Package aPackage;
-    private ArrayList<Antrag> antragslist;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ProgressDialog dialog;
     private AntragsSortOptions antragsSortOptions = AntragsSortOptions.KIND;
-    private SharedPreferences sharedPreferences;
+    private DataHolder dataHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_chooser);
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        aPackage = getIntent().getParcelableExtra("package");
+        dataHolder = DataHolder.getInstance();
         initalizeUI();
-        showProgressDialog();
-        loadData();
+
+        if (dataHolder.getAntragslist() == null) {
+            showProgressDialog();
+            loadData();
+        } else {
+            setUpView();
+        }
+
     }
 
     private void showProgressDialog() {
@@ -71,12 +73,13 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                antragslist = new ArrayList<>();
+                ArrayList<Antrag> antragslist = new ArrayList<>();
                 try {
-                    antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
+                    antragslist = AntragsAPI.parseData(response.body().string(), dataHolder.getaPackage());
                 } catch (JSONException e) {
                     Log.e("JSON", e.toString());
                 }
+                dataHolder.setAntragslist(antragslist);
                 dialog.dismiss();
                 runOnUiThread(new Runnable() {
                     @Override
@@ -90,7 +93,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
             }
         };
 
-        AntragsAPI.loadData(aPackage, dataCallback);
+        AntragsAPI.loadData(dataHolder.getaPackage(), dataCallback);
 
 
     }
@@ -135,7 +138,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
     private void initalizeUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle(aPackage.getName());
+        setTitle(dataHolder.getaPackage().getName());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
     }
@@ -143,10 +146,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         SpickerrrViewPager adapter = new SpickerrrViewPager(getSupportFragmentManager());
 
-        HashMap<String, ArrayList<Antrag>> mapoflists = new HashMap<>();
+        HashMap<String, ArrayList<Integer>> mapoflists = new HashMap<>();
         //for each criterion create an arrraylist and add it to the map
         //if there isnt a list for the criterion, create one
-        for (Antrag antrag : antragslist) {
+        int counter = 0;
+        for (Antrag antrag : dataHolder.getAntragslist()) {
             String criterion;
             switch (antragsSortOptions) {
                 case KIND:
@@ -161,23 +165,24 @@ public class AntragsChooserActivity extends AppCompatActivity {
             }
 
             if (mapoflists.containsKey(criterion)) {
-                mapoflists.get(criterion).add(antrag);
+                mapoflists.get(criterion).add(new Integer(counter));
             } else {
-                ArrayList<Antrag> list = new ArrayList<>();
-                list.add(antrag);
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(new Integer(counter));
                 mapoflists.put(criterion, list);
             }
-
+            counter++;
         }
         //create a fragment for each list in the map
-        for (Map.Entry<String, ArrayList<Antrag>> entry : mapoflists.entrySet()) {
+        for (Map.Entry<String, ArrayList<Integer>> entry : mapoflists.entrySet()) {
             AntragsListFragment frag = new AntragsListFragment();
             String key = entry.getKey();
-            ArrayList<Antrag> value = entry.getValue();
+            ParcableIntegerArrayList container = new ParcableIntegerArrayList();
+            container.setList(entry.getValue());
 
             //give the fragment the data over the bundle
             Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("antragslist", value);
+            bundle.putParcelable("antragslist", container);
 
             frag.setArguments(bundle);
             adapter.addFragment(frag, key);

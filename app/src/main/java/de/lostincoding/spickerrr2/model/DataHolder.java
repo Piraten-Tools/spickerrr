@@ -11,7 +11,7 @@ public class DataHolder {
 
     private Book book;
     private Package aPackage;
-    private ArrayList<Antrag> antragslist;
+    private ArrayList<Antrag> antragslist = null;
 
     private DataHolder() {
 
@@ -24,10 +24,6 @@ public class DataHolder {
         return instance;
     }
 
-
-    public static void setInstance(DataHolder instance) {
-        DataHolder.instance = instance;
-    }
 
     public Book getBook() {
         return book;
