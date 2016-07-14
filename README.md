@@ -1,4 +1,4 @@
-# Spickerrr - A simple Android App to display petitions to Pirateparty conventions
+# Spickerrr - A simple Android App to display petitions for Pirateparty conventions
 
 This repository contains the code for one of my first Android Projects - Spickerrr. It's kind of an educational project for me,
 but is intended to run on the phone of many pirates.
