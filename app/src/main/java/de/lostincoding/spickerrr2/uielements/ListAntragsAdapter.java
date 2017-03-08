@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2;
+package de.lostincoding.spickerrr2.uielements;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.model.Antrag;
 
 /**

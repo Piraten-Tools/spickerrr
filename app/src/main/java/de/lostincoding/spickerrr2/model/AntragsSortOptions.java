@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2;
+package de.lostincoding.spickerrr2.model;
 
 /**
  * Created by lostincoding on 15.06.16.

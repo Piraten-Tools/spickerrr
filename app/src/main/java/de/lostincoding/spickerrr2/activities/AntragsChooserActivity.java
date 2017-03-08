@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.lostincoding.spickerrr2.AntragsSortOptions;
+import de.lostincoding.spickerrr2.model.AntragsSortOptions;
 import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.SpickerrrViewPager;
+import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.fragments.AntragsListFragment;
 import de.lostincoding.spickerrr2.model.Antrag;

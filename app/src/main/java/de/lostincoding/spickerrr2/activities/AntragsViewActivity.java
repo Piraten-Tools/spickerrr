@@ -11,8 +11,8 @@ import android.view.View;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.SpickerrrViewPager;
-import de.lostincoding.spickerrr2.VotePreferences;
+import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
+import de.lostincoding.spickerrr2.model.VotePreferences;
 import de.lostincoding.spickerrr2.fragments.AntragsViewContentFragment;
 import de.lostincoding.spickerrr2.fragments.AntragsViewInfoFragment;
 import de.lostincoding.spickerrr2.fragments.ChooseVotePreferencesDialog;

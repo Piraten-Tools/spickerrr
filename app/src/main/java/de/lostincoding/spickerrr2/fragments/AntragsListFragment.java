@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import de.lostincoding.spickerrr2.ListAntragsAdapter;
+import de.lostincoding.spickerrr2.uielements.ListAntragsAdapter;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
 import de.lostincoding.spickerrr2.model.Antrag;

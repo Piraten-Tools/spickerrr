@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2;
+package de.lostincoding.spickerrr2.uielements;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

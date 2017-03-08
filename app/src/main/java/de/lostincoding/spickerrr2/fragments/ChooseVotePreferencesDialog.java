@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.VotePreferences;
+import de.lostincoding.spickerrr2.model.VotePreferences;
 
 /**
  * Created by lostincoding on 22.06.16.
