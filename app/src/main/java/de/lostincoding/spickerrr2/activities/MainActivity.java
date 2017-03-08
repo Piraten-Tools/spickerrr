@@ -155,22 +155,14 @@ public class MainActivity extends AppCompatActivity {
                     fillBookSpinner(bookList);
                 } else {
                     //Not Successful
-                    Context context = getApplicationContext();
-                    CharSequence text = "Beim Laden der Antragsbücher ist ein Fehler aufgetreten!";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast.makeText(context, text, duration).show();
+                    showToast( "Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
                 }
             }
 
             @Override
             public void onFailure(Call<BookResponse> call, Throwable t) {
                 //Not Successful
-                Context context = getApplicationContext();
-                CharSequence text = "Beim Laden der Antragsbücher ist ein Fehler aufgetreten!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast.makeText(context, text, duration).show();
+               showToast( "Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
             }
         };
         packagecallback = new Callback<PackageResponse>() {
@@ -189,26 +181,24 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     //Not Successful
-                    Context context = getApplicationContext();
-                    CharSequence text = "Beim Laden der Antragspakete ist ein Fehler aufgetreten!";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast.makeText(context, text, duration).show();
+                    showToast("Beim Laden der Antragspakete ist ein Fehler aufgetreten!");
                 }
             }
 
             @Override
             public void onFailure(Call<PackageResponse> call, Throwable t) {
                 //Not Successful
-                Context context = getApplicationContext();
-                CharSequence text = "Beim Laden der Antragspakete ist ein Fehler aufgetreten!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast.makeText(context, text, duration).show();
+                showToast("Beim Laden der Antragspakete ist ein Fehler aufgetreten!");
             }
         };
     }
 
+
+    private void showToast(CharSequence message) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast.makeText(context, message, duration).show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
