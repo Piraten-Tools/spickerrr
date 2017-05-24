@@ -95,7 +95,21 @@ public class AntragsChooserActivity extends AppCompatActivity {
             }
         };
 
-        AntragsAPI.loadData(aPackage, dataCallback);
+        if (dataHolder.getAntragslist() == null) {
+            AntragsAPI.loadData(aPackage, dataCallback);
+        } else {
+            dialog.dismiss();
+            antragslist = new ArrayList<>();
+            antragslist.addAll(dataHolder.getAntragslist());
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setUpView();
+
+
+                }
+            });
+        }
 
 
     }
