@@ -11,6 +11,7 @@ import android.view.View;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.model.DataHolder;
 import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
 import de.lostincoding.spickerrr2.model.VotePreferences;
 import de.lostincoding.spickerrr2.fragments.AntragsViewContentFragment;
@@ -26,13 +27,16 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     private AntragsViewInfoFragment infoFragment;
     private AntragsViewContentFragment descriptionFragment;
     private AntragsViewContentFragment motivationFragment;
+    private DataHolder dataHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_view);
+        dataHolder = DataHolder.getInstance();
 
-        antrag = getIntent().getParcelableExtra("antrag");
+        int position = getIntent().getIntExtra("position",-1);
+        antrag = dataHolder.getAntragslist().get(position);
 
 
         initalizeUI();

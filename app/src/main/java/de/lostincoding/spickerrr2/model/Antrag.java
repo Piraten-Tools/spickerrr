@@ -130,4 +130,16 @@ public class Antrag implements Parcelable {
                     return new Antrag[size];
                 }
             };
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Antrag) {
+            Antrag antrag = (Antrag) o;
+            if (antrag.id.equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

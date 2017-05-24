@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import de.lostincoding.spickerrr2.model.DataHolder;
 import de.lostincoding.spickerrr2.uielements.ListAntragsAdapter;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
@@ -53,7 +54,9 @@ public class AntragsListFragment extends Fragment {
 
     private void openNextActivity(int position) {
         Intent intent = new Intent(getContext(), AntragsViewActivity.class);
-        intent.putExtra("antrag", list.get(position));
+        Antrag antrag = list.get(position);
+        int listPosition = DataHolder.getInstance().getAntragslist().indexOf(antrag);
+        intent.putExtra("position", listPosition);
         startActivity(intent);
     }
 

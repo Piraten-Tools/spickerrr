@@ -23,6 +23,7 @@ import java.util.Map;
 
 import de.lostincoding.spickerrr2.model.AntragsSortOptions;
 import de.lostincoding.spickerrr2.R;
+import de.lostincoding.spickerrr2.model.DataHolder;
 import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.fragments.AntragsListFragment;
@@ -40,13 +41,15 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private ProgressDialog dialog;
     private AntragsSortOptions antragsSortOptions = AntragsSortOptions.KIND;
     private SharedPreferences sharedPreferences;
+    private DataHolder dataHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_chooser);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        aPackage = getIntent().getParcelableExtra("package");
+        dataHolder = DataHolder.getInstance();
+        aPackage = dataHolder.getaPackage();
         initalizeUI();
         showProgressDialog();
         loadData();
@@ -72,11 +75,13 @@ public class AntragsChooserActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 antragslist = new ArrayList<>();
+
                 try {
                     antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
                 } catch (JSONException e) {
                     Log.e("JSON", e.toString());
                 }
+                dataHolder.setAntragslist(antragslist);
                 dialog.dismiss();
                 runOnUiThread(new Runnable() {
                     @Override

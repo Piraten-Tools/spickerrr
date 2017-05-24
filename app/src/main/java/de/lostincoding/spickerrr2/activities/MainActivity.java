@@ -22,19 +22,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.api.APICaller;
 import de.lostincoding.spickerrr2.api.BookResponse;
 import de.lostincoding.spickerrr2.api.PackageResponse;
+import de.lostincoding.spickerrr2.api.SpickerrrApi;
 import de.lostincoding.spickerrr2.model.Book;
 import de.lostincoding.spickerrr2.model.DataHolder;
 import de.lostincoding.spickerrr2.model.Package;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    private SpickerrrApi service;
 
-    private APICaller caller;
     private Callback<BookResponse> bookcallback;
     private Callback<PackageResponse> packagecallback;
     private List<Book> bookList;
@@ -50,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //init retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://pirat.ly/spicker/api/853f688d3842/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        service = retrofit.create(SpickerrrApi.class);
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         initalizeUI();
         dataHolder = DataHolder.getInstance();
@@ -64,12 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
         if (checkInternetConnection()) {
-            initalizeCallbacks();
-            caller = APICaller.getInstance();
+            initCallbacks();
+
             if (sharedPreferences.getBoolean("bookLoadPreference", false)) {
-                caller.listBooks(bookcallback);
+                Call<BookResponse> call = service.listBooks();
+                call.enqueue(bookcallback);
             } else {
-                caller.listCurrentBooks(bookcallback);
+                Call<BookResponse> call = service.listCurrentBooks();
+                call.enqueue(bookcallback);
             }
 
         } else {
@@ -102,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
         packageSpinner.setAdapter(packageadapter);
         packageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                dataHolder.setaPackage(packagelist.get(position));
                 fab.setVisibility(View.VISIBLE);
             }
 
@@ -128,7 +142,9 @@ public class MainActivity extends AppCompatActivity {
             bookSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    caller.listPackagesFromBook(packagecallback, booklist.get(position).getKey());
+                    dataHolder.setBook(booklist.get(position));
+                    Call<PackageResponse> call = service.listPackagesFromBook(booklist.get(position).getKey());
+                    call.enqueue(packagecallback);
                 }
 
                 @Override
@@ -142,23 +158,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initalizeCallbacks() {
+    private void initCallbacks() {
         bookcallback = new Callback<BookResponse>() {
             @Override
-            public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
+            public void onResponse(Call<BookResponse> call, Response<BookResponse>  response) {
                 if (response.body().getSuccess()) {
                     bookList = response.body().getData();
                     fillBookSpinner(bookList);
                 } else {
                     //Not Successful
-                    showToast( "Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
+                    showToast("Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
                 }
             }
 
             @Override
             public void onFailure(Call<BookResponse> call, Throwable t) {
                 //Not Successful
-               showToast( "Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
+                showToast("Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
             }
         };
         packagecallback = new Callback<PackageResponse>() {
@@ -219,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         if (packageSpinner != null) {
             if (packageSpinner.getSelectedItem() != null) {
                 Intent intent = new Intent(this, AntragsChooserActivity.class);
-                intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
+                //intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
                 startActivity(intent);
             } else {
                 showToast("Es ist noch kein Antragspaket gewählt!");

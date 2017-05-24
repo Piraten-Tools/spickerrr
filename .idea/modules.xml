@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///home/m500017/git/spickerrr/app/app.iml" filepath="/home/m500017/git/spickerrr/app/app.iml" />
-      <module fileurl="file:///home/m500017/git/spickerrr/spickerrr.iml" filepath="/home/m500017/git/spickerrr/spickerrr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../m500017/git/spickerrr/app/app.iml" filepath="$PROJECT_DIR$/../../../m500017/git/spickerrr/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spickerrr.iml" filepath="$PROJECT_DIR$/spickerrr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../m500017/git/spickerrr/spickerrr.iml" filepath="$PROJECT_DIR$/../../../m500017/git/spickerrr/spickerrr.iml" />
     </modules>
   </component>
 </project>

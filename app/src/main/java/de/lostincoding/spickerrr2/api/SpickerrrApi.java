@@ -12,20 +12,20 @@ import retrofit2.http.Path;
  */
 public interface SpickerrrApi {
 
-    @GET("{apikey}/books")
-    Call<BookResponse> listBooks(@Path("apikey") String apikey);
+    @GET("books")
+    Call<BookResponse> listBooks();
 
-    @GET("{apikey}/currentbooks")
-    Call<BookResponse> listCurrentBooks(@Path("apikey") String apikey);
+    @GET("currentbooks")
+    Call<BookResponse> listCurrentBooks();
 
-    @GET("{apikey}/book/{bookkey}/packages")
-    Call<PackageResponse> listPackagesFromBook(@Path("apikey") String apikey, @Path("bookkey") String bookkey);
+    @GET("book/{bookkey}/packages")
+    Call<PackageResponse> listPackagesFromBook( @Path("bookkey") String bookkey);
 
-    @GET("{apikey}/activepackages")
-    Call<PackageResponse> listActivePackages(@Path("apikey") String apikey);
+    @GET("activepackages")
+    Call<PackageResponse> listActivePackages();
 
-    @GET("{apikey}/package/{packagekey}")
-    Call<PackageResponse> getPackage(@Path("apikey") String apikey, @Path("packagekey") String packagekey);
+    @GET("package/{packagekey}")
+    Call<PackageResponse> getPackage( @Path("packagekey") String packagekey);
 
 }
 
