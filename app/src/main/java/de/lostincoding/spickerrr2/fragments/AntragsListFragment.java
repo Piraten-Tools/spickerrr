@@ -11,17 +11,19 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.uielements.ListAntragsAdapter;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
 import de.lostincoding.spickerrr2.model.Antrag;
+import de.lostincoding.spickerrr2.model.DataHolder;
+import de.lostincoding.spickerrr2.uielements.ListAntragsAdapter;
 
 
 public class AntragsListFragment extends Fragment {
     private ListView listView;
-    private ArrayList<Antrag> list;
+    private List<Antrag> list;
+    private DataHolder dataHolder = null;
 
     public AntragsListFragment() {
         // Required empty public constructor
@@ -61,14 +63,14 @@ public class AntragsListFragment extends Fragment {
     }
 
     private void fillListView() {
-        //get Data from Bundle
+        //get Data from DataHolder
         list = null;
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            list = bundle.getParcelableArrayList("antragslist");
-        } else {
-            list = new ArrayList<>();
+
+        if (dataHolder == null) {
+            dataHolder = DataHolder.getInstance();
         }
+
+        list = dataHolder.getAntragslist();
 
 
         //create a  with the stuff which should be displayed

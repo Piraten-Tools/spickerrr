@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
 import de.lostincoding.spickerrr2.model.Antrag;
+import de.lostincoding.spickerrr2.model.DataHolder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,10 +35,12 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
                              Bundle savedInstanceState) {
         //get Antrag from Arguments
         antrag = null;
+        int position = -1;
         Bundle bundle = getArguments();
         if (bundle != null) {
-            antrag = bundle.getParcelable("antrag");
+            position = bundle.getInt("position");
         }
+        antrag = DataHolder.getInstance().getAntragslist().get(position);
 
         //fill View
         View rootView = inflater.inflate(R.layout.fragment_antrags_view_info, container, false);

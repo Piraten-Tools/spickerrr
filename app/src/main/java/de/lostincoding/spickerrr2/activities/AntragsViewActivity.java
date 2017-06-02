@@ -28,14 +28,14 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     private AntragsViewContentFragment descriptionFragment;
     private AntragsViewContentFragment motivationFragment;
     private DataHolder dataHolder;
-
+    int position = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_view);
         dataHolder = DataHolder.getInstance();
 
-        int position = getIntent().getIntExtra("position",-1);
+        position = getIntent().getIntExtra("position", -1);
         antrag = dataHolder.getAntragslist().get(position);
 
 
@@ -55,9 +55,9 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         descriptionFragment = new AntragsViewContentFragment();
         motivationFragment = new AntragsViewContentFragment();
 
-        //give the fragment the data over the bundle
+        //give  fragment the data over the bundle
         Bundle bundle = new Bundle();
-        bundle.putParcelable("antrag", antrag);
+        bundle.putInt("position", position);
 
         Bundle descriptionBundle = new Bundle();
         descriptionBundle.putString("content", antrag.getDescription());

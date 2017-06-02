@@ -25,8 +25,8 @@ import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.BookResponse;
 import de.lostincoding.spickerrr2.api.PackageResponse;
 import de.lostincoding.spickerrr2.api.SpickerrrApi;
-import de.lostincoding.spickerrr2.model.JsonBook;
 import de.lostincoding.spickerrr2.model.DataHolder;
+import de.lostincoding.spickerrr2.model.JsonBook;
 import de.lostincoding.spickerrr2.model.JsonPackage;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -105,10 +105,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> packagenames = new ArrayList<>();
         packageSpinner = (Spinner) findViewById(R.id.packagespinner);
         for (JsonPackage pack : packagelist) {
-
             packagenames.add(pack.getName());
-
-
         }
         ArrayAdapter<String> packageadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, packagenames);
         packageadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -161,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     private void initCallbacks() {
         bookcallback = new Callback<BookResponse>() {
             @Override
-            public void onResponse(Call<BookResponse> call, Response<BookResponse>  response) {
+            public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
                 if (response.body().getSuccess()) {
                     bookList = response.body().getData();
                     fillBookSpinner(bookList);

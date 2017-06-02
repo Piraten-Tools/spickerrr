@@ -191,11 +191,6 @@ public class AntragsChooserActivity extends AppCompatActivity {
             String key = entry.getKey();
             ArrayList<Antrag> value = entry.getValue();
 
-            //give the fragment the data over the bundle
-            Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("antragslist", value);
-
-            frag.setArguments(bundle);
             adapter.addFragment(frag, key);
         }
 
