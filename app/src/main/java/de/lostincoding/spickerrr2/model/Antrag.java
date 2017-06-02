@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by lostincoding on 26.05.16.
  */
-public class Antrag {    //fields from api
+public class Antrag {
     private String id;
     private String title;
     private String topic;

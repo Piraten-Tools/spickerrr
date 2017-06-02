@@ -11,7 +11,7 @@ public class DataHolder {
 
     private Book book;
     private Package aPackage;
-    private ArrayList<Antrag> antragslist;
+    private List<Antrag> antragslist;
 
     private DataHolder() {
 
