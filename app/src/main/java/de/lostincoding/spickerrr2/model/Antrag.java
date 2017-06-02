@@ -6,8 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by lostincoding on 26.05.16.
  */
-public class Antrag implements Parcelable {
-    //fields from api
+public class Antrag {    //fields from api
     private String id;
     private String title;
     private String topic;
@@ -85,51 +84,6 @@ public class Antrag implements Parcelable {
         this.votePreferences = votePreferences;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(title);
-        dest.writeString(topic);
-        dest.writeString(kind);
-        dest.writeString(owner);
-        dest.writeString(infourl);
-        dest.writeString(abstract_short);
-        dest.writeString(description);
-        dest.writeString(motivation);
-    }
-
-    public Antrag(Parcel in) {
-        readFromParcel(in);
-    }
-
-    private void readFromParcel(Parcel in) {
-        id = in.readString();
-        title = in.readString();
-        topic = in.readString();
-        kind = in.readString();
-        owner = in.readString();
-        infourl = in.readString();
-        abstract_short = in.readString();
-        description = in.readString();
-        motivation = in.readString();
-
-    }
-
-    public static final Parcelable.Creator CREATOR =
-            new Parcelable.Creator() {
-                public Antrag createFromParcel(Parcel in) {
-                    return new Antrag(in);
-                }
-
-                public Antrag[] newArray(int size) {
-                    return new Antrag[size];
-                }
-            };
 
 
     @Override
