@@ -1,29 +1,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
-    android:padding="6dip" >
+    android:padding="6dip">
 
     <TextView
-        android:id="@+id/idview"
+        android:id="@+id/idviewnew"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-
-        android:layout_marginRight="6dip"
-        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="GP001.0"
         android:textColor="#000000"
-        />
+        android:textSize="16sp"
+        android:layout_marginTop="5sp" />
 
 
     <TextView
-        android:id="@+id/titleview"
-        android:layout_width="fill_parent"
+        android:id="@+id/titleviewnew"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/idviewnew"
+        android:maxLines="1"
+        android:text="Permanentes Programm"
         android:textColor="#000000"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/idview"
-        android:gravity="center_vertical"
-        android:textSize="16sp" />
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textpreview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleviewnew"
+        android:maxLines="1"
+        android:text="Hier kann man schon die ersten Sätze lesen"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13sp"
+        android:layout_marginBottom="5sp" />
 
 </RelativeLayout>
