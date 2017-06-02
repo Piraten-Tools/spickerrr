@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import au.com.bytecode.opencsv.CSVReader;
 import de.lostincoding.spickerrr2.model.Antrag;
+import de.lostincoding.spickerrr2.model.JsonPackage;
 import de.lostincoding.spickerrr2.model.Package;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;

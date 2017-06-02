@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import de.lostincoding.spickerrr2.model.Book;
+import de.lostincoding.spickerrr2.model.JsonBook;
 
 public class BookResponse {
 
@@ -15,7 +15,7 @@ public class BookResponse {
     private Boolean success;
     @SerializedName("data")
     @Expose
-    private List<Book> data = new ArrayList<>();
+    private List<JsonBook> data = new ArrayList<>();
 
     /**
      * @return The success
@@ -34,14 +34,14 @@ public class BookResponse {
     /**
      * @return The data
      */
-    public List<Book> getData() {
+    public List<JsonBook> getData() {
         return data;
     }
 
     /**
      * @param data The data
      */
-    public void setData(List<Book> data) {
+    public void setData(List<JsonBook> data) {
         this.data = data;
     }
 

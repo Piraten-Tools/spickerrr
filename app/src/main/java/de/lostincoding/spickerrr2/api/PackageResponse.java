@@ -2,7 +2,7 @@ package de.lostincoding.spickerrr2.api;
 
 import java.util.ArrayList;
 import java.util.List;
-import de.lostincoding.spickerrr2.model.Package;
+import de.lostincoding.spickerrr2.model.JsonPackage;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +13,7 @@ public class PackageResponse {
     private Boolean success;
     @SerializedName("data")
     @Expose
-    private List<Package> data = new ArrayList<Package>();
+    private List<JsonPackage> data = new ArrayList<JsonPackage>();
 
     /**
      *
@@ -38,7 +38,7 @@ public class PackageResponse {
      * @return
      * The data
      */
-    public List<Package> getData() {
+    public List<JsonPackage> getData() {
         return data;
     }
 
@@ -47,7 +47,7 @@ public class PackageResponse {
      * @param data
      * The data
      */
-    public void setData(List<Package> data) {
+    public void setData(List<JsonPackage> data) {
         this.data = data;
     }
 

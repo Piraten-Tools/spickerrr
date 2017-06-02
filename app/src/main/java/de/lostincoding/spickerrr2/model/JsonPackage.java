@@ -1,12 +1,9 @@
 package de.lostincoding.spickerrr2.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class JsonPackage  {
+public class JsonPackage {
 
     @SerializedName("APIKey")
     @Expose
@@ -740,9 +737,10 @@ public class JsonPackage  {
         this.idNumber = idNumber;
     }
 
-
-
-
+    public Package toPackage() {
+        Package apackage = new Package(name,key,sourceType,csvSeperator,csvQuote,dataUrl,colId,colTitle,colTopic,colKind,colOwner,colInfoUrl,colAbstract,colDescription,colMotivation,bookKey,id);
+        return apackage;
+    }
 
 
 }

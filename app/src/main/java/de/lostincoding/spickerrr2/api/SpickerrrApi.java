@@ -1,8 +1,5 @@
 package de.lostincoding.spickerrr2.api;
 
-import java.util.List;
-
-import de.lostincoding.spickerrr2.model.Package;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

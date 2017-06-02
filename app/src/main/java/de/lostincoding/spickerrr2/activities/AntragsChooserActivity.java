@@ -2,9 +2,7 @@ package de.lostincoding.spickerrr2.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,14 +19,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.lostincoding.spickerrr2.model.AntragsSortOptions;
 import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
 import de.lostincoding.spickerrr2.api.AntragsAPI;
 import de.lostincoding.spickerrr2.fragments.AntragsListFragment;
 import de.lostincoding.spickerrr2.model.Antrag;
+import de.lostincoding.spickerrr2.model.AntragsSortOptions;
+import de.lostincoding.spickerrr2.model.DataHolder;
 import de.lostincoding.spickerrr2.model.Package;
+import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -40,14 +38,13 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ProgressDialog dialog;
     private AntragsSortOptions antragsSortOptions = AntragsSortOptions.KIND;
-    private SharedPreferences sharedPreferences;
+
     private DataHolder dataHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_chooser);
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         dataHolder = DataHolder.getInstance();
         aPackage = dataHolder.getaPackage();
         initalizeUI();

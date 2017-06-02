@@ -25,9 +25,9 @@ import de.lostincoding.spickerrr2.R;
 import de.lostincoding.spickerrr2.api.BookResponse;
 import de.lostincoding.spickerrr2.api.PackageResponse;
 import de.lostincoding.spickerrr2.api.SpickerrrApi;
-import de.lostincoding.spickerrr2.model.Book;
+import de.lostincoding.spickerrr2.model.JsonBook;
 import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.model.Package;
+import de.lostincoding.spickerrr2.model.JsonPackage;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Callback<BookResponse> bookcallback;
     private Callback<PackageResponse> packagecallback;
-    private List<Book> bookList;
-    private List<Package> packageList;
+    private List<JsonBook> bookList;
+    private List<JsonPackage> packageList;
     private Spinner packageSpinner;
     private Spinner bookSpinner;
     private FloatingActionButton fab;
@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    private void fillPackageSpinner(final List<Package> packagelist) {
+    private void fillPackageSpinner(final List<JsonPackage> packagelist) {
         ArrayList<String> packagenames = new ArrayList<>();
         packageSpinner = (Spinner) findViewById(R.id.packagespinner);
-        for (Package pack : packagelist) {
+        for (JsonPackage pack : packagelist) {
 
             packagenames.add(pack.getName());
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         packageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                dataHolder.setaPackage(packagelist.get(position));
+                dataHolder.setaPackage(packagelist.get(position).toPackage());
                 fab.setVisibility(View.VISIBLE);
             }
 
@@ -127,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void fillBookSpinner(final List<Book> booklist) {
+    private void fillBookSpinner(final List<JsonBook> booklist) {
         ArrayList<String> booknames = new ArrayList<>();
         bookSpinner = (Spinner) findViewById(R.id.bookspinner);
         if (booklist != null) {
 
 
-            for (Book book : booklist) {
+            for (JsonBook book : booklist) {
                 booknames.add(book.getName());
             }
             ArrayAdapter<String> bookadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, booknames);
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             bookSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    dataHolder.setBook(booklist.get(position));
+                    dataHolder.setBook(booklist.get(position).toBook());
                     Call<PackageResponse> call = service.listPackagesFromBook(booklist.get(position).getKey());
                     call.enqueue(packagecallback);
                 }
@@ -182,9 +182,9 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<PackageResponse> call, Response<PackageResponse> response) {
                 if (response.body().getSuccess()) {
                     //filter csv , it is not working right now
-                    List<Package> list = response.body().getData();
+                    List<JsonPackage> list = response.body().getData();
                     packageList = new ArrayList<>();
-                    for (Package listitem : list) {
+                    for (JsonPackage listitem : list) {
                         if (listitem.getSourceType().equals("JSON")) {
                             packageList.add(listitem);
                         }
