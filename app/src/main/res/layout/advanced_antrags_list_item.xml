@@ -7,10 +7,12 @@
         android:id="@+id/idviewnew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5sp"
+        android:layout_marginTop="5sp"
         android:maxLines="1"
         android:textColor="#000000"
-        android:textSize="16sp"
-        android:layout_marginTop="5sp" />
+
+        android:textSize="16sp" />
 
 
     <TextView
@@ -20,8 +22,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/idviewnew"
+        android:layout_marginLeft="5sp"
         android:maxLines="1"
         android:textColor="#000000"
+
         android:textSize="15sp" />
 
     <TextView
@@ -29,9 +33,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/titleviewnew"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="5sp"
         android:maxLines="1"
         android:textColor="@android:color/darker_gray"
-        android:textSize="13sp"
-        android:layout_marginBottom="5sp" />
+
+        android:textSize="13sp" />
 
 </RelativeLayout>
