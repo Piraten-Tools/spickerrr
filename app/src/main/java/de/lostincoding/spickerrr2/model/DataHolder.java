@@ -1,6 +1,7 @@
 package de.lostincoding.spickerrr2.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ public class DataHolder {
     private Book book;
     private Package aPackage;
     private List<Antrag> antragslist;
+    private HashMap<String, ArrayList<Antrag>> mapOfLists;
 
     private DataHolder() {
 
@@ -24,6 +26,13 @@ public class DataHolder {
         return instance;
     }
 
+    public HashMap<String, ArrayList<Antrag>> getMapOfLists() {
+        return mapOfLists;
+    }
+
+    public void setMapOfLists(HashMap<String, ArrayList<Antrag>> mapOfLists) {
+        this.mapOfLists = mapOfLists;
+    }
 
     public static void setInstance(DataHolder instance) {
         DataHolder.instance = instance;

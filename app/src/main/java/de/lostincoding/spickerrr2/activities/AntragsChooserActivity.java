@@ -160,6 +160,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         SpickerrrViewPager adapter = new SpickerrrViewPager(getSupportFragmentManager());
 
         HashMap<String, ArrayList<Antrag>> mapoflists = new HashMap<>();
+        dataHolder.setMapOfLists(mapoflists);
         //for each criterion create an arrraylist and add it to the map
         //if there isnt a list for the criterion, create one
         for (Antrag antrag : antragslist) {
@@ -185,12 +186,16 @@ public class AntragsChooserActivity extends AppCompatActivity {
             }
 
         }
+
         //create a fragment for each list in the map
         for (Map.Entry<String, ArrayList<Antrag>> entry : mapoflists.entrySet()) {
+            Bundle bundle = new Bundle();
+
             AntragsListFragment frag = new AntragsListFragment();
             String key = entry.getKey();
-            ArrayList<Antrag> value = entry.getValue();
 
+            bundle.putString("key", key);
+            frag.setArguments(bundle);
             adapter.addFragment(frag, key);
         }
 

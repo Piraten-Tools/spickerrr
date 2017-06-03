@@ -69,8 +69,12 @@ public class AntragsListFragment extends Fragment {
         if (dataHolder == null) {
             dataHolder = DataHolder.getInstance();
         }
-
-        list = dataHolder.getAntragslist();
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            list = dataHolder.getMapOfLists().get(bundle.getString("key"));
+        } else {
+            list = new ArrayList<>();
+        }
 
 
         //create a  with the stuff which should be displayed
