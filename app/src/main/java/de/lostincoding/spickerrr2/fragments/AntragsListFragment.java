@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.lostincoding.spickerrr2.R;
@@ -68,8 +69,12 @@ public class AntragsListFragment extends Fragment {
         if (dataHolder == null) {
             dataHolder = DataHolder.getInstance();
         }
-
-        list = dataHolder.getAntragslist();
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            list = dataHolder.getMapOfLists().get(bundle.getString("key"));
+        } else {
+            list = new ArrayList<>();
+        }
 
 
         //create a  with the stuff which should be displayed
