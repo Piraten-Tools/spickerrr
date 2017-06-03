@@ -179,5 +179,13 @@ public class Package {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        Package p = (Package) o;
 
+        return p.getKey() == getKey();
+    }
 }

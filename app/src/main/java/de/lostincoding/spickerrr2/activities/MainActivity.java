@@ -28,6 +28,7 @@ import de.lostincoding.spickerrr2.api.SpickerrrApi;
 import de.lostincoding.spickerrr2.model.DataHolder;
 import de.lostincoding.spickerrr2.model.JsonBook;
 import de.lostincoding.spickerrr2.model.JsonPackage;
+import de.lostincoding.spickerrr2.model.Package;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -113,7 +114,12 @@ public class MainActivity extends AppCompatActivity {
         packageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                dataHolder.setaPackage(packagelist.get(position).toPackage());
+                Package apackage = packagelist.get(position).toPackage();
+                //if package has changed load new package to dataholder and set antragslist null so it will be updated
+                if (!apackage.equals(dataHolder.getaPackage())) {
+                    dataHolder.setaPackage(apackage);
+                    dataHolder.setAntragslist(null);
+                }
                 fab.setVisibility(View.VISIBLE);
             }
 
