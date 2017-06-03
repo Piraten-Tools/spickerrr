@@ -1,24 +1,19 @@
 package de.lostincoding.spickerrr2.activities;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-
-import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
-import de.lostincoding.spickerrr2.model.VotePreferences;
 import de.lostincoding.spickerrr2.fragments.AntragsViewContentFragment;
 import de.lostincoding.spickerrr2.fragments.AntragsViewInfoFragment;
 import de.lostincoding.spickerrr2.fragments.ChooseVotePreferencesDialog;
 import de.lostincoding.spickerrr2.fragments.NoticeEditDialog;
 import de.lostincoding.spickerrr2.model.Antrag;
+import de.lostincoding.spickerrr2.model.DataHolder;
+import de.lostincoding.spickerrr2.model.VotePreferences;
+import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
 
 public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;
@@ -29,6 +24,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     private AntragsViewContentFragment motivationFragment;
     private DataHolder dataHolder;
     int position = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +65,10 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         descriptionFragment.setArguments(descriptionBundle);
         motivationFragment.setArguments(motivationBundle);
 
-        adapter.addFragment(infoFragment, "Allgemein");
+
         adapter.addFragment(descriptionFragment, "Antragstext");
         adapter.addFragment(motivationFragment, "Antragsbegründung");
+        adapter.addFragment(infoFragment, "Allgemein");
 
         viewPager.setAdapter(adapter);
     }
@@ -86,50 +83,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
-        //adjust icons  for buttons
 
-
-        FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
-        voteButton.setIcon(R.drawable.ic_thumbs_up_down_white_24dp);
-
-
-        FloatingActionButton noticeButton = (FloatingActionButton) findViewById(R.id.editNotice);
-        noticeButton.setIcon(R.drawable.ic_assignment_white_24dp);
-
-
-    }
-
-    // for changing the vote preference and the notice
-    public void editVotePreference(View v) {
-        FragmentManager manager = getFragmentManager();
-        Fragment frag = manager.findFragmentByTag("fragment_edit_name");
-
-        if (frag != null) {
-            manager.beginTransaction().remove(frag).commit();
-        }
-
-
-        ChooseVotePreferencesDialog chooseVotePreferencesDialog = new ChooseVotePreferencesDialog();
-        chooseVotePreferencesDialog.show(manager, "fragment_edit_name");
-    }
-
-    public void editNotice(View v) {
-        FragmentManager manager = getFragmentManager();
-        Fragment frag = manager.findFragmentByTag("fragment_edit_name");
-        if (frag != null) {
-            manager.beginTransaction().remove(frag).commit();
-        }
-
-        Bundle bundle = null;
-        if (antrag.getNotice() != null) {
-            bundle = new Bundle();
-            bundle.putString("notice", antrag.getNotice());
-        }
-
-        NoticeEditDialog noticeEditDialog = new NoticeEditDialog();
-
-        noticeEditDialog.setArguments(bundle);
-        noticeEditDialog.show(manager, "fragment_edit_name");
     }
 
 

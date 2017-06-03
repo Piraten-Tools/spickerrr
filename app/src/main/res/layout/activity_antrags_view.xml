@@ -25,37 +25,7 @@
         android:paddingTop="5dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        fab:fab_addButtonColorNormal="@color/colorAccent"
-        fab:fab_addButtonColorPressed="@color/colorAccent"
-        fab:fab_addButtonPlusIconColor="@color/white"
-        fab:fab_labelStyle="@style/menu_labels_style">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/editVotePreference"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="editVotePreference"
-            fab:fab_colorNormal="@color/colorAccent"
-            fab:fab_colorPressed="@color/colorAccent"
-            fab:fab_title="Bearbeite Abstimmungsverhalten" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/editNotice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="editNotice"
-            fab:fab_colorNormal="@color/colorAccent"
-            fab:fab_colorPressed="@color/colorAccent"
-            fab:fab_title="Bearbeite Notiz" />
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 
 </android.support.design.widget.CoordinatorLayout>

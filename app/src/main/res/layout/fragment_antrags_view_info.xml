@@ -35,24 +35,4 @@
         android:layout_below="@id/topicHeading" />
 
 
-    <TextView
-        android:id="@+id/noticeHeading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/topic"
-        android:text="Notizen:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <WebView
-        android:id="@+id/notice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/noticeHeading" />
-
-    <ImageView
-        android:id="@+id/votePreference"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/notice" />
-
 </RelativeLayout>
