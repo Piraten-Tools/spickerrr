@@ -9,7 +9,7 @@
          android:entryValues="@array/bookLoadAlias" /> -->
 
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:key="bookLoadPreference"
         android:summaryOff="Es werden nur die aktuellen Antragsbücher geladen."
         android:summaryOn="Es werden alle Antragsbücher geladen."
