@@ -89,13 +89,6 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         //adjust icons  for buttons
 
 
-        FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
-        voteButton.setIcon(R.drawable.ic_thumbs_up_down_white_24dp);
-
-
-        FloatingActionButton noticeButton = (FloatingActionButton) findViewById(R.id.editNotice);
-        noticeButton.setIcon(R.drawable.ic_assignment_white_24dp);
-
 
     }
 
