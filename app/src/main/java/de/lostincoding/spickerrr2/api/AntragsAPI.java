@@ -61,8 +61,10 @@ public class AntragsAPI {
             if (infourl.startsWith(baseurl) && !owner.contains(baseurl)) {
 
                 StringBuilder sb = new StringBuilder();
-                sb.append("<a href=\"").append(baseurl).append(owner.substring(owner.indexOf('/') + 1));
-                owner = sb.toString();
+                if (owner.indexOf('/') >= 0) {
+                    sb.append("<a href=\"").append(baseurl).append(owner.substring(owner.indexOf('/') + 1));
+                    owner = sb.toString();
+                }
             }
 
             antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
