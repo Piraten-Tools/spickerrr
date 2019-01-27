@@ -34,7 +34,7 @@ public class AntragsAPI {
 
     private static ArrayList<Antrag> parseJSON(String data, Package insertpackage) throws JSONException {
         ArrayList<Antrag> antragsliste = new ArrayList<>();
-        JSONArray antragsArray = null;
+        JSONArray antragsArray;
 
         antragsArray = new JSONArray(data);
         for (int i = 0; i < antragsArray.length(); i++) {
