@@ -2,6 +2,7 @@ package de.lostincoding.spickerrr2.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -47,6 +48,10 @@ public class AntragsChooserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_antrags_chooser);
         dataHolder = DataHolder.getInstance();
         aPackage = dataHolder.getaPackage();
+        AntragsSortOptions sortOptions = (AntragsSortOptions) getIntent().getSerializableExtra("antragsSortOptions");
+        if (sortOptions != null) {
+            antragsSortOptions = sortOptions;
+        }
         initalizeUI();
         showProgressDialog();
         loadData();
@@ -125,12 +130,12 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
             case R.id.menuSortKind:
                 antragsSortOptions = AntragsSortOptions.KIND;
-                setUpView();
+                restartView();
                 break;
 
             case R.id.menuSortTopic:
                 antragsSortOptions = AntragsSortOptions.TOPIC;
-                setUpView();
+                restartView();
                 break;
 
             default:
@@ -205,6 +210,13 @@ public class AntragsChooserActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    private void restartView() {
+        finish();
+        Intent intent = new Intent(this, AntragsChooserActivity.class);
+        intent.putExtra("antragsSortOptions", antragsSortOptions);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
 
 }
 
