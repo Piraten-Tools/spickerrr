@@ -19,6 +19,7 @@ import de.piratentools.spickerrr2.model.DataHolder;
  * A simple {@link Fragment} subclass.
  */
 public class AntragsViewInfoFragment extends Fragment implements AntragsViewActivity.InfoFragmentUpdateListener {
+    private int position;
     private Antrag antrag;
     private WebView author;
     private WebView topic;
@@ -35,11 +36,7 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
                              Bundle savedInstanceState) {
         //get Antrag from Arguments
         antrag = null;
-        int position = -1;
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            position = bundle.getInt("position");
-        }
+        position = getActivity().getIntent().getIntExtra("position", -1);
         antrag = DataHolder.getInstance().getAntragslist().get(position);
 
         //fill View
@@ -87,7 +84,10 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
 
     @Override
     public void onFragmentUpdate() {
-        notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
+        // TODO: Save vote preference and notice persistent
+        if ( antrag != null ) {
+            notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
+        }
         setVotePreferenceImage();
     }
 }
