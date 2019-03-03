@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.model;
+package de.piratentools.spickerrr2.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

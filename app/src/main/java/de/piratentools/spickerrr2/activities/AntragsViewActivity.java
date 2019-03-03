@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.activities;
+package de.piratentools.spickerrr2.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -10,15 +10,15 @@ import android.view.View;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
-import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
-import de.lostincoding.spickerrr2.model.VotePreferences;
-import de.lostincoding.spickerrr2.fragments.AntragsViewContentFragment;
-import de.lostincoding.spickerrr2.fragments.AntragsViewInfoFragment;
-import de.lostincoding.spickerrr2.fragments.ChooseVotePreferencesDialog;
-import de.lostincoding.spickerrr2.fragments.NoticeEditDialog;
-import de.lostincoding.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.R;
+import de.piratentools.spickerrr2.model.DataHolder;
+import de.piratentools.spickerrr2.uielements.SpickerrrViewPager;
+import de.piratentools.spickerrr2.model.VotePreferences;
+import de.piratentools.spickerrr2.fragments.AntragsViewContentFragment;
+import de.piratentools.spickerrr2.fragments.AntragsViewInfoFragment;
+import de.piratentools.spickerrr2.fragments.ChooseVotePreferencesDialog;
+import de.piratentools.spickerrr2.fragments.NoticeEditDialog;
+import de.piratentools.spickerrr2.model.Antrag;
 
 public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;

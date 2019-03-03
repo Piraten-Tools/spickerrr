@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.api;
+package de.piratentools.spickerrr2.api;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
@@ -10,9 +10,8 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 import au.com.bytecode.opencsv.CSVReader;
-import de.lostincoding.spickerrr2.model.Antrag;
-import de.lostincoding.spickerrr2.model.JsonPackage;
-import de.lostincoding.spickerrr2.model.Package;
+import de.piratentools.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.model.Package;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

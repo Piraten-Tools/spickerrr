@@ -1,11 +1,11 @@
-package de.lostincoding.spickerrr2.activities;
+package de.piratentools.spickerrr2.activities;
 
 import android.os.Bundle;
 import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import de.lostincoding.spickerrr2.fragments.AppPreferenceFragment;
+import de.piratentools.spickerrr2.fragments.AppPreferenceFragment;
 
 public class AppPreferencesActivity extends AppCompatActivity implements Preference.OnPreferenceChangeListener {
 

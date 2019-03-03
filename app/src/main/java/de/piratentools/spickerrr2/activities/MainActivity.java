@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.activities;
+package de.piratentools.spickerrr2.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,14 +21,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.api.BookResponse;
-import de.lostincoding.spickerrr2.api.PackageResponse;
-import de.lostincoding.spickerrr2.api.SpickerrrApi;
-import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.model.JsonBook;
-import de.lostincoding.spickerrr2.model.JsonPackage;
-import de.lostincoding.spickerrr2.model.Package;
+import de.piratentools.spickerrr2.R;
+import de.piratentools.spickerrr2.api.BookResponse;
+import de.piratentools.spickerrr2.api.PackageResponse;
+import de.piratentools.spickerrr2.api.SpickerrrApi;
+import de.piratentools.spickerrr2.model.DataHolder;
+import de.piratentools.spickerrr2.model.JsonBook;
+import de.piratentools.spickerrr2.model.JsonPackage;
+import de.piratentools.spickerrr2.model.Package;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

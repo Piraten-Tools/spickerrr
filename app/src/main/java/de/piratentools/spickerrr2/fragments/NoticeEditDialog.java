@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.fragments;
+package de.piratentools.spickerrr2.fragments;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import de.lostincoding.spickerrr2.R;
+import de.piratentools.spickerrr2.R;
 
 /**
  * Created by lostincoding on 22.06.16.

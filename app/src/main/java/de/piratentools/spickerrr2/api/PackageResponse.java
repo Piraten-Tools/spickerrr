@@ -1,8 +1,8 @@
-package de.lostincoding.spickerrr2.api;
+package de.piratentools.spickerrr2.api;
 
 import java.util.ArrayList;
 import java.util.List;
-import de.lostincoding.spickerrr2.model.JsonPackage;
+import de.piratentools.spickerrr2.model.JsonPackage;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

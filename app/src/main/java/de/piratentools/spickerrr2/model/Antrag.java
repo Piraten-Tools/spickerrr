@@ -1,7 +1,4 @@
-package de.lostincoding.spickerrr2.model;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package de.piratentools.spickerrr2.model;
 
 /**
  * Created by lostincoding on 26.05.16.

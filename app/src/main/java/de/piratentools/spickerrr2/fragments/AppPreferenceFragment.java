@@ -1,9 +1,9 @@
-package de.lostincoding.spickerrr2.fragments;
+package de.piratentools.spickerrr2.fragments;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
-import de.lostincoding.spickerrr2.R;
+import de.piratentools.spickerrr2.R;
 
 /**
  * Created by lostincoding on 29.06.16.

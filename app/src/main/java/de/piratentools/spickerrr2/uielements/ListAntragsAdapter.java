@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.uielements;
+package de.piratentools.spickerrr2.uielements;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 
-import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.R;
+import de.piratentools.spickerrr2.model.Antrag;
 
 /**
  * Created by lostincoding on 20.06.16.

@@ -4,7 +4,7 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "de.lostincoding.spickerrr"
+        applicationId "de.piratentools.spickerrr"
         minSdkVersion 20
         targetSdkVersion 28
         versionCode 2

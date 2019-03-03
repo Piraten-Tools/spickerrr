@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.fragments;
+package de.piratentools.spickerrr2.fragments;
 
 
 import android.content.Intent;
@@ -13,11 +13,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
-import de.lostincoding.spickerrr2.model.Antrag;
-import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.uielements.ListAntragsAdapter;
+import de.piratentools.spickerrr2.R;
+import de.piratentools.spickerrr2.activities.AntragsViewActivity;
+import de.piratentools.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.model.DataHolder;
+import de.piratentools.spickerrr2.uielements.ListAntragsAdapter;
 
 
 public class AntragsListFragment extends Fragment {

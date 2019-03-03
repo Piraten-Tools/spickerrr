@@ -1,6 +1,4 @@
-package de.lostincoding.spickerrr2.model;
-
-import io.realm.RealmObject;
+package de.piratentools.spickerrr2.model;
 
 /**
  * Created by lostincoding on 02.06.17.

@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.fragments;
+package de.piratentools.spickerrr2.fragments;
 
 
 import android.graphics.Color;
@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
-import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.activities.AntragsViewActivity;
-import de.lostincoding.spickerrr2.model.Antrag;
-import de.lostincoding.spickerrr2.model.DataHolder;
+import de.piratentools.spickerrr2.R;
+import de.piratentools.spickerrr2.activities.AntragsViewActivity;
+import de.piratentools.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.model.DataHolder;
 
 /**
  * A simple {@link Fragment} subclass.

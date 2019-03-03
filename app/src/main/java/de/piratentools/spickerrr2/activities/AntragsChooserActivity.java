@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.activities;
+package de.piratentools.spickerrr2.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -20,14 +20,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.lostincoding.spickerrr2.R;
-import de.lostincoding.spickerrr2.api.AntragsAPI;
-import de.lostincoding.spickerrr2.fragments.AntragsListFragment;
-import de.lostincoding.spickerrr2.model.Antrag;
-import de.lostincoding.spickerrr2.model.AntragsSortOptions;
-import de.lostincoding.spickerrr2.model.DataHolder;
-import de.lostincoding.spickerrr2.model.Package;
-import de.lostincoding.spickerrr2.uielements.SpickerrrViewPager;
+import de.piratentools.spickerrr2.R;
+import de.piratentools.spickerrr2.api.AntragsAPI;
+import de.piratentools.spickerrr2.fragments.AntragsListFragment;
+import de.piratentools.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.model.AntragsSortOptions;
+import de.piratentools.spickerrr2.model.DataHolder;
+import de.piratentools.spickerrr2.model.Package;
+import de.piratentools.spickerrr2.uielements.SpickerrrViewPager;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

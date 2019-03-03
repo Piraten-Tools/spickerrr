@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.api;
+package de.piratentools.spickerrr2.api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import de.lostincoding.spickerrr2.model.JsonBook;
+import de.piratentools.spickerrr2.model.JsonBook;
 
 public class BookResponse {
 

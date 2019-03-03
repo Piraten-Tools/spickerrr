@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.model;
+package de.piratentools.spickerrr2.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

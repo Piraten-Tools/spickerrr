@@ -1,4 +1,4 @@
-package de.lostincoding.spickerrr2.fragments;
+package de.piratentools.spickerrr2.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import de.lostincoding.spickerrr2.R;
+import de.piratentools.spickerrr2.R;
 
 
 public class AntragsViewContentFragment extends Fragment {
