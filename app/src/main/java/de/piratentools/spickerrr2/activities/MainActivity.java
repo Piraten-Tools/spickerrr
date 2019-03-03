@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initalizeUI() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setVisibility(View.INVISIBLE);
+        fab.hide();
     }
 
     private void loadData() {
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     dataHolder.setaPackage(apackage);
                     dataHolder.setAntragslist(null);
                 }
-                fab.setVisibility(View.VISIBLE);
+                fab.show();
             }
 
             @Override
