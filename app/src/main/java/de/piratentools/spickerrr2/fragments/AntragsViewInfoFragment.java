@@ -90,7 +90,6 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
 
     @Override
     public void onFragmentUpdate() {
-        // TODO: Save vote preference and notice persistent
         if ( antrag != null ) {
             notice.loadData(antrag.getNoticePreference(), "text/html; charset=UTF-8", "UTF-8");
         }

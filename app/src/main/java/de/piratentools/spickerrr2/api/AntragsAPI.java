@@ -84,8 +84,6 @@ public class AntragsAPI {
             // nextLine[] is an array of values from the line
             columnlist.add(nextLine);
         }
-//TODO
-
         return antragsliste;
     }
 
