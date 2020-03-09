@@ -121,9 +121,9 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         }
 
         Bundle bundle = null;
-        if (antrag.getNotice() != null) {
+        if (antrag.getNoticePreference() != null) {
             bundle = new Bundle();
-            bundle.putString("notice", antrag.getNotice());
+            bundle.putString("notice", antrag.getNoticePreference());
         }
 
         NoticeEditDialog noticeEditDialog = new NoticeEditDialog();
@@ -135,15 +135,18 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
     @Override
     public void onFinishUserDialog(String notice) {
-        antrag.setNotice(notice);
-        infoFragment.onFragmentUpdate();
-
+        antrag.setNoticePreference(notice);
+        if (infoFragment.isVisible()) {
+            infoFragment.onFragmentUpdate();
+        }
     }
 
     @Override
     public void onFinishUserDialog(VotePreference preferences) {
         antrag.setVotePreference(preferences);
-//        infoFragment.onFragmentUpdate();
+        if (infoFragment.isVisible()) {
+            infoFragment.onFragmentUpdate();
+        }
     }
 
     //interfaces

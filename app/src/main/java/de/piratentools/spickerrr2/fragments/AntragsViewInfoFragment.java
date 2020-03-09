@@ -64,7 +64,7 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
 
         author.loadData(antrag.getOwner(), "text/html; charset=UTF-8", "UTF-8");
         topic.loadData(antrag.getTopic(), "text/html; charset=UTF-8", "UTF-8");
-        notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
+        notice.loadData(antrag.getNoticePreference(), "text/html; charset=UTF-8", "UTF-8");
         // Inflate the layout for this fragment
         setVotePreferenceImage();
         return rootView;
@@ -92,8 +92,9 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
     public void onFragmentUpdate() {
         // TODO: Save vote preference and notice persistent
         if ( antrag != null ) {
-            notice.loadData(antrag.getNotice(), "text/html; charset=UTF-8", "UTF-8");
+            notice.loadData(antrag.getNoticePreference(), "text/html; charset=UTF-8", "UTF-8");
         }
         setVotePreferenceImage();
     }
+
 }

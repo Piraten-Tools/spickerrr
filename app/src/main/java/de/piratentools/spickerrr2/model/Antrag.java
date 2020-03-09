@@ -17,8 +17,6 @@ public class Antrag {
     private String motivation;
     private String bookKey;
     private String packageKey;
-    //custom fields
-    private String notice;
 
     public Antrag(String id, String title, String topic, String kind, String owner, String infourl, String abstract_short, String description, String motivation, String bookKey, String packageKey) {
         this.id = id;
@@ -78,12 +76,17 @@ public class Antrag {
         return motivation;
     }
 
-    public String getNotice() {
-        return notice;
+    public String getNoticePreference() {
+        SharedPreferences votePreferences = DataHolder.getInstance().getNoticePreferences();
+        String vote = votePreferences.getString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), "");
+        return vote;
     }
 
-    public void setNotice(String notice) {
-        this.notice = notice;
+    public void setNoticePreference(String notice) {
+        SharedPreferences noticePreferences = DataHolder.getInstance().getNoticePreferences();
+        SharedPreferences.Editor editor = noticePreferences.edit();
+        editor.putString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), notice);
+        editor.commit();
     }
 
     public VotePreference getVotePreference() {

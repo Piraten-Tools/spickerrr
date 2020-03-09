@@ -19,9 +19,11 @@ public class DataHolder {
     private HashMap<String, ArrayList<Antrag>> mapOfLists;
     private SharedPreferences appPreferences;
     private SharedPreferences votePreferences;
+    private SharedPreferences noticePreferences;
 
     private DataHolder(Context context) {
         votePreferences = context.getSharedPreferences("votes", Context.MODE_PRIVATE);
+        noticePreferences = context.getSharedPreferences("notices", Context.MODE_PRIVATE);
     }
 
     public static DataHolder createInstance(Context context) {
@@ -86,5 +88,13 @@ public class DataHolder {
 
     public void setVotePreferences(SharedPreferences votePreferences) {
         this.votePreferences = votePreferences;
+    }
+
+    public SharedPreferences getNoticePreferences() {
+        return noticePreferences;
+    }
+
+    public void setNoticePreferences(SharedPreferences noticePreferences) {
+        this.noticePreferences = noticePreferences;
     }
 }
