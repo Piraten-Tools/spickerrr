@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import de.piratentools.spickerrr2.R;
-import de.piratentools.spickerrr2.model.VotePreferences;
+import de.piratentools.spickerrr2.model.VotePreference;
 
 /**
  * Created by lostincoding on 22.06.16.
@@ -27,10 +27,6 @@ public class ChooseVotePreferencesDialog extends DialogFragment {
         return view;
     }
 
-    public interface VotePreferenceSetListener {
-        void onFinishUserDialog(VotePreferences preferences);
-    }
-
     public ChooseVotePreferencesDialog() {
 
     }
@@ -42,16 +38,16 @@ public class ChooseVotePreferencesDialog extends DialogFragment {
                 VotePreferenceSetListener activity = (VotePreferenceSetListener) getActivity();
                 switch (view.getId()) {
                     case R.id.accept:
-                        activity.onFinishUserDialog(VotePreferences.ACCEPT);
+                        activity.onFinishUserDialog(VotePreference.ACCEPT);
                         break;
                     case R.id.abstention:
-                        activity.onFinishUserDialog(VotePreferences.ABSTENTION);
+                        activity.onFinishUserDialog(VotePreference.ABSTENTION);
                         break;
                     case R.id.decline:
-                        activity.onFinishUserDialog(VotePreferences.DECLINE);
+                        activity.onFinishUserDialog(VotePreference.DECLINE);
                         break;
                     case R.id.notset:
-                        activity.onFinishUserDialog(VotePreferences.NOT_SET);
+                        activity.onFinishUserDialog(VotePreference.NOT_SET);
                         break;
                 }
 
@@ -60,15 +56,19 @@ public class ChooseVotePreferencesDialog extends DialogFragment {
             }
         };
 
-        ImageButton accept = (ImageButton) view.findViewById(R.id.accept);
-        ImageButton abstention = (ImageButton) view.findViewById(R.id.abstention);
-        ImageButton decline = (ImageButton) view.findViewById(R.id.decline);
-        ImageButton not_set = (ImageButton) view.findViewById(R.id.notset);
+        ImageButton accept = view.findViewById(R.id.accept);
+        ImageButton abstention = view.findViewById(R.id.abstention);
+        ImageButton decline = view.findViewById(R.id.decline);
+        ImageButton not_set = view.findViewById(R.id.notset);
 
         accept.setOnClickListener(listener);
         abstention.setOnClickListener(listener);
         decline.setOnClickListener(listener);
         not_set.setOnClickListener(listener);
+    }
+
+    public interface VotePreferenceSetListener {
+        void onFinishUserDialog(VotePreference preferences);
     }
 
 }

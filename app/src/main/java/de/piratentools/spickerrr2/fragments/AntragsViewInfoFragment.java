@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.activities.AntragsViewActivity;
 import de.piratentools.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.model.Book;
 import de.piratentools.spickerrr2.model.DataHolder;
+import de.piratentools.spickerrr2.model.Package;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +23,8 @@ import de.piratentools.spickerrr2.model.DataHolder;
 public class AntragsViewInfoFragment extends Fragment implements AntragsViewActivity.InfoFragmentUpdateListener {
     private int position;
     private Antrag antrag;
+    private Book book;
+    private Package aPackage;
     private WebView author;
     private WebView topic;
     private WebView notice;
@@ -38,13 +42,15 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
         antrag = null;
         position = getActivity().getIntent().getIntExtra("position", -1);
         antrag = DataHolder.getInstance().getAntragslist().get(position);
+        book = DataHolder.getInstance().getBook();
+        aPackage = DataHolder.getInstance().getaPackage();
 
         //fill View
         View rootView = inflater.inflate(R.layout.fragment_antrags_view_info, container, false);
-        author = (WebView) rootView.findViewById(R.id.author);
-        topic = (WebView) rootView.findViewById(R.id.topic);
-        notice = (WebView) rootView.findViewById(R.id.notice);
-        votePreference = (ImageView) rootView.findViewById(R.id.votePreference);
+        author = rootView.findViewById(R.id.author);
+        topic = rootView.findViewById(R.id.topic);
+        notice = rootView.findViewById(R.id.notice);
+        votePreference = rootView.findViewById(R.id.votePreference);
 
         author.getSettings();
         author.setBackgroundColor(Color.TRANSPARENT);
@@ -65,7 +71,7 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
     }
 
     private void setVotePreferenceImage() {
-        switch (antrag.getVotePreferences()) {
+        switch (antrag.getVotePreference()) {
             case ACCEPT:
                 votePreference.setImageResource(R.drawable.thumb_up);
                 break;

@@ -1,5 +1,8 @@
 package de.piratentools.spickerrr2.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,16 +17,23 @@ public class DataHolder {
     private Package aPackage;
     private List<Antrag> antragslist;
     private HashMap<String, ArrayList<Antrag>> mapOfLists;
+    private SharedPreferences appPreferences;
+    private SharedPreferences votePreferences;
 
-    private DataHolder() {
+    private DataHolder(Context context) {
+        votePreferences = context.getSharedPreferences("votes", Context.MODE_PRIVATE);
+    }
 
+    public static DataHolder createInstance(Context context) {
+        instance = new DataHolder(context.getApplicationContext());
+        return instance;
     }
 
     public static DataHolder getInstance() {
-        if (instance == null) {
-            instance = new DataHolder();
+        if (instance != null) {
+            return instance;
         }
-        return instance;
+        throw new IllegalStateException("You have to use createInstance(Context) at least once before using this method.");
     }
 
     public HashMap<String, ArrayList<Antrag>> getMapOfLists() {
@@ -59,6 +69,22 @@ public class DataHolder {
     }
 
     public void setAntragslist(List<Antrag> antragslist) {
-        this.antragslist = (ArrayList<Antrag>) antragslist;
+        this.antragslist = antragslist;
+    }
+
+    public SharedPreferences getAppPreferences() {
+        return appPreferences;
+    }
+
+    public void setAppPreferences(SharedPreferences appPreferences) {
+        this.appPreferences = appPreferences;
+    }
+
+    public SharedPreferences getVotePreferences() {
+        return votePreferences;
+    }
+
+    public void setVotePreferences(SharedPreferences votePreferences) {
+        this.votePreferences = votePreferences;
     }
 }

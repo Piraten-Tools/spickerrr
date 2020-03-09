@@ -1,5 +1,7 @@
 package de.piratentools.spickerrr2.model;
 
+import android.content.SharedPreferences;
+
 /**
  * Created by lostincoding on 26.05.16.
  */
@@ -13,11 +15,12 @@ public class Antrag {
     private String abstract_short; //abstract is forbidden
     private String description;
     private String motivation;
+    private String bookKey;
+    private String packageKey;
     //custom fields
-    private VotePreferences votePreferences = VotePreferences.NOT_SET;
     private String notice;
 
-    public Antrag(String id, String title, String topic, String kind, String owner, String infourl, String abstract_short, String description, String motivation) {
+    public Antrag(String id, String title, String topic, String kind, String owner, String infourl, String abstract_short, String description, String motivation, String bookKey, String packageKey) {
         this.id = id;
         this.title = title;
         this.topic = topic;
@@ -27,6 +30,8 @@ public class Antrag {
         this.abstract_short = abstract_short;
         this.description = description;
         this.motivation = motivation;
+        this.bookKey = bookKey;
+        this.packageKey = packageKey;
     }
 
     public String getId() {
@@ -61,6 +66,14 @@ public class Antrag {
         return description;
     }
 
+    public String getBookKey() {
+        return bookKey;
+    }
+
+    public String getPackageKey() {
+        return packageKey;
+    }
+
     public String getMotivation() {
         return motivation;
     }
@@ -73,12 +86,17 @@ public class Antrag {
         this.notice = notice;
     }
 
-    public VotePreferences getVotePreferences() {
-        return votePreferences;
+    public VotePreference getVotePreference() {
+        SharedPreferences votePreferences = DataHolder.getInstance().getVotePreferences();
+        String vote = votePreferences.getString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), "NOT_SET");
+        return VotePreference.valueOf(vote);
     }
 
-    public void setVotePreferences(VotePreferences votePreferences) {
-        this.votePreferences = votePreferences;
+    public void setVotePreference(VotePreference votePreference) {
+        SharedPreferences votePreferences = DataHolder.getInstance().getVotePreferences();
+        SharedPreferences.Editor editor = votePreferences.edit();
+        editor.putString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), votePreference.toString());
+        editor.commit();
     }
 
 
@@ -87,9 +105,7 @@ public class Antrag {
     public boolean equals(Object o) {
         if (o instanceof Antrag) {
             Antrag antrag = (Antrag) o;
-            if (antrag.id.equals(id)) {
-                return true;
-            }
+            return antrag.id.equals(id);
         }
         return false;
     }

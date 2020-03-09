@@ -35,7 +35,7 @@ public class AntragsViewContentFragment extends Fragment {
 
         //fill View
         View rootView = inflater.inflate(R.layout.fragment_antrags_view_content, container, false);
-        contentWebView = (WebView) rootView.findViewById(R.id.contentFragmentWebView);
+        contentWebView = rootView.findViewById(R.id.contentFragmentWebView);
 
         contentWebView.getSettings();
         contentWebView.setBackgroundColor(Color.TRANSPARENT);
@@ -46,4 +46,5 @@ public class AntragsViewContentFragment extends Fragment {
 
         return rootView;
     }
+
 }

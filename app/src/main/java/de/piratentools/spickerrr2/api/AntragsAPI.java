@@ -66,7 +66,9 @@ public class AntragsAPI {
                 }
             }
 
-            antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation));
+            String bookKey = insertpackage.getBookKey();
+            String packageKey = insertpackage.getKey();
+            antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation, bookKey, packageKey));
         }
 
         return antragsliste;

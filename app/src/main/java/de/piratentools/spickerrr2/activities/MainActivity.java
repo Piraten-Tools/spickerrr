@@ -63,14 +63,15 @@ public class MainActivity extends AppCompatActivity {
         service = retrofit.create(SpickerrrApi.class);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        dataHolder = DataHolder.createInstance(getApplicationContext());
+        dataHolder.setAppPreferences(sharedPreferences);
         initalizeUI();
-        dataHolder = DataHolder.getInstance();
         loadData();
 
     }
 
     private void initalizeUI() {
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.hide();
     }
 
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillPackageSpinner(final List<JsonPackage> packagelist) {
         ArrayList<String> packagenames = new ArrayList<>();
-        packageSpinner = (Spinner) findViewById(R.id.packagespinner);
+        packageSpinner = findViewById(R.id.packagespinner);
         for (JsonPackage pack : packagelist) {
             packagenames.add(pack.getName());
         }
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillBookSpinner(final List<JsonBook> booklist) {
         ArrayList<String> booknames = new ArrayList<>();
-        bookSpinner = (Spinner) findViewById(R.id.bookspinner);
+        bookSpinner = findViewById(R.id.bookspinner);
         if (booklist != null) {
 
 

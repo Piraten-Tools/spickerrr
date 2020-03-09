@@ -11,14 +11,14 @@ import android.view.View;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import de.piratentools.spickerrr2.R;
-import de.piratentools.spickerrr2.model.DataHolder;
-import de.piratentools.spickerrr2.uielements.SpickerrrViewPager;
-import de.piratentools.spickerrr2.model.VotePreferences;
 import de.piratentools.spickerrr2.fragments.AntragsViewContentFragment;
 import de.piratentools.spickerrr2.fragments.AntragsViewInfoFragment;
 import de.piratentools.spickerrr2.fragments.ChooseVotePreferencesDialog;
 import de.piratentools.spickerrr2.fragments.NoticeEditDialog;
 import de.piratentools.spickerrr2.model.Antrag;
+import de.piratentools.spickerrr2.model.DataHolder;
+import de.piratentools.spickerrr2.model.VotePreference;
+import de.piratentools.spickerrr2.uielements.SpickerrrViewPager;
 
 public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;
@@ -80,8 +80,8 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.getId() + " " + antrag.getTitle());
 
-        viewPager = (android.support.v4.view.ViewPager) findViewById(R.id.antragsViewViewpager);
-        tabLayout = (TabLayout) findViewById(R.id.antragsViewTabs);
+        viewPager = findViewById(R.id.antragsViewViewpager);
+        tabLayout = findViewById(R.id.antragsViewTabs);
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
@@ -89,11 +89,11 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         //adjust icons  for buttons
 
 
-        FloatingActionButton voteButton = (FloatingActionButton) findViewById(R.id.editVotePreference);
+        FloatingActionButton voteButton = findViewById(R.id.editVotePreference);
         voteButton.setIcon(R.drawable.ic_thumbs_up_down_white_24dp);
 
 
-        FloatingActionButton noticeButton = (FloatingActionButton) findViewById(R.id.editNotice);
+        FloatingActionButton noticeButton = findViewById(R.id.editNotice);
         noticeButton.setIcon(R.drawable.ic_assignment_white_24dp);
 
 
@@ -141,9 +141,9 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     }
 
     @Override
-    public void onFinishUserDialog(VotePreferences preferences) {
-        antrag.setVotePreferences(preferences);
-        infoFragment.onFragmentUpdate();
+    public void onFinishUserDialog(VotePreference preferences) {
+        antrag.setVotePreference(preferences);
+//        infoFragment.onFragmentUpdate();
     }
 
     //interfaces
