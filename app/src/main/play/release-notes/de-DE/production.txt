@@ -1,3 +1,9 @@
+Version 2.1.4
+ - Wählverhalten und Notiz werden jetzt gespeichert
+ - Mehrere Abstürze und Fehler behoben
+ - Gradle Play Publisher implementiert
+ - Abhängigkeiten aktualisiert
+Version 2.1
  - Neuer Maintainer
  - Neues Backend
  - Neue Webseite
