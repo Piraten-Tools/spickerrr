@@ -5,3 +5,5 @@
 /build
 /captures
 .idea/
+/keystore.properties
+/api-key.json

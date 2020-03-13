@@ -2,7 +2,19 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.github.triplet.play'
 apply plugin: 'realm-android'
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
+    signingConfigs {
+        release {
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyPassword keystoreProperties['keyPassword']
+            keyAlias = keystoreProperties['keyAlias']
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "de.piratentools.spickerrr"
@@ -16,6 +28,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
         }
     }
     productFlavors {
@@ -23,6 +39,10 @@ android {
     lintOptions {
         abortOnError false
     }
+}
+
+play {
+    serviceAccountCredentials = rootProject.file('api-key.json')
 }
 
 dependencies {

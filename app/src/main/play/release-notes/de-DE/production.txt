@@ -1,0 +1,4 @@
+ - Neuer Maintainer
+ - Neues Backend
+ - Neue Webseite
+ - Diverse Bugs behoben
