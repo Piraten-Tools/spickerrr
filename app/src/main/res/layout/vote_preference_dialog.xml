@@ -7,32 +7,29 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:id="@+id/accept"
-
         android:src="@drawable/thumb_up" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:id="@+id/abstention"
         android:src="@drawable/equal" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:id="@+id/decline"
-
         android:src="@drawable/thumb_down" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:id="@+id/notset"
-
         android:src="@drawable/help" />
 
 </LinearLayout>
