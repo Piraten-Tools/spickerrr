@@ -1,6 +1,6 @@
 package de.piratentools.spickerrr2.api;
 
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,6 +54,8 @@ public class AntragsAPI {
             kind = fixUrlEncoding(kind);
             topic = fixUrlEncoding(topic);
 
+            description = fixUrlEncoding(description);
+            motivation = fixUrlEncoding(motivation);
 
             //fix relative owner URL
             String baseurl = "http://wiki.piratenpartei.de/";
@@ -105,9 +107,6 @@ public class AntragsAPI {
 
     private static String fixUrlEncoding(String input) {
         input = StringEscapeUtils.unescapeHtml4(input);
-        input = input.replaceAll("<p>", "");
-        input = input.replaceAll("</p>", "");
-        input = input.replaceAll("<br>", "");
         input = input.replaceAll("%C3%84", "Ä");
         input = input.replaceAll("%C3%96", "Ö");
         input = input.replaceAll("%C3%9C", "Ü");

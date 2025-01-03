@@ -5,9 +5,9 @@ apply plugin: 'realm-android'
 android {
     defaultConfig {
         applicationId "de.piratentools.spickerrr"
-        minSdkVersion 20
-        compileSdk 28
-        targetSdkVersion 28
+        minSdkVersion 25
+        compileSdk 34
+        targetSdkVersion 34
         versionCode 4
         versionName "2.1.4"
         vectorDrawables.useSupportLibrary = true
@@ -44,7 +44,11 @@ if(keystorePropertiesFile.exists()) {
     android['buildTypes']['release']['signingConfig'] = android['signingConfigs'].release
 }
 
-
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
 
 play {
     serviceAccountCredentials = rootProject.file('api-key.json')
@@ -52,8 +56,8 @@ play {
 
 dependencies {
     String supportVersion = '28.0.0'
-    String retrofitVersion = '2.5.0'
-    String okHttpVersion = '3.12.1'
+    String retrofitVersion = '2.11.0'
+    String okHttpVersion = '3.14.9'
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:design:$supportVersion"
@@ -64,7 +68,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
 
     implementation 'net.sf.opencsv:opencsv:2.3'
-    implementation 'org.apache.commons:commons-lang3:3.8.1'
-    implementation 'org.jsoup:jsoup:1.11.3'
+    implementation 'org.apache.commons:commons-text:1.13.0'
+    implementation 'org.jsoup:jsoup:1.18.3'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
 }
