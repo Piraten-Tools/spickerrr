@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initCallbacks() {
-        bookcallback = new Callback<BookResponse>() {
+        bookcallback = new Callback<>() {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
                 if (response.body().getSuccess()) {
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 showToast("Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
             }
         };
-        packagecallback = new Callback<PackageResponse>() {
+        packagecallback = new Callback<>() {
             @Override
             public void onResponse(Call<PackageResponse> call, Response<PackageResponse> response) {
                 if (response.body().getSuccess()) {
