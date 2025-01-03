@@ -65,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         dataHolder = DataHolder.createInstance(getApplicationContext());
         dataHolder.setAppPreferences(sharedPreferences);
-        initalizeUI();
+        initializeUI();
         loadData();
 
     }
 
-    private void initalizeUI() {
+    private void initializeUI() {
         fab = findViewById(R.id.fab);
         fab.hide();
     }

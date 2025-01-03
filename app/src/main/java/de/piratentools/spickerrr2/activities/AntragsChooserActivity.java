@@ -52,7 +52,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         if (sortOptions != null) {
             antragsSortOptions = sortOptions;
         }
-        initalizeUI();
+        initializeUI();
         showProgressDialog();
         loadData();
     }
@@ -140,7 +140,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         return true;
     }
 
-    private void initalizeUI() {
+    private void initializeUI() {
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
