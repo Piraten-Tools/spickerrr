@@ -32,28 +32,25 @@ public class ChooseVotePreferencesDialog extends DialogFragment {
     }
 
     public void setUpImageButtons(View view) {
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                VotePreferenceSetListener activity = (VotePreferenceSetListener) getActivity();
-                switch (view.getId()) {
-                    case R.id.accept:
-                        activity.onFinishUserDialog(VotePreference.ACCEPT);
-                        break;
-                    case R.id.abstention:
-                        activity.onFinishUserDialog(VotePreference.ABSTENTION);
-                        break;
-                    case R.id.decline:
-                        activity.onFinishUserDialog(VotePreference.DECLINE);
-                        break;
-                    case R.id.notset:
-                        activity.onFinishUserDialog(VotePreference.NOT_SET);
-                        break;
-                }
-
-
-                dismiss();
+        View.OnClickListener listener = view1 -> {
+            VotePreferenceSetListener activity = (VotePreferenceSetListener) getActivity();
+            switch (view1.getId()) {
+                case R.id.accept:
+                    activity.onFinishUserDialog(VotePreference.ACCEPT);
+                    break;
+                case R.id.abstention:
+                    activity.onFinishUserDialog(VotePreference.ABSTENTION);
+                    break;
+                case R.id.decline:
+                    activity.onFinishUserDialog(VotePreference.DECLINE);
+                    break;
+                case R.id.notset:
+                    activity.onFinishUserDialog(VotePreference.NOT_SET);
+                    break;
             }
+
+
+            dismiss();
         };
 
         ImageButton accept = view.findViewById(R.id.accept);

@@ -78,8 +78,7 @@ public class Antrag {
 
     public String getNoticePreference() {
         SharedPreferences votePreferences = DataHolder.getInstance().getNoticePreferences();
-        String vote = votePreferences.getString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), "");
-        return vote;
+        return votePreferences.getString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), "");
     }
 
     public void setNoticePreference(String notice) {

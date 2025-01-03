@@ -42,12 +42,7 @@ public class AntragsListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_antragslist, container, false);
         listView = rootView.findViewById(R.id.listView);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                openNextActivity(position);
-            }
-        });
+        listView.setOnItemClickListener((parent, view, position, id) -> openNextActivity(position));
 
         // Inflate the layout for this fragment
         fillListView();

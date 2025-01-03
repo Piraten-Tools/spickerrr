@@ -399,8 +399,7 @@ public class JsonBook {
 
 
     public Book toBook() {
-        Book book = new Book(key, name, description);
-        return book;
+        return new Book(key, name, description);
     }
 
     public String toString() {

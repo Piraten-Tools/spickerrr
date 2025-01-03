@@ -738,8 +738,7 @@ public class JsonPackage {
     }
 
     public Package toPackage() {
-        Package apackage = new Package(name,key,sourceType,csvSeperator,csvQuote,dataUrl,colId,colTitle,colTopic,colKind,colOwner,colInfoUrl,colAbstract,colDescription,colMotivation,bookKey,id);
-        return apackage;
+        return new Package(name,key,sourceType,csvSeperator,csvQuote,dataUrl,colId,colTitle,colTopic,colKind,colOwner,colInfoUrl,colAbstract,colDescription,colMotivation,bookKey,id);
     }
 
 
