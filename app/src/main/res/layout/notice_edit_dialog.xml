@@ -14,7 +14,8 @@
             android:layout_height="0dip"
             android:gravity="top"
             android:inputType="textMultiLine"
-            android:minLines="10" />
+            android:minLines="10"
+            android:importantForAutofill="no" />
     </ScrollView>
 
     <Button

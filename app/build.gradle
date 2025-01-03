@@ -3,10 +3,10 @@ apply plugin: 'com.github.triplet.play'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 28
     defaultConfig {
         applicationId "de.piratentools.spickerrr"
         minSdkVersion 20
+        compileSdk 28
         targetSdkVersion 28
         versionCode 4
         versionName "2.1.4"

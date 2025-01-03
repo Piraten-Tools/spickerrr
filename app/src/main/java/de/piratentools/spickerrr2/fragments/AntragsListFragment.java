@@ -40,7 +40,7 @@ public class AntragsListFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_antragslist, container, false);
-        listView = (ListView) rootView.findViewById(R.id.listView);
+        listView = rootView.findViewById(R.id.listView);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -13,7 +13,7 @@ public class PackageResponse {
     private Boolean success;
     @SerializedName("data")
     @Expose
-    private List<JsonPackage> data = new ArrayList<JsonPackage>();
+    private List<JsonPackage> data = new ArrayList<>();
 
     /**
      *

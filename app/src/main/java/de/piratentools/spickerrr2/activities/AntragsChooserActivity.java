@@ -85,14 +85,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
                 }
                 dataHolder.setAntragslist(antragslist);
                 dialog.dismiss();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        setUpView();
-
-
-                    }
-                });
+                runOnUiThread(AntragsChooserActivity.this::setUpView);
 
             }
         };
@@ -103,14 +96,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
             dialog.dismiss();
             antragslist = new ArrayList<>();
             antragslist.addAll(dataHolder.getAntragslist());
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    setUpView();
-
-
-                }
-            });
+            runOnUiThread(this::setUpView);
         }
 
 
@@ -159,8 +145,8 @@ public class AntragsChooserActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         setTitle(aPackage.getName());
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = findViewById(R.id.viewpager);
+        tabLayout = findViewById(R.id.tabs);
     }
 
     private void setupViewPager(ViewPager viewPager) {

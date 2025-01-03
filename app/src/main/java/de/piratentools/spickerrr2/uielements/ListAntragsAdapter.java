@@ -40,9 +40,9 @@ public class ListAntragsAdapter extends ArrayAdapter<Antrag> {
             myView = inflater.inflate(R.layout.advanced_antrags_list_item, null);
             // configure view holder
             ViewHolder viewHolder = new ViewHolder();
-            viewHolder.id = (TextView) myView.findViewById(R.id.idviewnew);
-            viewHolder.title = (TextView) myView.findViewById(R.id.titleviewnew);
-            viewHolder.textPreview = (TextView) myView.findViewById(R.id.textpreview);
+            viewHolder.id = myView.findViewById(R.id.idviewnew);
+            viewHolder.title = myView.findViewById(R.id.titleviewnew);
+            viewHolder.textPreview = myView.findViewById(R.id.textpreview);
             myView.setTag(viewHolder);
         }
 

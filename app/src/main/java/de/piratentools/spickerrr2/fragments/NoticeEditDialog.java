@@ -32,11 +32,11 @@ public class NoticeEditDialog extends DialogFragment implements View.OnClickList
     public void onResume() {
         //make fragment bigger
         // Get existing layout params for the window
-        ViewGroup.LayoutParams params = getDialog().getWindow().getAttributes();
+        WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
         // Assign window properties to fill the parent
         params.width = WindowManager.LayoutParams.MATCH_PARENT;
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        getDialog().getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+        getDialog().getWindow().setAttributes(params);
         // Call super onResume after sizing
         super.onResume();
 
@@ -47,8 +47,8 @@ public class NoticeEditDialog extends DialogFragment implements View.OnClickList
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.notice_edit_dialog, container);
-        mEditText = (EditText) view.findViewById(R.id.editText);
-        save = (Button) view.findViewById(R.id.saveButton);
+        mEditText = view.findViewById(R.id.editText);
+        save = view.findViewById(R.id.saveButton);
 
 
         mEditText.requestFocus();

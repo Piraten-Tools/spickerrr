@@ -6,17 +6,17 @@ import android.content.SharedPreferences;
  * Created by lostincoding on 26.05.16.
  */
 public class Antrag {
-    private String id;
-    private String title;
-    private String topic;
-    private String kind;
-    private String owner;
-    private String infourl;
-    private String abstract_short; //abstract is forbidden
-    private String description;
-    private String motivation;
-    private String bookKey;
-    private String packageKey;
+    private final String id;
+    private final String title;
+    private final String topic;
+    private final String kind;
+    private final String owner;
+    private final String infourl;
+    private final String abstract_short; //abstract is forbidden
+    private final String description;
+    private final String motivation;
+    private final String bookKey;
+    private final String packageKey;
 
     public Antrag(String id, String title, String topic, String kind, String owner, String infourl, String abstract_short, String description, String motivation, String bookKey, String packageKey) {
         this.id = id;
@@ -86,7 +86,7 @@ public class Antrag {
         SharedPreferences noticePreferences = DataHolder.getInstance().getNoticePreferences();
         SharedPreferences.Editor editor = noticePreferences.edit();
         editor.putString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), notice);
-        editor.commit();
+        editor.apply();
     }
 
     public VotePreference getVotePreference() {
@@ -99,7 +99,7 @@ public class Antrag {
         SharedPreferences votePreferences = DataHolder.getInstance().getVotePreferences();
         SharedPreferences.Editor editor = votePreferences.edit();
         editor.putString(this.getBookKey() + "_" + this.getPackageKey() + "_" + this.getId(), votePreference.toString());
-        editor.commit();
+        editor.apply();
     }
 
 

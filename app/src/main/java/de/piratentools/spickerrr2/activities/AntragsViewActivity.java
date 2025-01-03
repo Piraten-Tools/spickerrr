@@ -39,7 +39,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         antrag = dataHolder.getAntragslist().get(position);
 
 
-        initalizeUI();
+        initializeUI();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -76,7 +76,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         viewPager.setAdapter(adapter);
     }
 
-    private void initalizeUI() {
+    private void initializeUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.getId() + " " + antrag.getTitle());
 
