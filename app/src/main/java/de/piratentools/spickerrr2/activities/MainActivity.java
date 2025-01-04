@@ -226,12 +226,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.reload:
+                initializeUI();
+                loadData();
+                break;
             case R.id.preferences:
                 startActivity(new Intent(this, AppPreferencesActivity.class));
                 break;
         }
-
-
         return true;
     }
 

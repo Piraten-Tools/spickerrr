@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/reload"
+        android:icon="@android:drawable/ic_popup_sync"
+        android:title="Reload"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/preferences"
         android:icon="@drawable/ic_settings_white_24dp"
         android:title="Einstellungen"
