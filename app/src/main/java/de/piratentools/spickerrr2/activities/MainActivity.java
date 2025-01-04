@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private List<JsonBook> bookList;
     private List<JsonPackage> packageList;
     private Spinner packageSpinner;
-    private Spinner bookSpinner;
     private FloatingActionButton fab;
     private SharedPreferences sharedPreferences;
     private DataHolder dataHolder;
@@ -88,11 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } else {
-            Context context = getApplicationContext();
-            CharSequence text = "Internetverbindung notwendig";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast.makeText(context, text, duration).show();
+            showToast("Internetverbindung notwendig");
         }
     }
 
@@ -133,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillBookSpinner(final List<JsonBook> booklist) {
         ArrayList<String> booknames = new ArrayList<>();
-        bookSpinner = findViewById(R.id.bookspinner);
+        Spinner bookSpinner = findViewById(R.id.bookspinner);
         if (booklist != null) {
 
 
@@ -165,8 +161,8 @@ public class MainActivity extends AppCompatActivity {
     private void initCallbacks() {
         bookcallback = new Callback<>() {
             @Override
-            public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
-                if (response.body().getSuccess()) {
+            public void onResponse(@NonNull Call<BookResponse> call, @NonNull Response<BookResponse> response) {
+                if (response.body() != null && response.body().getSuccess()) {
                     bookList = response.body().getData();
                     fillBookSpinner(bookList);
                 } else {
@@ -176,15 +172,15 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<BookResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<BookResponse> call, @NonNull Throwable t) {
                 //Not Successful
                 showToast("Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
             }
         };
         packagecallback = new Callback<>() {
             @Override
-            public void onResponse(Call<PackageResponse> call, Response<PackageResponse> response) {
-                if (response.body().getSuccess()) {
+            public void onResponse(@NonNull Call<PackageResponse> call, @NonNull Response<PackageResponse> response) {
+                if (response.body() != null && response.body().getSuccess()) {
                     //filter csv , it is not working right now
                     List<JsonPackage> list = response.body().getData();
                     packageList = new ArrayList<>();
@@ -202,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<PackageResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<PackageResponse> call, @NonNull Throwable t) {
                 //Not Successful
                 showToast("Beim Laden der Antragspakete ist ein Fehler aufgetreten!");
             }
