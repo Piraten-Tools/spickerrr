@@ -60,10 +60,10 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         bundle.putInt("position", position);
 
         Bundle descriptionBundle = new Bundle();
-        descriptionBundle.putString("content", antrag.getDescription());
+        descriptionBundle.putString("content", antrag.description());
 
         Bundle motivationBundle = new Bundle();
-        motivationBundle.putString("content", antrag.getMotivation());
+        motivationBundle.putString("content", antrag.motivation());
 
         infoFragment.setArguments(bundle);
         descriptionFragment.setArguments(descriptionBundle);
@@ -78,7 +78,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
     private void initializeUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle(antrag.getId() + " " + antrag.getTitle());
+        setTitle(antrag.id() + " " + antrag.title());
 
         viewPager = findViewById(R.id.antragsViewViewpager);
         tabLayout = findViewById(R.id.antragsViewTabs);

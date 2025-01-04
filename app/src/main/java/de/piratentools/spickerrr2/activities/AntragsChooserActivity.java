@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.api.AntragsAPI;
@@ -66,7 +68,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
     private void loadData() {
         Callback dataCallback = new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 Context context = getApplicationContext();
                 CharSequence text = "Beim Laden der Anträge ist ein Fehler aufgetreten!";
                 int duration = Toast.LENGTH_SHORT;
@@ -75,11 +77,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NonNull Call call, Response response) throws IOException {
                 antragslist = new ArrayList<>();
 
                 try {
-                    antragslist = AntragsAPI.parseData(response.body().string(), aPackage);
+                    antragslist = AntragsAPI.parseData(Objects.requireNonNull(response.body()).string(), aPackage);
                 } catch (JSONException e) {
                     Log.e("JSON", e.toString());
                 }
@@ -155,23 +157,17 @@ public class AntragsChooserActivity extends AppCompatActivity {
         HashMap<String, ArrayList<Antrag>> mapoflists = new HashMap<>();
         dataHolder.setMapOfLists(mapoflists);
         //for each criterion create an arrraylist and add it to the map
-        //if there isnt a list for the criterion, create one
+        //if there isn't a list for the criterion, create one
         for (Antrag antrag : antragslist) {
             String criterion;
-            switch (antragsSortOptions) {
-                case KIND:
-                    criterion = antrag.getKind();
-                    break;
-                case TOPIC:
-                    criterion = antrag.getTopic();
-                    break;
-                default:
-                    criterion = antrag.getKind();
-                    break;
+            if (Objects.requireNonNull(antragsSortOptions) == AntragsSortOptions.TOPIC) {
+                criterion = antrag.topic();
+            } else {
+                criterion = antrag.kind();
             }
 
             if (mapoflists.containsKey(criterion)) {
-                mapoflists.get(criterion).add(antrag);
+                Objects.requireNonNull(mapoflists.get(criterion)).add(antrag);
             } else {
                 ArrayList<Antrag> list = new ArrayList<>();
                 list.add(antrag);

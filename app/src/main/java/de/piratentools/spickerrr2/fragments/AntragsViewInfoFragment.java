@@ -62,8 +62,8 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
         notice.setBackgroundColor(Color.TRANSPARENT);
 
 
-        author.loadData(antrag.getOwner(), "text/html; charset=UTF-8", "UTF-8");
-        topic.loadData(antrag.getTopic(), "text/html; charset=UTF-8", "UTF-8");
+        author.loadData(antrag.owner(), "text/html; charset=UTF-8", "UTF-8");
+        topic.loadData(antrag.topic(), "text/html; charset=UTF-8", "UTF-8");
         notice.loadData(antrag.getNoticePreference(), "text/html; charset=UTF-8", "UTF-8");
         // Inflate the layout for this fragment
         setVotePreferenceImage();

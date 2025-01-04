@@ -52,10 +52,10 @@ public class ListAntragsAdapter extends ArrayAdapter<Antrag> {
 
         Antrag currentAntrag = antraege[position];
 
-        holder.id.setText(currentAntrag.getId());
+        holder.id.setText(currentAntrag.id());
 
-        holder.title.setText(currentAntrag.getTitle());
-        String descriptionText = Jsoup.parse(currentAntrag.getDescription()).text();
+        holder.title.setText(currentAntrag.title());
+        String descriptionText = Jsoup.parse(currentAntrag.description()).text();
         holder.textPreview.setText(descriptionText);
         return myView;
     }
