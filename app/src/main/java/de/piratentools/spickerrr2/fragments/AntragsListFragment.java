@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.activities.AntragsViewActivity;
@@ -72,7 +73,7 @@ public class AntragsListFragment extends Fragment {
 
 
         //create a  with the stuff which should be displayed
-        Antrag[] antragsArray = new Antrag[list.size()];
+        Antrag[] antragsArray = new Antrag[Objects.requireNonNull(list).size()];
         for (int i = 0; i < list.size(); i++) {
             antragsArray[i] = list.get(i);
         }

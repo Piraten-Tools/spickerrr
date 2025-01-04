@@ -24,7 +24,7 @@ public class AntragsAPI {
     public static void loadData(Package data, Callback callback) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(data.getDataUrl())
+                .url(data.dataUrl())
                 .build();
 
         client.newCall(request).enqueue(callback);
@@ -39,15 +39,15 @@ public class AntragsAPI {
         for (int i = 0; i < antragsArray.length(); i++) {
             JSONObject aktobject = antragsArray.getJSONObject(i);
             //i have to now if the object is null if i want to cast to string so i use proxyobjects to check this
-            String id = aktobject.isNull(insertpackage.getColId()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColId());
-            String title = aktobject.isNull(insertpackage.getColTitle()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColTitle());
-            String kind = aktobject.isNull(insertpackage.getColKind()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColKind());
-            String topic = aktobject.isNull(insertpackage.getColTopic()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColTopic());
-            String owner = aktobject.isNull(insertpackage.getColOwner()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColOwner());
-            String infourl = aktobject.isNull(insertpackage.getColInfoUrl()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColInfoUrl());
-            String abstract_short = aktobject.isNull(insertpackage.getColAbstract()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColAbstract());
-            String description = aktobject.isNull(insertpackage.getColDescription()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColDescription());
-            String motivation = aktobject.isNull(insertpackage.getColMotivation()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.getColMotivation());
+            String id = aktobject.isNull(insertpackage.colId()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colId());
+            String title = aktobject.isNull(insertpackage.colTitle()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colTitle());
+            String kind = aktobject.isNull(insertpackage.colKind()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colKind());
+            String topic = aktobject.isNull(insertpackage.colTopic()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colTopic());
+            String owner = aktobject.isNull(insertpackage.colOwner()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colOwner());
+            String infourl = aktobject.isNull(insertpackage.colInfoUrl()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colInfoUrl());
+            String abstract_short = aktobject.isNull(insertpackage.colAbstract()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colAbstract());
+            String description = aktobject.isNull(insertpackage.colDescription()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colDescription());
+            String motivation = aktobject.isNull(insertpackage.colMotivation()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colMotivation());
 
             id = fixUrlEncoding(id);
             title = fixUrlEncoding(title);
@@ -68,8 +68,8 @@ public class AntragsAPI {
                 }
             }
 
-            String bookKey = insertpackage.getBookKey();
-            String packageKey = insertpackage.getKey();
+            String bookKey = insertpackage.bookKey();
+            String packageKey = insertpackage.key();
             antragsliste.add(new Antrag(id, title, topic, kind, owner, infourl, abstract_short, description, motivation, bookKey, packageKey));
         }
 
@@ -79,7 +79,7 @@ public class AntragsAPI {
 
     private static ArrayList<Antrag> parseCSV(String data, Package insertPackage) throws IOException {
         ArrayList<Antrag> antragsliste = new ArrayList<>();
-        CSVReader reader = new CSVReader(new StringReader(data), insertPackage.getCsvSeperator().charAt(0), insertPackage.getCsvSeperator().charAt(0));
+        CSVReader reader = new CSVReader(new StringReader(data), insertPackage.csvSeperator().charAt(0), insertPackage.csvSeperator().charAt(0));
         ArrayList<String[]> columnlist = new ArrayList<>();
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
@@ -90,19 +90,11 @@ public class AntragsAPI {
     }
 
     public static ArrayList<Antrag> parseData(String data, Package insertpackage) throws JSONException, IOException {
-        ArrayList<Antrag> antragslist = new ArrayList<>();
-
-        switch (insertpackage.getSourceType()) {
-            case "JSON":
-                antragslist = parseJSON(data, insertpackage);
-                break;
-            case "CSV":
-                antragslist = parseCSV(data, insertpackage);
-                break;
-        }
-
-
-        return antragslist;
+        return switch (insertpackage.sourceType()) {
+            case "JSON" -> parseJSON(data, insertpackage);
+            case "CSV" -> parseCSV(data, insertpackage);
+            default -> new ArrayList<>();
+        };
     }
 
     private static String fixUrlEncoding(String input) {

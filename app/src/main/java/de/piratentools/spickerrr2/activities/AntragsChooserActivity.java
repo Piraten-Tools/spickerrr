@@ -146,7 +146,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        setTitle(aPackage.getName());
+        setTitle(aPackage.name());
         viewPager = findViewById(R.id.viewpager);
         tabLayout = findViewById(R.id.tabs);
     }

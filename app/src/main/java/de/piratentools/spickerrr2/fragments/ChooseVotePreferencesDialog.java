@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import java.util.Objects;
+
 import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.model.VotePreference;
 
@@ -20,7 +22,7 @@ public class ChooseVotePreferencesDialog extends DialogFragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.vote_preference_dialog, container);
-        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        Objects.requireNonNull(getDialog().getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         getDialog().setTitle("Lege dein Wahlverhalten fest");
         setUpImageButtons(view);
 

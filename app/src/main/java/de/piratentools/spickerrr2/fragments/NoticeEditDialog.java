@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Objects;
+
 import de.piratentools.spickerrr2.R;
 
 /**
@@ -32,7 +34,7 @@ public class NoticeEditDialog extends DialogFragment implements View.OnClickList
     public void onResume() {
         //make fragment bigger
         // Get existing layout params for the window
-        WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
+        WindowManager.LayoutParams params = Objects.requireNonNull(getDialog().getWindow()).getAttributes();
         // Assign window properties to fill the parent
         params.width = WindowManager.LayoutParams.MATCH_PARENT;
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -60,7 +62,7 @@ public class NoticeEditDialog extends DialogFragment implements View.OnClickList
 
         save.setOnClickListener(this);
 
-        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        Objects.requireNonNull(getDialog().getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         getDialog().setTitle("Bearbeite deine Notizen");
 
 

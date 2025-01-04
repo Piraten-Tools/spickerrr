@@ -10,6 +10,8 @@ import android.view.View;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import java.util.Objects;
+
 import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.fragments.AntragsViewContentFragment;
 import de.piratentools.spickerrr2.fragments.AntragsViewInfoFragment;
@@ -77,7 +79,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     }
 
     private void initializeUI() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.id() + " " + antrag.title());
 
         viewPager = findViewById(R.id.antragsViewViewpager);
