@@ -37,8 +37,7 @@ public record Antrag(String id, String title, String topic, String kind, String 
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Antrag) {
-            Antrag antrag = (Antrag) o;
+        if (o instanceof Antrag antrag) {
             return antrag.id.equals(id);
         }
         return false;

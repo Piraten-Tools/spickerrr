@@ -23,12 +23,7 @@ import de.piratentools.spickerrr2.model.Package;
  * A simple {@link Fragment} subclass.
  */
 public class AntragsViewInfoFragment extends Fragment implements AntragsViewActivity.InfoFragmentUpdateListener {
-    private int position;
     private Antrag antrag;
-    private Book book;
-    private Package aPackage;
-    private WebView author;
-    private WebView topic;
     private WebView notice;
     private ImageView votePreference;
 
@@ -42,15 +37,15 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
                              Bundle savedInstanceState) {
         //get Antrag from Arguments
         antrag = null;
-        position = Objects.requireNonNull(getActivity()).getIntent().getIntExtra("position", -1);
+        int position = Objects.requireNonNull(getActivity()).getIntent().getIntExtra("position", -1);
         antrag = DataHolder.getInstance().getAntragslist().get(position);
-        book = DataHolder.getInstance().getBook();
-        aPackage = DataHolder.getInstance().getaPackage();
+        Book book = DataHolder.getInstance().getBook();
+        Package aPackage = DataHolder.getInstance().getaPackage();
 
         //fill View
         View rootView = inflater.inflate(R.layout.fragment_antrags_view_info, container, false);
-        author = rootView.findViewById(R.id.author);
-        topic = rootView.findViewById(R.id.topic);
+        WebView author = rootView.findViewById(R.id.author);
+        WebView topic = rootView.findViewById(R.id.topic);
         notice = rootView.findViewById(R.id.notice);
         votePreference = rootView.findViewById(R.id.votePreference);
 

@@ -12,8 +12,6 @@ import de.piratentools.spickerrr2.R;
 
 
 public class AntragsViewContentFragment extends Fragment {
-    private String content = "";
-    private WebView contentWebView;
 
     public AntragsViewContentFragment() {
         // Required empty public constructor
@@ -27,7 +25,7 @@ public class AntragsViewContentFragment extends Fragment {
 
 
         //get String from Arguments
-        content = null;
+        String content = null;
         Bundle bundle = getArguments();
         if (bundle != null) {
             content = bundle.getString("content");
@@ -35,7 +33,7 @@ public class AntragsViewContentFragment extends Fragment {
 
         //fill View
         View rootView = inflater.inflate(R.layout.fragment_antrags_view_content, container, false);
-        contentWebView = rootView.findViewById(R.id.contentFragmentWebView);
+        WebView contentWebView = rootView.findViewById(R.id.contentFragmentWebView);
 
         contentWebView.getSettings();
         contentWebView.setBackgroundColor(Color.TRANSPARENT);

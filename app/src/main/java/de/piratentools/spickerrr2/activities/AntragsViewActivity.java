@@ -24,18 +24,13 @@ import de.piratentools.spickerrr2.uielements.SpickerrrViewPager;
 
 public class AntragsViewActivity extends AppCompatActivity implements NoticeEditDialog.NoticeEditedListener, ChooseVotePreferencesDialog.VotePreferenceSetListener {
     private Antrag antrag;
-    private TabLayout tabLayout;
-    private android.support.v4.view.ViewPager viewPager;
     private AntragsViewInfoFragment infoFragment;
-    private AntragsViewContentFragment descriptionFragment;
-    private AntragsViewContentFragment motivationFragment;
-    private DataHolder dataHolder;
     int position = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrags_view);
-        dataHolder = DataHolder.getInstance();
+        DataHolder dataHolder = DataHolder.getInstance();
 
         position = getIntent().getIntExtra("position", -1);
         antrag = dataHolder.getAntragslist().get(position);
@@ -54,8 +49,8 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         SpickerrrViewPager adapter = new SpickerrrViewPager(getSupportFragmentManager());
 
         infoFragment = new AntragsViewInfoFragment();
-        descriptionFragment = new AntragsViewContentFragment();
-        motivationFragment = new AntragsViewContentFragment();
+        AntragsViewContentFragment descriptionFragment = new AntragsViewContentFragment();
+        AntragsViewContentFragment motivationFragment = new AntragsViewContentFragment();
 
         //give  fragment the data over the bundle
         Bundle bundle = new Bundle();
@@ -82,8 +77,8 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.id() + " " + antrag.title());
 
-        viewPager = findViewById(R.id.antragsViewViewpager);
-        tabLayout = findViewById(R.id.antragsViewTabs);
+        android.support.v4.view.ViewPager viewPager = findViewById(R.id.antragsViewViewpager);
+        TabLayout tabLayout = findViewById(R.id.antragsViewTabs);
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);

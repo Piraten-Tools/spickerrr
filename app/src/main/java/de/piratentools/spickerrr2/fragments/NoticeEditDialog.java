@@ -18,7 +18,6 @@ import de.piratentools.spickerrr2.R;
  */
 public class NoticeEditDialog extends DialogFragment implements View.OnClickListener {
     private EditText mEditText;
-    private Button save;
 
 
     public interface NoticeEditedListener {
@@ -50,7 +49,7 @@ public class NoticeEditDialog extends DialogFragment implements View.OnClickList
 
         View view = inflater.inflate(R.layout.notice_edit_dialog, container);
         mEditText = view.findViewById(R.id.editText);
-        save = view.findViewById(R.id.saveButton);
+        Button save = view.findViewById(R.id.saveButton);
 
 
         mEditText.requestFocus();
