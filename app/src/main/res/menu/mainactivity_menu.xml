@@ -12,6 +12,7 @@
         android:id="@+id/preferences"
         android:icon="@drawable/ic_settings_white_24dp"
         android:title="Einstellungen"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+
 
 </menu>
