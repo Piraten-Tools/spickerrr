@@ -21,7 +21,7 @@
     <string name="error_no_internet">Internetverbindung notwendig</string>
     <string name="erro_no_motionbooks_available">Es sind im Moment keine aktiven Antragsbücher verfügbar. Es können auch Antragsbücher vergangener Parteitage geladen werden. Gehe dazu einfach in die Einstellungen.</string>
     <string name="error_loading_motions">Beim Laden der Anträge ist ein Fehler aufgetreten!</string>
-    <string name="loading_motions">Lade Anträge...</string>
+    <string name="loading_motions">Lade Anträge…</string>
     <string name="motion_description">Antragstext</string>
     <string name="motion_motivation">Antragsbegründung</string>
     <string name="motion_info">Allgemein</string>
