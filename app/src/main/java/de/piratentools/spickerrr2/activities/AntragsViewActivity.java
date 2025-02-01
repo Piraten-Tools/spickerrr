@@ -1,10 +1,14 @@
 package de.piratentools.spickerrr2.activities;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.MenuItem;
 import android.view.View;
 
@@ -45,7 +49,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
     }
 
-    private void setupViewPager(android.support.v4.view.ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager) {
         SpickerrrViewPager adapter = new SpickerrrViewPager(getSupportFragmentManager());
 
         infoFragment = new AntragsViewInfoFragment();
@@ -77,7 +81,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle(antrag.id() + " " + antrag.title());
 
-        android.support.v4.view.ViewPager viewPager = findViewById(R.id.antragsViewViewpager);
+        ViewPager viewPager = findViewById(R.id.antragsViewViewpager);
         TabLayout tabLayout = findViewById(R.id.antragsViewTabs);
 
         setupViewPager(viewPager);
@@ -98,7 +102,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
 
     // for changing the vote preference and the notice
     public void editVotePreference(View v) {
-        FragmentManager manager = getFragmentManager();
+        FragmentManager manager = getSupportFragmentManager();
         Fragment frag = manager.findFragmentByTag("fragment_edit_name");
 
         if (frag != null) {
@@ -111,7 +115,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
     }
 
     public void editNotice(View v) {
-        FragmentManager manager = getFragmentManager();
+        FragmentManager manager = getSupportFragmentManager();
         Fragment frag = manager.findFragmentByTag("fragment_edit_name");
         if (frag != null) {
             manager.beginTransaction().remove(frag).commit();

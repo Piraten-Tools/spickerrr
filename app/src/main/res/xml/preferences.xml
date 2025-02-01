@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- <ListPreference
          android:key="bookLoadPreference"
@@ -16,4 +17,4 @@
         android:title="Sollen alle Antragsbücher geladen werden?" />
 
 
-</PreferenceScreen>
+</androidx.preference.PreferenceScreen>

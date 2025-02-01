@@ -1,8 +1,10 @@
 package de.piratentools.spickerrr2.activities;
 
 import android.os.Bundle;
-import android.preference.Preference;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.preference.Preference;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import java.util.Objects;
@@ -15,19 +17,19 @@ public class AppPreferencesActivity extends AppCompatActivity implements Prefere
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Display the fragment as the main content.
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new AppPreferenceFragment()).commit();
         setTitle("Einstellungen");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         finish();
         return true;
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object o) {
+    public boolean onPreferenceChange(@NonNull Preference preference, Object o) {
         return false;
     }
 }
