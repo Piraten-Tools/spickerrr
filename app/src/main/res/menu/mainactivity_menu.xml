@@ -5,13 +5,13 @@
     <item
         android:id="@+id/reload"
         android:icon="@android:drawable/ic_popup_sync"
-        android:title="Reload"
+        android:title="@string/reload"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/preferences"
         android:icon="@drawable/ic_settings_white_24dp"
-        android:title="Einstellungen"
+        android:title="@string/preferences"
         app:showAsAction="ifRoom" />
 
 

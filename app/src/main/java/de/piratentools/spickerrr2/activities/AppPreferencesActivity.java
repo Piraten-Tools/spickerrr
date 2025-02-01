@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import java.util.Objects;
 
+import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.fragments.AppPreferenceFragment;
 
 public class AppPreferencesActivity extends AppCompatActivity implements Preference.OnPreferenceChangeListener {
@@ -19,7 +20,7 @@ public class AppPreferencesActivity extends AppCompatActivity implements Prefere
         // Display the fragment as the main content.
         getSupportFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new AppPreferenceFragment()).commit();
-        setTitle("Einstellungen");
+        setTitle(getString(R.string.preferences));
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 

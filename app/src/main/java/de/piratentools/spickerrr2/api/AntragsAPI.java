@@ -1,5 +1,7 @@
 package de.piratentools.spickerrr2.api;
 
+import android.content.res.Resources;
+
 import org.apache.commons.text.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,6 +12,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 import au.com.bytecode.opencsv.CSVReader;
+import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.model.Antrag;
 import de.piratentools.spickerrr2.model.Package;
 import okhttp3.Callback;
@@ -39,15 +42,15 @@ public class AntragsAPI {
         for (int i = 0; i < antragsArray.length(); i++) {
             JSONObject aktobject = antragsArray.getJSONObject(i);
             //i have to now if the object is null if i want to cast to string so i use proxyobjects to check this
-            String id = aktobject.isNull(insertpackage.colId()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colId());
-            String title = aktobject.isNull(insertpackage.colTitle()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colTitle());
-            String kind = aktobject.isNull(insertpackage.colKind()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colKind());
-            String topic = aktobject.isNull(insertpackage.colTopic()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colTopic());
-            String owner = aktobject.isNull(insertpackage.colOwner()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colOwner());
-            String infourl = aktobject.isNull(insertpackage.colInfoUrl()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colInfoUrl());
-            String abstract_short = aktobject.isNull(insertpackage.colAbstract()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colAbstract());
-            String description = aktobject.isNull(insertpackage.colDescription()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colDescription());
-            String motivation = aktobject.isNull(insertpackage.colMotivation()) ? "Nicht vorhanden" : (String) aktobject.get(insertpackage.colMotivation());
+            String id = aktobject.isNull(insertpackage.colId()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colId());
+            String title = aktobject.isNull(insertpackage.colTitle()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colTitle());
+            String kind = aktobject.isNull(insertpackage.colKind()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colKind());
+            String topic = aktobject.isNull(insertpackage.colTopic()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colTopic());
+            String owner = aktobject.isNull(insertpackage.colOwner()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colOwner());
+            String infourl = aktobject.isNull(insertpackage.colInfoUrl()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colInfoUrl());
+            String abstract_short = aktobject.isNull(insertpackage.colAbstract()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colAbstract());
+            String description = aktobject.isNull(insertpackage.colDescription()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colDescription());
+            String motivation = aktobject.isNull(insertpackage.colMotivation()) ? Resources.getSystem().getString(R.string.not_available) : (String) aktobject.get(insertpackage.colMotivation());
 
             id = fixUrlEncoding(id);
             title = fixUrlEncoding(title);

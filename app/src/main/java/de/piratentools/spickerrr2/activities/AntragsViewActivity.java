@@ -70,9 +70,9 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         descriptionFragment.setArguments(descriptionBundle);
         motivationFragment.setArguments(motivationBundle);
 
-        adapter.addFragment(descriptionFragment, "Antragstext");
-        adapter.addFragment(motivationFragment, "Antragsbegründung");
-        adapter.addFragment(infoFragment, "Allgemein");
+        adapter.addFragment(descriptionFragment, getString(R.string.motion_description));
+        adapter.addFragment(motivationFragment, getString(R.string.motion_motivation));
+        adapter.addFragment(infoFragment, getString(R.string.motion_info));
 
         viewPager.setAdapter(adapter);
     }

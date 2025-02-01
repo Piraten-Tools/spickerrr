@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="Wähle das Antragsbuch"
+            android:text="@string/choose_motionbook"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/packagespinner"
             android:layout_centerHorizontal="true"
-            android:text="Wähle das Antragspaket"
+            android:text="@string/choose_motionpackage"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 

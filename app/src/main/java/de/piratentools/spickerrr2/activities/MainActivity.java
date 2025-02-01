@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } else {
-            showToast("Internetverbindung notwendig");
+            showToast(getString(R.string.error_no_internet));
         }
     }
 
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-            showToast("Es sind im Moment keine aktiven Antragsbücher verfügbar. Es können auch Antragsbücher vergangener Parteitage geladen werden. Gehe dazu einfach in die Einstellungen.");
+            showToast(getString(R.string.erro_no_motionbooks_available));
         }
 
     }
@@ -167,14 +167,14 @@ public class MainActivity extends AppCompatActivity {
                     fillBookSpinner(bookList);
                 } else {
                     //Not Successful
-                    showToast("Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
+                    showToast(getString(R.string.error_loading_motionbooks));
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<BookResponse> call, @NonNull Throwable t) {
                 //Not Successful
-                showToast("Beim Laden der Antragsbücher ist ein Fehler aufgetreten!");
+                showToast(getString(R.string.error_loading_motionbooks));
             }
         };
         packagecallback = new Callback<>() {
@@ -193,14 +193,14 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     //Not Successful
-                    showToast("Beim Laden der Antragspakete ist ein Fehler aufgetreten!");
+                    showToast(getString(R.string.error_loading_motionpackages));
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<PackageResponse> call, @NonNull Throwable t) {
                 //Not Successful
-                showToast("Beim Laden der Antragspakete ist ein Fehler aufgetreten!");
+                showToast(getString(R.string.error_loading_motionpackages));
             }
         };
     }
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                 //intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
                 startActivity(intent);
             } else {
-                showToast("Es ist noch kein Antragspaket gewählt!");
+                showToast(getString(R.string.error_no_motionpackage_chosen));
             }
         }
 

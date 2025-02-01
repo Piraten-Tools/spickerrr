@@ -12,9 +12,9 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="bookLoadPreference"
-        android:summaryOff="Es werden nur die aktuellen Antragsbücher geladen."
-        android:summaryOn="Es werden alle Antragsbücher geladen."
-        android:title="Sollen alle Antragsbücher geladen werden?" />
+        android:summaryOff="@string/preference_bookload_off"
+        android:summaryOn="@string/preference_bookload_on"
+        android:title="@string/preference_bookload_title" />
 
 
 </androidx.preference.PreferenceScreen>

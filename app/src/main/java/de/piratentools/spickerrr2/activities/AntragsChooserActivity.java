@@ -61,7 +61,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
     private void showProgressDialog() {
         dialog = new ProgressDialog(AntragsChooserActivity.this);
-        dialog.setMessage("Lade Anträge...");
+        dialog.setMessage(getString(R.string.loading_motions));
         dialog.show();
     }
 
@@ -70,7 +70,7 @@ public class AntragsChooserActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 Context context = getApplicationContext();
-                CharSequence text = "Beim Laden der Anträge ist ein Fehler aufgetreten!";
+                CharSequence text = getString(R.string.error_loading_motions);
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast.makeText(context, text, duration).show();

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choose_motionbook">Wähle das Antragsbuch</string>
+    <string name="choose_motionpackage">Wähle das Antragspaket</string>
+    <string name="sort">Sortiere</string>
+    <string name="sort_by_motionkind">Sortiere nach Antragstyp</string>
+    <string name="sort_by_motiotopic">Sortiere nach Themengebiet</string>
+    <string name="motion_author">Antragssteller:</string>
+    <string name="motion_topic">Themengebiet:</string>
+    <string name="motion_notice">Notizen:</string>
+    <string name="reload">Neuladen</string>
+    <string name="preferences">Einstellungen</string>
+    <string name="save">Speichern</string>
+    <string name="preference_bookload_title">Sollen alle Antragsbücher geladen werden?</string>
+    <string name="preference_bookload_on">Es werden alle Antragsbücher geladen.</string>
+    <string name="preference_bookload_off">Es werden nur die aktuellen Antragsbücher geladen.</string>
+    <string name="not_available">Nicht vorhanden</string>
+    <string name="error_loading_motionbooks">Beim Laden der Antragsbücher ist ein Fehler aufgetreten!</string>
+    <string name="error_no_motionpackage_chosen">Es ist noch kein Antragspaket gewählt!</string>
+    <string name="error_loading_motionpackages">Beim Laden der Antragspakete ist ein Fehler aufgetreten!</string>
+    <string name="error_no_internet">Internetverbindung notwendig</string>
+    <string name="erro_no_motionbooks_available">Es sind im Moment keine aktiven Antragsbücher verfügbar. Es können auch Antragsbücher vergangener Parteitage geladen werden. Gehe dazu einfach in die Einstellungen.</string>
+    <string name="error_loading_motions">Beim Laden der Anträge ist ein Fehler aufgetreten!</string>
+    <string name="loading_motions">Lade Anträge...</string>
+    <string name="motion_description">Antragstext</string>
+    <string name="motion_motivation">Antragsbegründung</string>
+    <string name="motion_info">Allgemein</string>
+    <string name="edit_notice">Bearbeite deine Notizen</string>
+    <string name="edit_vote">Lege dein Wahlverhalten fest</string>
+</resources>

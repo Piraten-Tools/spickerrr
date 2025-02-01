@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">Spickerrr</string>
+    <string name="app_name" translatable="false">Spickerrr</string>
+    <string name="choose_motionbook">Choose the motion book</string>
+    <string name="choose_motionpackage">Choose the motion package</string>
+    <string name="sort">Sort</string>
+    <string name="sort_by_motionkind">Sort by motion kind</string>
+    <string name="sort_by_motiotopic">Sort by motion topic</string>
+    <string name="motion_author">Author:</string>
+    <string name="motion_topic">Topic:</string>
+    <string name="motion_notice">Notice:</string>
+    <string name="reload">Reload</string>
+    <string name="preferences">Preferences</string>
+    <string name="save">Save</string>
+    <string name="preference_bookload_title">Should all motion books be loaded?</string>
+    <string name="preference_bookload_on">All motion books will be loaded.</string>
+    <string name="preference_bookload_off">Only the current motion books will be loaded.</string>
+    <string name="not_available">Not available</string>
+    <string name="error_loading_motionbooks">An error occurred while loading the motion books!</string>
+    <string name="error_no_motionpackage_chosen">No motion package has been selected yet!</string>
+    <string name="error_loading_motionpackages">An error occurred while loading the motion packages!</string>
+    <string name="error_no_internet">Internet connection required</string>
+    <string name="erro_no_motionbooks_available">There are currently no active motion books available. You can also load motion books from past party conferences. Simply go to the settings.</string>
+    <string name="error_loading_motions">An error occurred while loading the motions!</string>
+    <string name="loading_motions">Loading motions...</string>
+    <string name="motion_description">Description</string>
+    <string name="motion_motivation">Motivation</string>
+    <string name="motion_info">General</string>
+    <string name="edit_notice">Edit your notice</string>
+    <string name="edit_vote">Choose your voting behavior</string>
 </resources>

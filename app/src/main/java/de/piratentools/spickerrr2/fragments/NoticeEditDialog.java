@@ -62,7 +62,7 @@ public class NoticeEditDialog extends DialogFragment implements View.OnClickList
         save.setOnClickListener(this);
 
         Objects.requireNonNull(getDialog().getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        getDialog().setTitle("Bearbeite deine Notizen");
+        getDialog().setTitle(R.string.edit_notice);
 
 
         return view;

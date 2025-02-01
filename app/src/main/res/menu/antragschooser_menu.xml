@@ -6,16 +6,16 @@
         android:id="@+id/action_sort"
         android:icon="@drawable/ic_sort_24dp"
         android:orderInCategory="100"
-        android:title="Sortiere"
+        android:title="@string/sort"
         app:showAsAction="ifRoom">
 
         <menu>
             <item
                 android:id="@+id/menuSortKind"
-                android:title="Sortiere nach Antragstyp" />
+                android:title="@string/sort_by_motionkind" />
             <item
                 android:id="@+id/menuSortTopic"
-                android:title="Sortiere nach Themengebiet" />
+                android:title="@string/sort_by_motiotopic" />
         </menu>
 
     </item>
