@@ -19,13 +19,14 @@ public class SpickerrrViewPager extends FragmentPagerAdapter {
         super(manager);
     }
 
+    @NonNull
     @Override
     public androidx.fragment.app.Fragment getItem(int position) {
         return mFragmentList.get(position);
     }
 
     @Override
-    public int getItemPosition(Object object) {
+    public int getItemPosition(@NonNull Object object) {
         return super.getItemPosition(POSITION_NONE);
     }
 

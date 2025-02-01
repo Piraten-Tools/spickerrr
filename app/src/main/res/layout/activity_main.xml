@@ -16,7 +16,6 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".activities.MainActivity">
 
-
         <Spinner
             android:id="@+id/bookspinner"
             android:layout_width="match_parent"

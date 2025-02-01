@@ -1,5 +1,7 @@
 package de.piratentools.spickerrr2.api;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +48,7 @@ public class BookResponse {
     }
 
 
+    @NonNull
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Successfull: ").append(success).append("\n");

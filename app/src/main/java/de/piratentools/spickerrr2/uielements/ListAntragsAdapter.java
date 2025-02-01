@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import org.jsoup.Jsoup;
 
 import de.piratentools.spickerrr2.R;
@@ -31,8 +33,9 @@ public class ListAntragsAdapter extends ArrayAdapter<Antrag> {
         this.antraege = antraege;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View myView = convertView;
         // reuse views
         if (myView == null) {

@@ -43,7 +43,7 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         initializeUI();
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         finish();
         return true;
 
@@ -150,7 +150,6 @@ public class AntragsViewActivity extends AppCompatActivity implements NoticeEdit
         }
     }
 
-    //interfaces
     public interface InfoFragmentUpdateListener {
         void onFragmentUpdate();
     }

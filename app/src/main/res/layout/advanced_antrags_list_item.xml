@@ -12,7 +12,6 @@
         android:layout_marginTop="5sp"
         android:maxLines="1"
         android:textColor="#000000"
-
         android:textSize="16sp" />
 
 
@@ -25,7 +24,6 @@
         android:layout_marginStart="5sp"
         android:maxLines="1"
         android:textColor="#000000"
-
         android:textSize="15sp" />
 
     <TextView
@@ -37,7 +35,6 @@
         android:layout_marginStart="5sp"
         android:maxLines="1"
         android:textColor="@android:color/darker_gray"
-
         android:textSize="13sp" />
 
 </RelativeLayout>

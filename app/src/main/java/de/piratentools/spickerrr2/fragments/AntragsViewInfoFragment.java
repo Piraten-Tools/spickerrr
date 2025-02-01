@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
-import java.util.Objects;
-
 import de.piratentools.spickerrr2.R;
 import de.piratentools.spickerrr2.activities.AntragsViewActivity;
 import de.piratentools.spickerrr2.model.Antrag;
@@ -37,7 +35,7 @@ public class AntragsViewInfoFragment extends Fragment implements AntragsViewActi
                              Bundle savedInstanceState) {
         //get Antrag from Arguments
         antrag = null;
-        int position = Objects.requireNonNull(getActivity()).getIntent().getIntExtra("position", -1);
+        int position = requireActivity().getIntent().getIntExtra("position", -1);
         antrag = DataHolder.getInstance().getAntragslist().get(position);
         Book book = DataHolder.getInstance().getBook();
         Package aPackage = DataHolder.getInstance().getaPackage();

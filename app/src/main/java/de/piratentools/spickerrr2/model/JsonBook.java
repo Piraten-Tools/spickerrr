@@ -1,5 +1,7 @@
 package de.piratentools.spickerrr2.model;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -402,6 +404,7 @@ public class JsonBook {
         return new Book(key, name, description);
     }
 
+    @NonNull
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Key: ").append(key).append("\n");
