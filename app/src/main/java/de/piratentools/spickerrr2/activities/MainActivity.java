@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         //init retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://spicker.piraten-tools.de/api/")
+                .baseUrl("https://spickerrr.piraten.tools/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
