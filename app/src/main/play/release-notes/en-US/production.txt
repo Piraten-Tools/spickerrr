@@ -1,0 +1,10 @@
+Version 2.1.4
+ - Voting behavior and note are now saved
+ - Several crashes and bugs fixed
+ - Gradle Play Publisher implemented
+ - Dependencies updated
+Version 2.1
+ - New maintainer
+ - New backend
+ - New website
+ - Various bugs fixed
