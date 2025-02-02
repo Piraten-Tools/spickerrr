@@ -8,10 +8,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-
+  check-translations:
+    name: Check Translations
+    # Linux is required since this is a docker container action
     runs-on: ubuntu-latest
-
+    steps:
+      - uses: actions/checkout@v2
+      - id: check_translations
+        uses: ashutoshgngwr/android-translations@v1
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: set up JDK 21
@@ -20,7 +27,6 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: gradle
-
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
