@@ -1,8 +1,14 @@
 # Spickerrr
 
+[![GitHub latest Release](https://img.shields.io/github/release/Piraten-Tools/spickerrr.svg?label=release)](https://github.com/Piraten-Tools/spickerrr/releases/latest)
+![GitHub Release Date](https://img.shields.io/github/release-date/Piraten-Tools/Spickerrr)
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/Piraten-Tools/Spickerrr/latest/total)
+![GitHub License](https://img.shields.io/github/license/Piraten-Tools/Spickerrr)
+![F-Droid Version](https://img.shields.io/f-droid/v/de.piratentools.spickerrr)\
+![GitHub commits since latest release](https://img.shields.io/github/commits-since/Piraten-Tools/Spickerrr/latest)
+![GitHub last commit](https://img.shields.io/github/last-commit/Piraten-Tools/Spickerrr)
 ![GitHub Actions Translations Workflow Status](https://img.shields.io/github/actions/workflow/status/Piraten-Tools/spickerrr/android-translations.yml?label=Translations)
 ![GitHub Actions Build Workflow Status](https://img.shields.io/github/actions/workflow/status/Piraten-Tools/spickerrr/android.yml?label=Build)
-[![GitHub latest Release](https://img.shields.io/github/release/Piraten-Tools/spickerrr.svg?label=Release)](https://github.com/Piraten-Tools/spickerrr/releases/latest)
 
 ### A simple Android App to display petitions for Pirateparty conventions
 
