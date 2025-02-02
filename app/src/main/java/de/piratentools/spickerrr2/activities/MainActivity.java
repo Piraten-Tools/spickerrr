@@ -65,9 +65,13 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         dataHolder = DataHolder.createInstance(getApplicationContext());
         dataHolder.setAppPreferences(sharedPreferences);
+    }
+
+    @Override
+    protected void onStart() {
         initializeUI();
         loadData();
-
+        super.onStart();
     }
 
     private void initializeUI() {
