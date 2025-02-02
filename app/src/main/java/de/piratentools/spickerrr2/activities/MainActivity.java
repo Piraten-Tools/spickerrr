@@ -6,10 +6,13 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+
 import androidx.preference.PreferenceManager;
 import androidx.annotation.NonNull;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,6 +40,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
     private SpickerrrApi service;
 
     private Callback<BookResponse> bookcallback;
@@ -92,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } else {
+            Log.v(TAG, "error_no_internet");
             showToast(getString(R.string.error_no_internet));
         }
     }
@@ -157,7 +163,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-            showToast(getString(R.string.erro_no_motionbooks_available));
+            Log.e(TAG, "Error: No motionbooks available");
+            showToast(getString(R.string.error_no_motionbooks_available));
         }
 
     }
@@ -169,8 +176,10 @@ public class MainActivity extends AppCompatActivity {
                 if (response.body() != null && response.body().getSuccess()) {
                     bookList = response.body().getData();
                     fillBookSpinner(bookList);
+                    Log.i(TAG, "Loaded new motionbooks");
                 } else {
                     //Not Successful
+                    Log.e(TAG, "Unknown error while loading motionbooks");
                     showToast(getString(R.string.error_loading_motionbooks));
                 }
             }
@@ -178,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call<BookResponse> call, @NonNull Throwable t) {
                 //Not Successful
+                Log.e(TAG, "Error while loading motionbooks", t);
                 showToast(getString(R.string.error_loading_motionbooks));
             }
         };
@@ -194,9 +204,11 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     fillPackageSpinner(packageList);
+                    Log.i(TAG, "Loaded new motionpackages");
 
                 } else {
                     //Not Successful
+                    Log.e(TAG, "Unknown error while loading motionpackages");
                     showToast(getString(R.string.error_loading_motionpackages));
                 }
             }
@@ -204,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call<PackageResponse> call, @NonNull Throwable t) {
                 //Not Successful
+                Log.e(TAG, "Error while loading motionpackages", t);
                 showToast(getString(R.string.error_loading_motionpackages));
             }
         };
@@ -240,10 +253,12 @@ public class MainActivity extends AppCompatActivity {
     public void openNextActivity(View view) {
         if (packageSpinner != null) {
             if (packageSpinner.getSelectedItem() != null) {
+                Log.i(TAG, "Opening motionpackages: " + packageSpinner.getSelectedItem());
                 Intent intent = new Intent(this, AntragsChooserActivity.class);
                 //intent.putExtra("package", packageList.get(packageSpinner.getSelectedItemPosition()));
                 startActivity(intent);
             } else {
+                Log.e(TAG, "Error: No motionpackages chosen");
                 showToast(getString(R.string.error_no_motionpackage_chosen));
             }
         }
