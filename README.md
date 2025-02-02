@@ -1,14 +1,13 @@
-# Spickerrr - A simple Android App to display petitions for Pirateparty conventions
+# Spickerrr
 
-This repository contains the code for one of my first Android Projects - Spickerrr. It's kind of an educational project for me,
-but is intended to run on the phone of many pirates.  
+![GitHub Actions Translations Workflow Status](https://img.shields.io/github/actions/workflow/status/Piraten-Tools/spickerrr/android-translations.yml?label=Translations)
+![GitHub Actions Build Workflow Status](https://img.shields.io/github/actions/workflow/status/Piraten-Tools/spickerrr/android.yml?label=Build)
+[![GitHub latest Release](https://img.shields.io/github/release/Piraten-Tools/spickerrr.svg?label=Release)](https://github.com/Piraten-Tools/spickerrr/releases/latest)
 
-So in case you have any suggestions or notes, do not hesitate to contact me.  
+### A simple Android App to display petitions for Pirateparty conventions
 
-I'll work on this whenever I find the time to!
-  
-Contact details:
-Felix Wöstmann  
-@LostInCoding on Twitter  
+A party conference is coming up and you don't want to have to constantly search for motions in the wiki?\
+Then the Spickerrr is just right for you.
 
-For licensing questions see the LICENSE-file provided within this repository. I made use of the GNU GPLv3 license.
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.piratentools.spickerrr/)
+[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Get APK from GitHub" height="80">](https://github.com/Piraten-Tools/spickerrr/releases/latest)
