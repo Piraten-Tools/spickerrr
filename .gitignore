@@ -7,3 +7,5 @@
 .idea/
 /keystore.properties
 /api-key.json
+/app/release
+/app/build
