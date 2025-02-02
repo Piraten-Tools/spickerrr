@@ -1,10 +1,8 @@
-Version 2.1.4
- - Wählverhalten und Notiz werden jetzt gespeichert
- - Mehrere Abstürze und Fehler behoben
- - Gradle Play Publisher implementiert
+Version 2.2.0 (02.02.2025)
+ - Schaltfläche zum Neuladen hinzugefügt
+ - Mehrsprachig gemacht (de & en)
+ - Android-Versionen aktualisiert
+ - Gradle aktualisiert
  - Abhängigkeiten aktualisiert
-Version 2.1
- - Neuer Maintainer
- - Neues Backend
- - Neue Webseite
- - Diverse Bugs behoben
+ - Code aufgeräumt
+ - Diverse kleinere Fehler behoben
