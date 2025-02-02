@@ -19,7 +19,7 @@
     <string name="error_no_motionpackage_chosen">No motion package has been selected yet!</string>
     <string name="error_loading_motionpackages">An error occurred while loading the motion packages!</string>
     <string name="error_no_internet">Internet connection required</string>
-    <string name="erro_no_motionbooks_available">There are currently no active motion books available. You can also load motion books from past party conferences. Simply go to the settings.</string>
+    <string name="error_no_motionbooks_available">There are currently no active motion books available. You can also load motion books from past party conferences. Simply go to the settings.</string>
     <string name="error_loading_motions">An error occurred while loading the motions!</string>
     <string name="loading_motions">Loading motions…</string>
     <string name="motion_description">Description</string>
@@ -27,4 +27,6 @@
     <string name="motion_info">General</string>
     <string name="edit_notice">Edit your notice</string>
     <string name="edit_vote">Choose your voting behavior</string>
+    <string name="fab_edit_vote">Edit voting behavior</string>
+    <string name="fab_edit_notice">Edit notice</string>
 </resources>

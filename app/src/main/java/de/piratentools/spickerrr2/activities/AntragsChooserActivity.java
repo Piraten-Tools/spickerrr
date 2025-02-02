@@ -78,10 +78,11 @@ public class AntragsChooserActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(@NonNull Call call, Response response) throws IOException {
+                Context context = getApplicationContext();
                 antragslist = new ArrayList<>();
 
                 try {
-                    antragslist = AntragsAPI.parseData(Objects.requireNonNull(response.body()).string(), aPackage);
+                    antragslist = AntragsAPI.parseData(Objects.requireNonNull(response.body()).string(), aPackage, context);
                 } catch (JSONException e) {
                     Log.e("JSON", e.toString());
                 }

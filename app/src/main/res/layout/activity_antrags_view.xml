@@ -44,7 +44,7 @@
             android:onClick="editVotePreference"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_colorPressed="@color/colorAccent"
-            fab:fab_title="Bearbeite Abstimmungsverhalten" />
+            fab:fab_title="@string/fab_edit_vote" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/editNotice"
@@ -53,7 +53,7 @@
             android:onClick="editNotice"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_colorPressed="@color/colorAccent"
-            fab:fab_title="Bearbeite Notiz" />
+            fab:fab_title="@string/fab_edit_notice" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
