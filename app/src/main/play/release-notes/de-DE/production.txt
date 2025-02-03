@@ -1,3 +1,5 @@
+Version 2.2.1 (03.02.2025)
+ - Signierten Build repariert
 Version 2.2.0 (02.02.2025)
  - Schaltfläche zum Neuladen hinzugefügt
  - Mehrsprachig gemacht (de & en)

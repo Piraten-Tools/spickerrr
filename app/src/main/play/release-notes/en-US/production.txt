@@ -1,3 +1,5 @@
+Version 2.2.1 (2025-02-03)
+ - Fixed signed build
 Version 2.2.0 (2025-02-02)
  - Added reload button
  - Made multilingual (de & en)
